@@ -5,7 +5,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes" -- always show sign column
 vim.opt.swapfile = false -- creates a swapfile
 vim.opt.backup = false -- creates a backup file
-vim.opt.updatetime = 100 -- faster completion
+vim.opt.updatetime = 300 -- faster completion
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
 vim.opt.title = true -- set the title of window 
@@ -23,9 +23,8 @@ vim.opt.foldmethod = "manual" -- set the folding method for treesutter to "manua
 vim.opt.foldexpr = "" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
 vim.opt.hidden = true -- option allows you to switch buffers without needing to write changes to the file
 vim.opt.termguicolors = true -- set term gui colors
-vim.opt.timeoutlen = 100 -- improve the response your mapping
+vim.opt.timeoutlen = 1000 -- improve the response your mapping (the time in milliseconds after which the mapping input will end)
 vim.opt.titlestring = "%<%F%=%l/%L - nvim" -- what the title of the window will be set to
-vim.opt.updatetime = 300 -- faster completion
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program)
                             -- it is not allowed to be edited
 -- Indent Settings

@@ -27,9 +27,11 @@ require("lazy").setup({
     {"folke/which-key.nvim"},
     {"folke/neoconf.nvim", cmd = "Neoconf" },
     {"folke/neodev.nvim"},
-    {"ellisonleao/gruvbox.nvim"},
+    --{"ellisonleao/gruvbox.nvim"},
+    {"sainnhe/gruvbox-material"},
     {'nvim-treesitter/nvim-treesitter'},
     {'neovim/nvim-lspconfig'},
+    {'nvim-tree/nvim-web-devicons'},
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
@@ -44,16 +46,14 @@ require("lazy").setup({
     {
       'nvim-lualine/lualine.nvim',
       dependencies = {
-          'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim'
+        'linrongbin16/lsp-progress.nvim'
       }
     },
-    {'nvim-tree/nvim-web-devicons'},
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
       dependencies = {
         "nvim-lua/plenary.nvim",
-        "nvim-tree/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
         "s1n7ax/nvim-window-picker"
       }
@@ -77,4 +77,8 @@ require("lazy").setup({
     },                            
     {"jay-babu/mason-nvim-dap.nvim"},  -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
                                        -- mason-lspconfig will not automatically install debug adapters for us
+    {"windwp/nvim-autopairs"},
+    {'akinsho/bufferline.nvim', version = "*"},
+    {"norcalli/nvim-colorizer.lua"},
+    {'akinsho/toggleterm.nvim', version = "*", config = true}, -- console in nvim
   })
