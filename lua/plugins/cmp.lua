@@ -31,10 +31,13 @@ cmp.setup({
             end
         end, {"i", "s"})
     }),
-    sources = cmp.config.sources({
-        {name = 'nvim_lsp'}, {name = 'vsnip'}
-    }, {{name = 'buffer'}, {name = 'nvim_lsp_signature_help'}})
-})
+    sources = cmp.config.sources(
+        {{name = 'nvim_lsp' }, {name = 'vsnip' }},
+        {{name = 'buffer' }, {name = 'nvim_lsp_signature_help' }},
+        {{name = 'path' }},
+        {{name = 'luasnip' }}       
+    )
+})      
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
@@ -54,7 +57,3 @@ cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
 })
-
--- Set up lspconfig.
---local capabilities = require('cmp_nvim_lsp').default_capabilities()
---require('lspconfig')['jdtls'].setup {capabilities = capabilities}

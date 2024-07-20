@@ -1,8 +1,7 @@
 -- Basic config
 require("core.configs")
-require("core.mappings")
-require("core.autocmds")
 require("core.lazy")
+require("core.mappings")
 
 -- Plugins settings
 require("plugins.colorscheme")
@@ -18,4 +17,8 @@ require("plugins.autopairs")
 require("plugins.bufferline")
 require("plugins.colorizer")
 require("plugins.toggleterm")
+require("plugins.java")
 require("plugins.lspconfig")
+require("plugins.jdtls")
+require("plugins.move")
+require("plugins.dashboard")
