@@ -83,6 +83,7 @@ require("lazy").setup({
     {'nvim-java/nvim-java'},
     {'onsails/lspkind.nvim'},
     {"christoomey/vim-system-copy"},
+    {"numToStr/Comment.nvim"},
     {"nvimdev/dashboard-nvim"},
     {
       "folke/trouble.nvim",
