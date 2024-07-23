@@ -1,59 +1,68 @@
-vim.wo.number = true
-vim.g.formatoptions = "qn1"
-vim.opt.wrap = false
-vim.opt.showmode = false
-vim.opt.signcolumn = "yes" 
-vim.opt.updatetime = 300
-vim.opt.undofile = true
-vim.opt.title = false 
-vim.opt.shell = "/bin/zsh"
-vim.opt.fileformat = "unix"
-vim.opt.undodir = vim.fn.stdpath "cache" .. "/undo"
-vim.opt.colorcolumn = "99999"       -- fixes visual bugs
-vim.opt.clipboard = "unnamedplus"   -- allows neovim to access the system clipboard
-vim.opt.conceallevel = 0            -- disables hiding. All characters are displayed as is
+local opt = vim.opt
+local cmd = vim.cmd
+local g = vim.g
+local wo = vim.wo
+local fn = vim.fn
+local api = vim.api
 
-vim.opt.completeopt = { "menuone", "noselect" } 
+wo.number = true
+opt.backspace = "indent,eol,start"
+g.formatoptions = "qn1"
+opt.wrap = false
+opt.showmode = false
+opt.signcolumn = "yes" 
+opt.updatetime = 300
+opt.undofile = true
+opt.title = false
+opt.shortmess:append("c") 
+opt.virtualedit = "block"
+opt.shell = "/bin/zsh"
+opt.fileformat = "unix"
+opt.undodir = fn.stdpath "cache" .. "/undo"
+opt.conceallevel = 0            -- disables hiding. All characters are displayed as is
+opt.colorcolumn = "99999"       -- fixes visual bugs
+opt.clipboard = "unnamedplus"   -- allows neovim to access the system clipboard
+opt.completeopt = { "menuone", "noselect" } 
 -- menuone - shows the auto-completion menu even if there is only one option
 -- noselect- does't automatically select the first item in the autocomplete menu
 
-vim.opt.fileencoding = "utf-8"
-vim.opt.hidden = true               -- option allows you to switch buffers without needing to write changes to the file
-vim.opt.termguicolors = true        -- set term gui colors
+opt.fileencoding = "utf-8"
+opt.hidden = true               -- option allows you to switch buffers without needing to write changes to the file
+opt.termguicolors = true        -- set term gui colors
 
 -- Backups
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.writebackup = false         -- prevent you from editing a file that is 
-                                    -- already in use by another app
+opt.swapfile = false
+opt.backup = false
+opt.writebackup = false         -- prevent you from editing a file that is 
+                                -- already in use by another app
 -- Indent Settings
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.breakindent = true
-vim.opt.expandtab = true            -- convert tabs to spaces
-vim.opt.smartindent = true          -- make indenting smarter
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.breakindent = true
+opt.expandtab = true            -- convert tabs to spaces
+opt.smartindent = true          -- make indenting smarter
 
 -- Mouse
-vim.opt.mouse = "a"                 -- enable mouse support
-vim.opt.mousefocus = true
-vim.opt.cursorline = true           -- highlight current line
+opt.mouse = "a"                 -- enable mouse support
+opt.mousefocus = true
+opt.cursorline = true           -- highlight current line
 
 --Scroll
-vim.opt.so = 30                     -- the cursor will always be centered
-vim.opt.scrolloff = 8               -- minimal number of lines for scrolling
+opt.so = 30                     -- the cursor will always be centered
+opt.scrolloff = 8               -- minimal number of lines for scrolling
 
 -- Splits
-vim.opt.splitbelow = true           -- force all horizontal splits to go below current window
-vim.opt.splitright = true           -- force all vertical splits to go to the right of current window
+opt.splitbelow = true           -- force all horizontal splits to go below current window
+opt.splitright = true           -- force all vertical splits to go to the right of current window
 
 -- Searching Behaviors
-vim.opt.ignorecase = true           -- ignore case in search
-vim.opt.hlsearch = true             -- highlight all matches in search
-vim.opt.smartcase = true            -- smart case
+opt.ignorecase = true           -- ignore case in search
+opt.hlsearch = true             -- highlight all matches in search
+opt.smartcase = true            -- smart case
 
 -- Fillchars
-vim.opt.fillchars = {
+opt.fillchars = {
     vert = "│",
     fold = "⠀",
     eob = " ",
@@ -63,5 +72,20 @@ vim.opt.fillchars = {
     foldclose = "▸"
 }
 
-vim.cmd([[highlight clear LineNr]])
-vim.cmd([[highlight clear SignColumn]])
+-- keep cursor unchanged after quiting
+api.nvim_create_autocmd("ExitPre", {
+	group = api.nvim_create_augroup("Exit", { clear = true }),
+	command = "set guicursor=a:ver90",
+	desc = "Set cursor back to beam when leaving Neovim.",
+})
+
+-- disalbe commenting next line
+api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "r", "o" })
+	end,
+})
+
+cmd([[highlight clear LineNr]])
+cmd([[highlight clear SignColumn]])
