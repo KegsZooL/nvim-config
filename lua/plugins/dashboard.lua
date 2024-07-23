@@ -46,7 +46,7 @@ db.setup {
             icon_hl = 'Title',
             desc = 'Find File                  ',
             desc_hl = 'String',
-            key = ' ff',
+            key = 'ff',
             key_format = ' %s',
             action = function() builtin.find_files() end
           },

@@ -85,6 +85,7 @@ require("lazy").setup({
     {"christoomey/vim-system-copy"},
     {"numToStr/Comment.nvim"},
     {"nvimdev/dashboard-nvim"},
+    {"rcarriga/nvim-notify"},
     {
       "folke/trouble.nvim",
       opts = {}, -- for default options, refer to the configuration section for custom setup.

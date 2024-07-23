@@ -6,9 +6,12 @@ cmp.setup({
             vim.fn["vsnip#anonymous"](args.body)
         end
     },
-    window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered()
+        window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered()
+    },
+    completion = {
+        autocomplete = false,
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -35,9 +38,9 @@ cmp.setup({
         {{name = 'nvim_lsp' }, {name = 'vsnip' }},
         {{name = 'buffer' }, {name = 'nvim_lsp_signature_help' }},
         {{name = 'path' }},
-        {{name = 'luasnip' }}       
+        {{name = 'luasnip' }}
     )
-})      
+})
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
@@ -57,3 +60,7 @@ cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
 })
+
+-- Set up lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('lspconfig')['tsserver'].setup {capabilities = capabilities}

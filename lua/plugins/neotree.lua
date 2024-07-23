@@ -11,7 +11,7 @@ require("neo-tree").setup({
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",
     enable_git_status = true,
-    enable_diagnostics = true,
+    enable_diagnostics = false,
     open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     sort_function = nil , 
@@ -52,8 +52,6 @@ require("neo-tree").setup({
         git_status = {
         symbols = {
             -- Change type
-            added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
             deleted   = "✖",-- this can only be used in the git_status source
             renamed   = "󰁕",-- this can only be used in the git_status source
             -- Status type
@@ -105,21 +103,13 @@ require("neo-tree").setup({
         ["l"] = "focus_preview",
         ["S"] = "open_split",
         ["s"] = "open_vsplit",
-        -- ["S"] = "split_with_window_picker",
-        -- ["s"] = "vsplit_with_window_picker",
         ["t"] = "open_tabnew",
-        -- ["<cr>"] = "open_drop",
-        -- ["t"] = "open_tab_drop",
         ["w"] = "open_with_window_picker",
         ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
         ["C"] = "close_node",
-        -- ['C'] = 'close_all_subnodes',
         ["z"] = "close_all_nodes",
-        --["Z"] = "expand_all_nodes",
         ["a"] = {
             "add",
-            -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
-            -- some commands may take optional config options, see `:h neo-tree-mappings` for details
             config = {
             show_path = "none" -- "none", "relative", "absolute"
             }

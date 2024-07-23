@@ -52,8 +52,10 @@ vim.api.nvim_set_keymap('n', '<C-Left>', 'b', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-Left>', 'b', { noremap = true, silent = true })
 
 -- CTRL + Right
-vim.api.nvim_set_keymap('n', '<C-Right>', 'w', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<C-Right>', 'w', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-Right>', 'e', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<C-Right>', 'e', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-Left>', '<C-o>b', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-Right>', '<C-o>e', { noremap = true, silent = true })
 
 -- CTRL + Up
 vim.api.nvim_set_keymap('n', '<C-Up>', 'k', { noremap = true, silent = true })

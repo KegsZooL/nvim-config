@@ -3,7 +3,7 @@ require("core.configs")
 require("core.lazy")
 require("core.mappings")
 
--- Plugins settings
+-- Plugins setting
 require("plugins.colorscheme")
 require("plugins.lualine")
 require("plugins.treesitter")
@@ -23,3 +23,4 @@ require("plugins.jdtls")
 require("plugins.move")
 require("plugins.dashboard")
 require("plugins.comment")
+require("plugins.nvim-notify")
