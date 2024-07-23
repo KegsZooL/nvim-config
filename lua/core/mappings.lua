@@ -63,8 +63,8 @@ api.nvim_set_keymap('n', '<C-Down>', 'j', opts)
 api.nvim_set_keymap('v', '<C-Down>', 'j', opts)
 
 -- CTRL + /
-api.nvim_set_keymap('n', '<C-/>', ':lua require("Comment.api").toggle.linewise.current()<CR>', { noremap = true, silent = true })
-api.nvim_set_keymap('v', '<C-/>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', { noremap = true, silent = true })
+api.nvim_set_keymap('n', '<C-/>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
+api.nvim_set_keymap('v', '<C-/>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
 
 -- Ctrl+S 
 api.nvim_set_keymap('n', '<C-S>', ':w<CR>', opts)
@@ -129,8 +129,8 @@ keymap.set('n', '<leader>fb', builtin.buffers)
 keymap.set('n', '<leader>fh', builtin.help_tags)
 keymap.set('n', '<leader>gb', builtin.git_branches)
 keymap.set('n', '<leader>gc', builtin.git_commits)
-keymap.set('n', '<leader>gs', builtin.git_statu)
-keymap.set('n', '<leader>ls', builtin.lsp_document_symbols, {})
+keymap.set('n', '<leader>gs', builtin.git_status)
+keymap.set('n', '<leader>ls', builtin.lsp_document_symbols)
 keymap.set('n', 'gr', builtin.lsp_references, opts )
 keymap.set('n', 'gd', builtin.lsp_definitions, opts )
 
