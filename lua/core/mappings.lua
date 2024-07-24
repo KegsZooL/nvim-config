@@ -8,21 +8,20 @@ keymap.set('n', '<leader>E', ':Neotree float reveal<CR>')
 keymap.set('n', '<leader>e', ':Neotree left reveal<CR>')
 keymap.set('n', '<leader>o', ':Neotree float git_status<CR>')
 
-api.nvim_set_keymap('n', '<F12>', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-api.nvim_set_keymap('i', '<F12>', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-api.nvim_set_keymap('v', '<F12>', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+api.nvim_set_keymap('n', '<F12>', '<cmd>Lspsaga goto_definition<CR>', opts)
+api.nvim_set_keymap('i', '<F12>', '<cmd>Lspsaga goto_definition<CR>', opts)
 
 api.nvim_set_keymap('n', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 api.nvim_set_keymap('i', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-api.nvim_set_keymap('v', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-api.nvim_set_keymap('v', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 api.nvim_set_keymap('i', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
-keymap.set("n", "<C-r>", lsp.buf.rename, { desc = "[C]ode [R]ename" })
-keymap.set("v", "<C-r>", lsp.buf.rename, { desc = "[C]ode [R]ename" })
-keymap.set("i", "<C-r>", lsp.buf.rename, { desc = "[C]ode [R]ename" })
+api.nvim_set_keymap('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
+api.nvim_set_keymap('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
+
+keymap.set("n", "<C-r>", "<cmd>Lspsaga rename<CR>", opts, { desc = "[C]ode [R]ename" })
+keymap.set("i", "<C-r>", "<cmd>Lspsaga rename<CR>", opts, { desc = "[C]ode [R]ename" })
 
 -- CTRL+Z
 api.nvim_set_keymap('n', '<C-z>', 'u', opts)
@@ -47,12 +46,12 @@ api.nvim_set_keymap('i', '<C-d>', '<Esc>:call append(line("."), getline("."))<CR
 -- CTRL + Left
 api.nvim_set_keymap('n', '<C-Left>', 'b', opts)
 api.nvim_set_keymap('v', '<C-Left>', 'b', opts)
+api.nvim_set_keymap('i', '<C-Left>', '<C-o>b', opts)
 
 -- CTRL + Right
-api.nvim_set_keymap('n', '<C-Right>', 'e', opts)
-api.nvim_set_keymap('v', '<C-Right>', 'e', opts)
-api.nvim_set_keymap('i', '<C-Left>', '<C-o>b', opts)
-api.nvim_set_keymap('i', '<C-Right>', '<C-o>e', opts)
+api.nvim_set_keymap('n', '<C-Right>', 'w', opts)
+api.nvim_set_keymap('v', '<C-Right>', 'w', opts)
+api.nvim_set_keymap('i', '<C-Right>', '<C-o>w', opts)
 
 -- CTRL + Up
 api.nvim_set_keymap('n', '<C-Up>', 'k', opts)

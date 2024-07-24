@@ -67,11 +67,11 @@ require("lazy").setup({
     {
       "williamboman/mason-lspconfig.nvim",
       dependencies = {
-          "neovim/nvim-lspconfig", -- mason lsp config uses mason to automatically ensure that the lsp servers
-      }                            -- you want to install are installed
-    },                            
-    {"jay-babu/mason-nvim-dap.nvim"},  -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
-                                       -- mason-lspconfig will not automatically install debug adapters for us
+          "neovim/nvim-lspconfig",      -- mason lsp config uses mason to automatically ensure that the lsp servers
+      }                                 -- you want to install are installed
+    },
+    {"jay-babu/mason-nvim-dap.nvim"},   -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
+                                        -- mason-lspconfig will not automatically install debug adapters for us
     {"windwp/nvim-autopairs"},
     {'akinsho/bufferline.nvim', version = "*"},
     {"norcalli/nvim-colorizer.lua"},
@@ -86,41 +86,6 @@ require("lazy").setup({
     {"numToStr/Comment.nvim"},
     {"nvimdev/dashboard-nvim"},
     {"rcarriga/nvim-notify"},
-    {
-      "folke/trouble.nvim",
-      opts = {}, -- for default options, refer to the configuration section for custom setup.
-      cmd = "Trouble",
-      keys = {
-        {
-          "<leader>xx",
-          "<cmd>Trouble diagnostics toggle<cr>",
-          desc = "Diagnostics (Trouble)",
-        },
-        {
-          "<leader>xX",
-          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-          desc = "Buffer Diagnostics (Trouble)",
-        },
-        {
-          "<leader>cs",
-          "<cmd>Trouble symbols toggle focus=false<cr>",
-          desc = "Symbols (Trouble)",
-        },
-        {
-          "<leader>cl",
-          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-          desc = "LSP Definitions / references / ... (Trouble)",
-        },
-        {
-          "<leader>xL",
-          "<cmd>Trouble loclist toggle<cr>",
-          desc = "Location List (Trouble)",
-        },
-        {
-          "<leader>xQ",
-          "<cmd>Trouble qflist toggle<cr>",
-          desc = "Quickfix List (Trouble)",
-        },
-      },
-    },
+    {"folke/trouble.nvim"},
+    {"nvimdev/lspsaga.nvim"},
   })

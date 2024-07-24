@@ -10,21 +10,23 @@ opt.backspace = "indent,eol,start"
 g.formatoptions = "qn1"
 opt.wrap = false
 opt.showmode = false
-opt.signcolumn = "yes" 
+opt.signcolumn = "yes"
 opt.updatetime = 300
 opt.undofile = true
 opt.title = false
-opt.shortmess:append("c") 
+opt.shortmess:append("c")
 opt.virtualedit = "block"
 opt.shell = "/bin/zsh"
+opt.whichwrap = "<,>,[,],b,s"
 opt.fileformat = "unix"
 opt.undodir = fn.stdpath "cache" .. "/undo"
 opt.conceallevel = 0            -- disables hiding. All characters are displayed as is
 opt.colorcolumn = "99999"       -- fixes visual bugs
 opt.clipboard = "unnamedplus"   -- allows neovim to access the system clipboard
-opt.completeopt = { "menuone", "noselect" } 
--- menuone - shows the auto-completion menu even if there is only one option
--- noselect- does't automatically select the first item in the autocomplete menu
+
+opt.completeopt = { "menuone", "noselect" }
+                                -- menuone - shows the auto-completion menu even if there is only one option
+                                -- noselect- does't automatically select the first item in the autocomplete menu
 
 opt.fileencoding = "utf-8"
 opt.hidden = true               -- option allows you to switch buffers without needing to write changes to the file

@@ -35,10 +35,10 @@ cmp.setup({
         end, {"i", "s"})
     }),
     sources = cmp.config.sources(
-        {{name = 'nvim_lsp' }, {name = 'vsnip' }},
-        {{name = 'buffer' }, {name = 'nvim_lsp_signature_help' }},
-        {{name = 'path' }},
-        {{name = 'luasnip' }}
+        { { name = 'nvim_lsp' }, { name = 'vsnip' }},
+        { { name = 'buffer' }, { name = 'nvim_lsp_signature_help' }},
+        { { name = 'path' }},
+        { { name = 'luasnip' }}
     )
 })
 
@@ -64,3 +64,4 @@ cmp.setup.cmdline(':', {
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require('lspconfig')['tsserver'].setup {capabilities = capabilities}
+require('lspconfig')['jdtls'].setup {capabilities = capabilities}

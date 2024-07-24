@@ -1,7 +1,6 @@
 -- Basic config
 require("core.configs")
 require("core.lazy")
-require("core.mappings")
 
 -- Plugins setting
 require("plugins.colorscheme")
@@ -24,3 +23,8 @@ require("plugins.move")
 require("plugins.dashboard")
 require("plugins.comment")
 require("plugins.nvim-notify")
+require("plugins.lspsaga")
+require("core.mappings")
+
+-- TODO change trouble settings
+--require("plugins.trouble")
