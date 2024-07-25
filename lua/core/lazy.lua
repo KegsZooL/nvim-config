@@ -28,7 +28,7 @@ require("lazy").setup({
     {"folke/neoconf.nvim", cmd = "Neoconf" },
     {"folke/neodev.nvim"},
     {"ellisonleao/gruvbox.nvim"},
-    --{"sainnhe/gruvbox-material"},
+    {"sainnhe/gruvbox-material"},
     {'nvim-treesitter/nvim-treesitter'},
     {'neovim/nvim-lspconfig'},
     {'nvim-tree/nvim-web-devicons'},
@@ -88,4 +88,11 @@ require("lazy").setup({
     {"rcarriga/nvim-notify"},
     {"folke/trouble.nvim"},
     {"nvimdev/lspsaga.nvim"},
-  })
+    {"lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {}
+    },
+    {'echasnovski/mini.nvim', version = false },
+    {'lewis6991/gitsigns.nvim'},
+    {"folke/which-key.nvim"}
+})

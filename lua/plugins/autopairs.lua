@@ -2,7 +2,7 @@ local nvim_autopairs = require("nvim-autopairs")
 local nvim_autopairs_completion = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
 
-require("nvim-autopairs").setup {
+nvim_autopairs.setup {
     check_ts = true, -- includes treesitter support
     map_cr = true, --  map <CR>(ENTER) on insert mode
     map_complete = true, -- it will auto insert `(` (map_char) after select function/method item

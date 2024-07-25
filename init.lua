@@ -1,6 +1,7 @@
 -- Basic config
-require("core.configs")
 require("core.lazy")
+require("core.mappings")
+require("core.configs")
 
 -- Plugins setting
 require("plugins.colorscheme")
@@ -23,8 +24,9 @@ require("plugins.move")
 require("plugins.dashboard")
 require("plugins.comment")
 require("plugins.nvim-notify")
-require("plugins.lspsaga")
-require("core.mappings")
-
--- TODO change trouble settings
---require("plugins.trouble")
+require("plugins.lspsaga")              -- T0D0 change config
+require("plugins.indent")
+require("plugins.mini-indentscope")
+require("plugins.gitsigns")
+require("plugins.which-key")            -- TODO add discriptions for main plugins
+--require("plugins.trouble")            -- TODO change trouble settings

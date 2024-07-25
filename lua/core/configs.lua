@@ -17,8 +17,8 @@ opt.title = false
 opt.shortmess:append("c")
 opt.virtualedit = "block"
 opt.shell = "/bin/zsh"
-opt.whichwrap = "<,>,[,],b,s"
-opt.fileformat = "unix"
+opt.whichwrap = "<,>,[,],b,s,h,l"
+opt.autoindent = true
 opt.undodir = fn.stdpath "cache" .. "/undo"
 opt.conceallevel = 0            -- disables hiding. All characters are displayed as is
 opt.colorcolumn = "99999"       -- fixes visual bugs
