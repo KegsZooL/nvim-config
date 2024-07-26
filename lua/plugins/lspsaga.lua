@@ -4,7 +4,7 @@ lspsaga.setup({
         enable = false,
     },
     debug = false,
-    use_saga_diagnostic_sign = true,
+   use_saga_diagnostic_sign = true,
     -- diagnostic sign
     error_sign = "",
     warn_sign = "",
@@ -37,6 +37,7 @@ lspsaga.setup({
     diagnostic_prefix_format = "%d. ",
 
     rename = {
+        auto_save = true,
         keys = {
             quit = '<Esc>',
             exec = '<CR>'
@@ -49,4 +50,10 @@ lspsaga.setup({
             exec = '<CR>'
         }
     },
+    
+    finder = {
+        keys = {
+            shuttle = '[w'
+        }
+    }
 })

@@ -2,6 +2,12 @@ local keymap = vim.keymap
 local api = vim.api
 local opts = { noremap = true, silent = true }
 
+-- api.nvim_set_keymap('n', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+-- api.nvim_set_keymap('i', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
+api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+api.nvim_set_keymap('i', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+
 -- Undo
 api.nvim_set_keymap('n', '<C-z>', 'u', opts)
 api.nvim_set_keymap('v', '<C-z>', 'u', opts)
@@ -33,6 +39,7 @@ api.nvim_set_keymap('i', '<C-Right>', '<C-o>w', opts)
 -- Commenting on lines
 api.nvim_set_keymap('n', '<C-k>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
 api.nvim_set_keymap('v', '<C-k>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
+api.nvim_set_keymap('i', '<C-k>', '<Esc>:lua require("Comment.api").toggle.linewise.current()<CR>gi', opts)
 
 -- Save the current file
 api.nvim_set_keymap('n', '<C-S>', ':w<CR>', opts)
@@ -164,11 +171,11 @@ keymap.set('n', '<leader>o', ':Neotree float git_status<CR>')
 api.nvim_set_keymap('n', '<F12>', '<cmd>Lspsaga goto_definition<CR>', opts)
 api.nvim_set_keymap('i', '<F12>', '<cmd>Lspsaga goto_definition<CR>', opts)
 
-api.nvim_set_keymap('n', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-api.nvim_set_keymap('i', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+api.nvim_set_keymap('n', '<C-f>', '<cmd>Lspsaga finder ref<CR>', opts)
+api.nvim_set_keymap('i', '<C-f>', '<cmd>Lspsaga finder ref<CR>', opts)
 
-api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-api.nvim_set_keymap('i', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+api.nvim_set_keymap('n', '<C-q>', '<cmd>Lspsaga hover_doc<CR>', opts)
+api.nvim_set_keymap('i', '<C-q>', '<cmd>Lspsaga hover_doc<CR>', opts)
 
 api.nvim_set_keymap('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 api.nvim_set_keymap('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
@@ -189,3 +196,7 @@ keymap.set('n', '<leader>gs', builtin.git_status)
 keymap.set('n', '<leader>ls', builtin.lsp_document_symbols)
 keymap.set('n', 'gr', builtin.lsp_references, opts )
 keymap.set('n', 'gd', builtin.lsp_definitions, opts )
+
+-- TODO
+api.nvim_set_keymap('n', '<leader>td', '<cmd>TodoTelescope<CR>', opts)
+api.nvim_set_keymap('i', '<leader>td', '<cmd>TodoTelescope<CR>', opts)

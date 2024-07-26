@@ -94,5 +94,10 @@ require("lazy").setup({
     },
     {'echasnovski/mini.nvim', version = false },
     {'lewis6991/gitsigns.nvim'},
-    {"folke/which-key.nvim"}
+    {"folke/which-key.nvim"},
+    {
+      "folke/todo-comments.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      opts = {}
+    },
 })

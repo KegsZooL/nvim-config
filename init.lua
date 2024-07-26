@@ -24,9 +24,9 @@ require("plugins.move")
 require("plugins.dashboard")
 require("plugins.comment")
 require("plugins.nvim-notify")
-require("plugins.lspsaga")              -- T0D0 change config
+require("plugins.lspsaga")              -- TODO: change config
 require("plugins.indent")
-require("plugins.mini-indentscope")
+-- require("plugins.mini-indentscope")  --FIX: The problem with the dashboard plugin
 require("plugins.gitsigns")
-require("plugins.which-key")            -- TODO add discriptions for main plugins
---require("plugins.trouble")            -- TODO change trouble settings
+require("plugins.which-key")            -- TODO: add discriptions for main plugins
+require("plugins.trouble")

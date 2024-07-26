@@ -1,3 +1,6 @@
+local hooks = require("ibl.hooks")
+local api = vim.api
+
 local highlight = {
     "RainbowRed",
     "RainbowYellow",
@@ -8,10 +11,6 @@ local highlight = {
     "RainbowCyan",
 }
 
-local hooks = require("ibl.hooks")
-local api = vim.api
--- create the highlight groups in the highlight setup hook, so they are reset
--- every time the colorscheme changes
 hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
     api.nvim_set_hl(0, "RainbowRed", { fg = "#ea6962" })
     api.nvim_set_hl(0, "RainbowYellow", { fg = "#fabd2f" })
@@ -20,6 +19,18 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
     api.nvim_set_hl(0, "RainbowGreen", { fg = "#b8bb26" })
     api.nvim_set_hl(0, "RainbowOrange", { fg = "#e78a4e" })
     api.nvim_set_hl(0, "RainbowCyan", { fg = "#83a598" })
+end)
+
+local function should_use_indent(bufnr)
+    local filetype = api.nvim_get_option_value("filetype", { buf = bufnr })
+    return vim.tbl_contains({
+        "lua", "java", "cpp", "c",
+        "py", "HTML", "css", "xml"
+    }, filetype)
+end
+
+hooks.register(hooks.type.ACTIVE, function(bufnr)
+    return should_use_indent(bufnr)
 end)
 
 local ibl = require("ibl")
