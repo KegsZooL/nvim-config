@@ -100,4 +100,9 @@ require("lazy").setup({
       dependencies = { "nvim-lua/plenary.nvim" },
       opts = {}
     },
+    {"lambdalisue/vim-suda"},
+    {
+        "kylechui/nvim-surround",
+        version = "*",                  -- Use for stability; omit to use `main` branch for the latest features
+    }
 })

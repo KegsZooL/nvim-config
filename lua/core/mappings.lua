@@ -186,16 +186,13 @@ keymap.set("i", "<C-r>", "<cmd>Lspsaga rename<CR>", opts, { desc = "[C]ode [R]en
 -- Telescope
 local builtin = require('telescope.builtin')
 
-keymap.set('n', '<leader>ff', builtin.find_files)
-keymap.set('n', '<leader>fw', builtin.live_grep)
-keymap.set('n', '<leader>fb', builtin.buffers)
-keymap.set('n', '<leader>fh', builtin.help_tags)
-keymap.set('n', '<leader>gb', builtin.git_branches)
-keymap.set('n', '<leader>gc', builtin.git_commits)
-keymap.set('n', '<leader>gs', builtin.git_status)
-keymap.set('n', '<leader>ls', builtin.lsp_document_symbols)
-keymap.set('n', 'gr', builtin.lsp_references, opts )
-keymap.set('n', 'gd', builtin.lsp_definitions, opts )
+keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+keymap.set('n', '<leader>fw', builtin.live_grep, { desc = "Find text" })
+keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffer" })
+keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
+keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "Git branches" })
+keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "Git commits" })
+keymap.set('n', '<leader>gs', builtin.git_status, { desc = "Git status" })
 
 -- TODO
 api.nvim_set_keymap('n', '<leader>td', '<cmd>TodoTelescope<CR>', opts)

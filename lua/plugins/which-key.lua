@@ -8,8 +8,8 @@ wk.setup({
     },
     show_keys = false,
     show_help = false, -- show a help message in the command line for using WhichKey
-    layout = {
         align = "center",
+        layout = {
     },
     win = {
         border = "double",
@@ -21,7 +21,6 @@ wk.setup({
         { "<leader>f", group = "Telescope" },
         { "<leader>l", group = "LSP" },
         { "<leader>o", group = "Options Commands" },
-        { "<leader>\\", group = "Terminal" },
         { "<leader>g", group = "Gitsigns" },
     }),
 })
