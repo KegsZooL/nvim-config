@@ -53,7 +53,9 @@ lspsaga.setup({
     
     finder = {
         keys = {
-            shuttle = '[w'
+            shuttle = '[w',
+            tabnew = '<CR>',
+            vsplit = '<C-A-Tab>'
         }
     }
 })

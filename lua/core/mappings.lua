@@ -2,8 +2,6 @@ local keymap = vim.keymap
 local api = vim.api
 local opts = { noremap = true, silent = true }
 
--- api.nvim_set_keymap('n', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
--- api.nvim_set_keymap('i', '<C-q>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 api.nvim_set_keymap('i', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -45,6 +43,11 @@ api.nvim_set_keymap('i', '<C-k>', '<Esc>:lua require("Comment.api").toggle.linew
 api.nvim_set_keymap('n', '<C-S>', ':w<CR>', opts)
 api.nvim_set_keymap('v', '<C-S>', ':w<CR>', opts)
 api.nvim_set_keymap('i', '<C-S>', '<Esc>:w<CR>a', opts)
+
+-- Save all buffers
+api.nvim_set_keymap('n', '<C-A-s>', ':wa<CR>', opts)
+api.nvim_set_keymap('v', '<C-A-s>', ':wa<CR>', opts)
+api.nvim_set_keymap('i', '<C-A-s>', '<Esc>:wa<CR>a', opts)
 
 api.nvim_set_keymap('v', '<BS>', '<Del>', opts)
 

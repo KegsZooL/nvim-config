@@ -31,4 +31,3 @@ require("plugins.gitsigns")
 require("plugins.which-key")            -- TODO: add discriptions for main plugins
 require("plugins.trouble")
 require("plugins.surround")             --TODO: change config
-require("plugins.markdown")

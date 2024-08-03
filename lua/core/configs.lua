@@ -6,11 +6,10 @@ local fn = vim.fn
 local api = vim.api
 
 wo.number = true
-opt.backspace = "indent,eol,start"
 g.formatoptions = "qn1"
+opt.backspace = "indent,eol,start"
 opt.wrap = false
 opt.showmode = false
-opt.signcolumn = "yes"
 opt.updatetime = 300
 opt.undofile = true
 opt.title = false
@@ -20,6 +19,8 @@ opt.shell = "/bin/zsh"
 opt.whichwrap = "<,>,[,],b,s,h,l"
 opt.autoindent = true
 opt.undodir = fn.stdpath "cache" .. "/undo"
+opt.autochdir = true
+opt.signcolumn = "yes"
 opt.conceallevel = 0            -- disables hiding. All characters are displayed as is
 opt.colorcolumn = "99999"       -- fixes visual bugs
 opt.clipboard = "unnamedplus"   -- allows neovim to access the system clipboard
@@ -45,18 +46,27 @@ opt.breakindent = true
 opt.expandtab = true            -- convert tabs to spaces
 opt.smartindent = true          -- make indenting smarter
 
--- Mouse
+-- Appearance
+opt.pumheight = 10
+opt.cmdheight = 0
+opt.laststatus = 3
+opt.showtabline = 0
+
+-- Mouse & cursor
 opt.mouse = "a"                 -- enable mouse support
 opt.mousefocus = true
-opt.cursorline = true           -- highlight current line
+opt.cursorline = false           -- highlight current line
+opt.cursorcolumn = false
 
 --Scroll
 opt.so = 30                     -- the cursor will always be centered
 opt.scrolloff = 8               -- minimal number of lines for scrolling
+opt.sidescrolloff = 5
 
 -- Splits
 opt.splitbelow = true           -- force all horizontal splits to go below current window
 opt.splitright = true           -- force all vertical splits to go to the right of current window
+opt.inccommand = "split"
 
 -- Searching Behaviors
 opt.ignorecase = true           -- ignore case in search
@@ -91,3 +101,6 @@ api.nvim_create_autocmd("FileType", {
 
 cmd([[highlight clear LineNr]])
 cmd([[highlight clear SignColumn]])
+cmd("let g:netrw_liststyle = 3")
+cmd("filetype plugin indent on")
+cmd([[highlight WinSeparator guibg = None]])
