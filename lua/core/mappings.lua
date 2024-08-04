@@ -2,7 +2,6 @@ local keymap = vim.keymap
 local api = vim.api
 local opts = { noremap = true, silent = true }
 
-
 api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 api.nvim_set_keymap('i', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 

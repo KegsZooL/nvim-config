@@ -24,10 +24,13 @@ require("plugins.move")
 require("plugins.dashboard")
 require("plugins.comment")
 require("plugins.nvim-notify")
-require("plugins.lspsaga")              -- TODO: change config
+require("plugins.lspsaga")
 require("plugins.indent")
 -- require("plugins.mini-indentscope")  --FIX: The problem with the dashboard plugin
 require("plugins.gitsigns")
 require("plugins.which-key")            -- TODO: add discriptions for main plugins
 require("plugins.trouble")
 require("plugins.surround")             --TODO: change config
+require("plugins.dap")                  --TODO: change mappings
+require("plugins.dap-ui")
+require("plugins.dap-virtual-text")

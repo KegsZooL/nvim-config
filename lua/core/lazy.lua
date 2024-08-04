@@ -104,5 +104,11 @@ require("lazy").setup({
     {
         "kylechui/nvim-surround",
         version = "*",                  -- Use for stability; omit to use `main` branch for the latest features
-    }
+    },
+    { "rcarriga/nvim-dap-ui",
+      dependencies = {
+          "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"
+      }
+    },
+    {"theHamsta/nvim-dap-virtual-text"},
 })
