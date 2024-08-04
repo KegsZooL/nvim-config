@@ -28,7 +28,7 @@ require("plugins.lspsaga")
 require("plugins.indent")
 -- require("plugins.mini-indentscope")  --FIX: The problem with the dashboard plugin
 require("plugins.gitsigns")
-require("plugins.which-key")            -- TODO: add discriptions for main plugins
+require("plugins.which-key")            -- TODO: add description for main mappings
 require("plugins.trouble")
 require("plugins.surround")             --TODO: change config
 require("plugins.dap")                  --TODO: change mappings
