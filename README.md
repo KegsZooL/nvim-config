@@ -2,6 +2,8 @@
 
 - This configuration was based on the gruvbox style
 
+![gruvbox_palette](./screenshots/gruvbox_palette_dark.png)
+
 ### Preview config :
 
 ##### Start page
@@ -13,6 +15,10 @@
 ![LSP](./screenshots/java.png)
 
 ![LSP](./screenshots/gitsigns.png)
+
+![LSP](./screenshots/lsp-info-lua.png)
+
+![LSP](./screenshots/lsp-info-jdtls.png)
 
 ##### Navigation
 
@@ -73,3 +79,9 @@
         └── whichkey.lua
 └── ascii-art.lua
 ```
+
+### TODO
+
+- [ ] Preview markdown
+- [ ] Description for all command/functions
+- [ ] Full DAP setup
