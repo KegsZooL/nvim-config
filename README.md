@@ -28,15 +28,24 @@
 ![telescope](./screenshots/telescope-gs.png)
 ![toggelterm](./screenshots/toggelterm.png)
 
-#### Debug Adapter Protocol client support
+##### Debug Adapter Protocol client support
 
 ![DAP](screenshots/dap-demonstration.png)
 
-#### Main File
+##### Main File
 
 ![init.lua](./screenshots/main.png)
 
-#### Nvim File tree
+##### Preview and insert emoji/nerd font glyphs
+
+![emoji](./screenshots/emoji.png)
+![emoji](./screenshots/glyphs.png)
+
+##### Preview markdown file
+
+![markdown](./screenshots/markdown.png)
+
+##### Nvim File tree
 
 ```
 .
@@ -82,6 +91,9 @@
 
 ### TODO
 
-- [ ] Preview markdown
+- [x] Preview markdown
 - [ ] Description for all command/functions
 - [ ] Full DAP setup
+- [ ] Support for python and C#
+- [x] Preview and insert emoji
+- [x] Preview and insert nerd font glyphs

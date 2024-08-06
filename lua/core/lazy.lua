@@ -1,6 +1,9 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local fn = vim.fn;
+local opt = vim.opt;
+local lazypath = fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
+  fn.system({
     "git",
     "clone",
     "--filter=blob:none",
@@ -9,7 +12,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     lazypath,
   })
 end
-vim.opt.rtp:prepend(lazypath)
+
+opt.rtp:prepend(lazypath)
 
 local opts = {
 	change_detection = {
@@ -24,14 +28,14 @@ local opts = {
 	},
 }
 require("lazy").setup({
-    {"folke/which-key.nvim"},
-    {"folke/neoconf.nvim", cmd = "Neoconf" },
-    {"folke/neodev.nvim"},
-    {"ellisonleao/gruvbox.nvim"},
-    {"sainnhe/gruvbox-material"},
-    {'nvim-treesitter/nvim-treesitter'},
-    {'neovim/nvim-lspconfig'},
-    {'nvim-tree/nvim-web-devicons'},
+    { "folke/which-key.nvim" },
+    { "folke/neoconf.nvim", cmd = "Neoconf" },
+    { "folke/neodev.nvim" },
+    { "ellisonleao/gruvbox.nvim" },
+    { "sainnhe/gruvbox-material" },
+    { 'nvim-treesitter/nvim-treesitter' },
+    { 'neovim/nvim-lspconfig' },
+    { 'nvim-tree/nvim-web-devicons' },
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
@@ -61,46 +65,46 @@ require("lazy").setup({
     },
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.6',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+      dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    {"williamboman/mason.nvim"},
+    { "williamboman/mason.nvim" },
     {
       "williamboman/mason-lspconfig.nvim",
       dependencies = {
-          "neovim/nvim-lspconfig",      -- mason lsp config uses mason to automatically ensure that the lsp servers
-      }                                 -- you want to install are installed
+          "neovim/nvim-lspconfig",       -- mason lsp config uses mason to automatically ensure that the lsp servers
+      }                                  -- you want to install are installed
     },
-    {"jay-babu/mason-nvim-dap.nvim"},   -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
-                                        -- mason-lspconfig will not automatically install debug adapters for us
-    {"windwp/nvim-autopairs"},
-    {'akinsho/bufferline.nvim', version = "*"},
-    {"norcalli/nvim-colorizer.lua"},
-    {'akinsho/toggleterm.nvim', version = "*", config = true}, -- console in nvim
-    {'saadparwaiz1/cmp_luasnip'},
-    {'rafamadriz/friendly-snippets'},
-    {'L3MON4D3/LuaSnip'},
-    {'fedepujol/move.nvim'},
-    {'nvim-java/nvim-java'},
-    {'onsails/lspkind.nvim'},
-    {"christoomey/vim-system-copy"},
-    {"numToStr/Comment.nvim"},
-    {"nvimdev/dashboard-nvim"},
-    {"rcarriga/nvim-notify"},
-    {"folke/trouble.nvim"},
-    {"nvimdev/lspsaga.nvim"},
-    {"lukas-reineke/indent-blankline.nvim",
+    { "jay-babu/mason-nvim-dap.nvim" },   -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
+                                          -- mason-lspconfig will not automatically install debug adapters for us
+    { "windwp/nvim-autopairs" },
+    { 'akinsho/bufferline.nvim', version = "*" },
+    { "norcalli/nvim-colorizer.lua" },
+    { 'akinsho/toggleterm.nvim', version = "*", config = true }, -- console in nvim
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'rafamadriz/friendly-snippets' },
+    { 'L3MON4D3/LuaSnip' },
+    { 'fedepujol/move.nvim' },
+    { 'nvim-java/nvim-java' },
+    { 'onsails/lspkind.nvim' },
+    { "christoomey/vim-system-copy" },
+    { "numToStr/Comment.nvim" },
+    { "nvimdev/dashboard-nvim" },
+    { "rcarriga/nvim-notify" },
+    { "folke/trouble.nvim" },
+    { "nvimdev/lspsaga.nvim" },
+    { "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         opts = {}
     },
-    {'echasnovski/mini.nvim', version = false },
-    {'lewis6991/gitsigns.nvim'},
-    {"folke/which-key.nvim"},
+    { 'echasnovski/mini.nvim', version = false },
+    { 'lewis6991/gitsigns.nvim' },
+    { "folke/which-key.nvim" },
     {
       "folke/todo-comments.nvim",
       dependencies = { "nvim-lua/plenary.nvim" },
       opts = {}
     },
-    {"lambdalisue/vim-suda"},
+    { "lambdalisue/vim-suda" },
     {
         "kylechui/nvim-surround",
         version = "*",                  -- Use for stability; omit to use `main` branch for the latest features
@@ -110,5 +114,27 @@ require("lazy").setup({
           "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"
       }
     },
-    {"theHamsta/nvim-dap-virtual-text"},
+    { "theHamsta/nvim-dap-virtual-text" },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() fn["mkdp#util#install"]() end,
+    },
+    {
+      "iamcco/markdown-preview.nvim",
+      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+      build = "cd app && yarn install",
+      init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
+      end,
+      ft = { "markdown" },
+    },
+    { "allaman/emoji.nvim" },
+    {
+        '2kabhishek/nerdy.nvim',
+        dependencies = {
+            'stevearc/dressing.nvim',
+        },
+    },
 })

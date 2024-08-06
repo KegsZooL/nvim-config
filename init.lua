@@ -34,3 +34,5 @@ require("plugins.surround")             --TODO: change config
 require("plugins.dap")                  --TODO: change mappings
 require("plugins.dap-ui")
 require("plugins.dap-virtual-text")
+require("plugins.emoji")
+require("plugins.nerdy")

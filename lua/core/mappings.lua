@@ -195,6 +195,8 @@ keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
 keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "Git branches" })
 keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "Git commits" })
 keymap.set('n', '<leader>gs', builtin.git_status, { desc = "Git status" })
+keymap.set('n', '<leader>em', ':Telescope emoji<CR>', { desc = "Search and insert emoji" })
+keymap.set('n', '<leader>ne', ':Telescope nerdy<CR>', { desc = "Search and insert nerd font glyphs" })
 
 -- TODO
 api.nvim_set_keymap('n', '<leader>td', '<cmd>TodoTelescope<CR>', opts)
