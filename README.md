@@ -4,64 +4,53 @@
 
 ![gruvbox_palette](./screenshots/gruvbox_palette_dark.png)
 
-<style>
-    .summary-h2 {
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-    .summary-h3 {
-        font-size: 1.0em;
-        font-weight: bold;
-    },
-</style>
-
 <details>
-    <summary class="summary-h2";>Preview config</summary>
+    <summary style="font-size: 1.5em; font-weight: bold;">Preview config</summary>
 
 +   <details>
-        <summary class="summary-h3">Start page</summary>
+        <summary style="font-size: 1.0em; font-weight: bold;">Start page</summary>
         <img src="./screenshots/dashboard.png" alt="dashboard">
     </details>
 
 +   <details>
-        <summary class="summary-h3">Main file</summary>
+        <summary style="font-size: 1.0em; font-weight: bold;">Main file</summary>
         <img src="./screenshots/main.png" alt="main-file">
     </details>
 
-+   <details>
-        <summary class="summary-h3">Navigation</summary>
-        <img src="./screenshots//laspsaga-and-nvim-tree.png" alt="lspsaga">
++    <details>
+        <summary style="font-size: 1.0em; font-weight: bold;">Navigation</summary>
+        <img src="./screenshots/laspsaga-and-nvim-tree.png" alt="lspsaga">
         <img src="./screenshots/telescope-gc.png" alt="telescope">
         <img src="./screenshots/telescope-gs.png" alt="telescope">
         <img src="./screenshots/telescope-ff.png" alt="telescope">
         <img src="./screenshots/toggelterm.png" alt="toggelterm">
-    </details>
+     </details>
 
 +   <details>
-        <summary class="summary-h3">Language Server Protocol support</summary>
+        <summary style="font-size: 1.0em; font-weight: bold;">Language Server Protocol support</summary>
         <img src="./screenshots/java.png" alt="LSP">
         <img src="./screenshots/gitsigns.png" alt="LSP">
         <img src="./screenshots/lsp-info-lua.png" alt="LSP">
         <img src="./screenshots/lsp-info-jdtls.png" alt="LSP">
-    </details>
+     </details>
 
-+   <details>
-        <summary class="summary-h3">Debug Adapter Protocol client support</summary>
++    <details>
+        <summary style="font-size: 1.0em; font-weight: bold;">Debug Adapter Protocol client support</summary>
         <img src="./screenshots/dap-demonstration.png" alt="DAP">
-    </details>
+     </details>
 
-+   <details>
-        <summary class="summary-h3">Preview and insert emoji/nerd font glyphs</summary>
++    <details>
+        <summary style="font-size: 1.0em; font-weight: bold;">Preview and insert emoji/nerd font glyphs</summary>
         <img src="./screenshots/emoji.png" alt="emoji">
         <img src="./screenshots/glyphs.png" alt="emoji">
-    </details>
+     </details>
 
-+   <details>
-        <summary class="summary-h3">Preview markdown file</summary>
++    <details>
+        <summary style="font-size: 1.0em; font-weight: bold;">Preview markdown file</summary>
         <img src="./screenshots/markdown.png" alt="markdown">
-    </details>
-</details>
+     </details>
 
+</details>
 
 #### 📁 Nvim File tree
 
