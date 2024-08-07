@@ -137,4 +137,11 @@ require("lazy").setup({
             'stevearc/dressing.nvim',
         },
     },
+    {
+        "ray-x/web-tools.nvim",
+        dependencies = {
+            'Orange-OpenSource/hurl',   --HTTP requests
+            'BrowserSync/browser-sync'
+        },
+    }
 })

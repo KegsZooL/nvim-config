@@ -101,6 +101,7 @@
 ### 📜 TODO
 
 - [x] Preview markdown
+- [x] Preview html/css (browser-sync)
 - [x] Preview and insert emoji
 - [x] Preview and insert nerd font glyphs
 - [ ] Description for all command/functions

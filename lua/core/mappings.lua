@@ -99,6 +99,10 @@ api.nvim_set_keymap('n', '<Tab>', ':startinsert<CR><Tab>', opts)
 api.nvim_set_keymap('i', '<S-Tab>', '<C-d>', opts)
 api.nvim_set_keymap('n', '<S-Tab>', ':startinsert<CR><C-d>', opts)
 
+-- Tabulation from the beginning of the current line 
+api.nvim_set_keymap('n', '<C-Tab>', '0i<Tab><Esc>', opts)
+api.nvim_set_keymap('i', '<C-Tab>', '<Esc>0i<Tab>', opts)
+
 -- Change the focus in the current split window
 api.nvim_set_keymap('n', '<C-A-Up>', '<Cmd>wincmd k<CR>', { silent = true })
 api.nvim_set_keymap('n', '<C-A-Down>', '<Cmd>wincmd j<CR>', { silent = true })
