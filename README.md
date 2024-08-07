@@ -68,6 +68,7 @@
     │   ├── cmp.lua
     │   ├── colorizer.lua
     │   ├── colorscheme.lua
+    │   ├── colortils.lua
     │   ├── comment.lua
     │   ├── dap-ui.lua
     │   ├── dap-virtual-text.lua
