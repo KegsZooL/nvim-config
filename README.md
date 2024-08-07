@@ -5,8 +5,8 @@
 ![gruvbox_palette](./screenshots/gruvbox_palette_dark.png)
 
 <details>
-    <summary style="font-size: 1.5em; font-weight: bold;">Preview config</summary>
-
+    <summary><strong>Preview config</strong></summary>
+    
 +   <details>
         <summary style="font-size: 1.0em; font-weight: bold;">Start page</summary>
         <img src="./screenshots/dashboard.png" alt="dashboard">
