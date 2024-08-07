@@ -103,12 +103,6 @@ api.nvim_set_keymap('n', '<S-Tab>', ':startinsert<CR><C-d>', opts)
 api.nvim_set_keymap('n', '<C-Tab>', '0i<Tab><Esc>', opts)
 api.nvim_set_keymap('i', '<C-Tab>', '<Esc>0i<Tab>', opts)
 
--- Change the focus in the current split window
-api.nvim_set_keymap('n', '<C-A-Up>', '<Cmd>wincmd k<CR>', { silent = true })
-api.nvim_set_keymap('n', '<C-A-Down>', '<Cmd>wincmd j<CR>', { silent = true })
-api.nvim_set_keymap('n', '<C-A-Left>', '<Cmd>wincmd h<CR>', { silent = true })
-api.nvim_set_keymap('n', '<C-A-Right>', '<Cmd>wincmd l<CR>', { silent = true })
-
 api.nvim_set_keymap('n', '<BS>', '<Del>', opts)
 
 -- Adding tabs
@@ -127,18 +121,39 @@ keymap.set('v', '<A-Down>', ':MoveBlock(1)<CR>', opts)
 keymap.set('i', '<A-Up>', '<Esc>:MoveLine(-1)<CR>gi', opts)
 keymap.set('i', '<A-Down>', '<Esc>:MoveLine(1)<CR>gi', opts)
 
--- Delete current buffer
-api.nvim_set_keymap('n', '<A-q>', ':bd<CR>', opts)
-api.nvim_set_keymap('i', '<A-q>', '<Esc>:bd<CR>:startinsert<CR>', opts)
-api.nvim_set_keymap('v', '<A-q>', '<Esc>:bd<CR>', opts)
+-- Exiting nvim
+api.nvim_set_keymap('n', '<A-ESC>', ':q!<CR>', opts)
+api.nvim_set_keymap('i', '<A-ESC>', '<Esc>:q!<CR>', opts)
+
+-- Close current split window
+api.nvim_set_keymap('n', '<A-q>', ':close<CR>', opts)
+api.nvim_set_keymap('i', '<A-q>', '<Esc>:close<CR>:startinsert<CR>', opts)
+api.nvim_set_keymap('v', '<A-q>', '<Esc>:close<CR>', opts)
+
+-- Close current buffer
+api.nvim_set_keymap('n', '<M-\\>', ':bd<CR>', opts)
+api.nvim_set_keymap('i', '<M-\\>', '<Esc>:bd<CR>:startinsert<CR>', opts)
+api.nvim_set_keymap('v', '<M-\\>', '<Esc>:bd<CR>', opts)
 
 -- Split the window
-api.nvim_set_keymap('n', '<C-A-Tab>', ':vsplit<CR>', opts)
+api.nvim_set_keymap('n', '<C-A-Tab>', '<Cmd>vsplit<CR>', opts)
+api.nvim_set_keymap('i', '<C-A-Tab>', '<Cmd>vsplit<CR>', opts)
 
 -- Move the current split window up
 api.nvim_set_keymap('n', '<C-A-D-Up>', '<C-w>K', opts)
 api.nvim_set_keymap('i', '<C-A-D-Up>', '<Esc><C-w>K', opts)
 api.nvim_set_keymap('v', '<C-A-D-Up>', '<Esc><C-w>K', opts)
+
+-- Change the focus in the current split window
+api.nvim_set_keymap('n', '<C-A-Up>', '<Cmd>wincmd k<CR>', { silent = true })
+api.nvim_set_keymap('n', '<C-A-Down>', '<Cmd>wincmd j<CR>', { silent = true })
+api.nvim_set_keymap('n', '<C-A-Left>', '<Cmd>wincmd h<CR>', { silent = true })
+api.nvim_set_keymap('n', '<C-A-Right>', '<Cmd>wincmd l<CR>', { silent = true })
+
+api.nvim_set_keymap('i', '<C-A-Up>', '<Esc>:wincmd k<CR>', { silent = true })
+api.nvim_set_keymap('i', '<C-A-Down>', '<Esc>:wincmd j<CR>', { silent = true })
+api.nvim_set_keymap('i', '<C-A-Left>', '<Esc>:wincmd h<CR>', { silent = true })
+api.nvim_set_keymap('i', '<C-A-Right>', '<Esc>:wincmd l<CR>', { silent = true })
 
 -- Move the current split window down 
 api.nvim_set_keymap('n', '<C-A-D-Down>', '<C-w>J', opts)
@@ -159,14 +174,16 @@ api.nvim_set_keymap('v', '<C-A-D-Right>', '<Esc><C-w>L', opts)
 api.nvim_set_keymap('n', '<M-Left>', '<Cmd>bprev<CR>', opts)
 api.nvim_set_keymap('n', '<M-Right>', '<Cmd>bnext<CR>', opts)
 
+-- Changing the size of a split window
+api.nvim_set_keymap('n', '<C-h>', '<Cmd>vertical resize -2<CR>', opts)
+api.nvim_set_keymap('n', '<C-j>', '<Cmd>resize +2<CR>', opts)
+api.nvim_set_keymap('n', '<C-k>', '<Cmd>resize -2<CR>', opts)
+api.nvim_set_keymap('n', '<C-l>', '<Cmd>vertical resize +2<CR>', opts)
+
 -- Deleting the entire word using CTRL + Backspace
 api.nvim_set_keymap('n', '<C-BS>', 'daw', opts)
 api.nvim_set_keymap('i', '<C-BS>', '<C-W>', opts)
 api.nvim_set_keymap('v', '<C-BS>', 'daw', opts)
-
--- Alt + / = exit
-api.nvim_set_keymap('n', '<M-\\>', ':q!<CR>', opts)
-api.nvim_set_keymap('i', '<M-\\>', '<Esc>:q!<CR>', opts)
 
 -- NeoTree
 keymap.set('n', '<leader>E', ':Neotree float reveal<CR>')
@@ -205,3 +222,7 @@ keymap.set('n', '<leader>ne', ':Telescope nerdy<CR>', { desc = "Search and inser
 -- TODO
 api.nvim_set_keymap('n', '<leader>td', '<cmd>TodoTelescope<CR>', opts)
 api.nvim_set_keymap('i', '<leader>td', '<cmd>TodoTelescope<CR>', opts)
+
+-- Colortils
+keymap.set('n', '<leader>cp', ':Colortils picker blue<CR>', opts, {desc = "Color picker"})
+keymap.set('n', '<leader>cl', '<cmd>Colortils css list<CR>', opts, {desc = "List of css color"})

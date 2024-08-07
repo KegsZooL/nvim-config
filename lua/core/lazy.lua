@@ -143,5 +143,6 @@ require("lazy").setup({
             'Orange-OpenSource/hurl',   --HTTP requests
             'BrowserSync/browser-sync'
         },
-    }
+    },
+    {"max397574/colortils.nvim"}
 })
