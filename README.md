@@ -58,44 +58,44 @@
 .
 ├── init.lua
 └── lua
-    └── core
-        ├── configs.lua
-        ├── lazy.lua
-        └── mappings.lua
-    └── plugins
-        ├── autopairs.lua
-        ├── bufferline.lua
-        ├── cmp.lua
-        ├── colorizer.lua
-        ├── colorscheme.lua
-        ├── comment.lua
-        ├── dap-ui.lua
-        ├── dap-virtual-text.lua
-        ├── dap.lua
-        ├── dashboard.lua
-        ├── emoji.lua
-        ├── gitsigns.lua
-        ├── indent.lua
-        ├── java.lua
-        ├── jdtls.lua
-        ├── lspconfig.lua
-        ├── lspsaga.lua
-        ├── lualine.lua
-        ├── mason-lspconfig.lua
-        ├── mason-nvim-dap.lua
-        ├── mason.lua
-        ├── mini-indentscope.lua
-        ├── move.lua
-        ├── neotree.lua
-        ├── nerdy.lua
-        ├── nvim-notify.lua
-        ├── surround.lua
-        ├── telescope.lua
-        ├── toggleterm.lua
-        ├── treesitter.lua
-        ├── trouble.lua
-        └── whichkey.lua
-└── ascii-art.lua
+    ├── core
+    │   ├── configs.lua
+    │   ├── lazy.lua
+    │   └── mappings.lua
+    ├── plugins
+    │   ├── autopairs.lua
+    │   ├── bufferline.lua
+    │   ├── cmp.lua
+    │   ├── colorizer.lua
+    │   ├── colorscheme.lua
+    │   ├── comment.lua
+    │   ├── dap-ui.lua
+    │   ├── dap-virtual-text.lua
+    │   ├── dap.lua
+    │   ├── dashboard.lua
+    │   ├── emoji.lua
+    │   ├── gitsigns.lua
+    │   ├── indent.lua
+    │   ├── java.lua
+    │   ├── jdtls.lua
+    │   ├── lspconfig.lua
+    │   ├── lspsaga.lua
+    │   ├── lualine.lua
+    │   ├── mason-lspconfig.lua
+    │   ├── mason-nvim-dap.lua
+    │   ├── mason.lua
+    │   ├── mini-indentscope.lua
+    │   ├── move.lua
+    │   ├── neotree.lua
+    │   ├── nerdy.lua
+    │   ├── nvim-notify.lua
+    │   ├── surround.lua
+    │   ├── telescope.lua
+    │   ├── toggleterm.lua
+    │   ├── treesitter.lua
+    │   ├── trouble.lua
+    │   └── whichkey.lua
+    └── ascii-art.lua
 ```
 
 ### 📜 TODO
@@ -105,4 +105,4 @@
 - [x] Preview and insert nerd font glyphs
 - [ ] Description for all command/functions
 - [ ] Full DAP setup
-- [ ] Support for python and C#
+- [ ] Language support: python, css, html
