@@ -106,6 +106,6 @@
 - [x] Preview html/css (browser-sync)
 - [x] Preview and insert emoji
 - [x] Preview and insert nerd font glyphs
+- [x] Full DAP setup
+- [x] Language support: python, css, html
 - [ ] Description for all command/functions
-- [ ] Full DAP setup
-- [ ] Language support: python, css, html

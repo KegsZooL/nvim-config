@@ -1,23 +1,25 @@
 local lspsaga = require("lspsaga")
+
 lspsaga.setup({
-    lightbulb = {
-        enable = false,
-    },
     debug = false,
-   use_saga_diagnostic_sign = true,
-    -- diagnostic sign
+    use_saga_diagnostic_sign = true,
     error_sign = "",
     warn_sign = "",
     hint_sign = "",
     infor_sign = "",
     diagnostic_header_icon = "   ",
-    -- code action title icon
-    code_action_icon = " ",
-    code_action_prompt = { enable = true, sign = true, sign_priority = 40, virtual_text = true },
-    finder_definition_icon = "  ",
-    finder_reference_icon = "  ",
-    max_preview_lines = 10,
+    definition_preview_icon = "  ",
+    border_style = "single",
+    rename_prompt_prefix = "➤",
+    server_filetype_map = {},
+    diagnostic_prefix_format = "%d. ",
 
+    lightbulb = {
+        enable = false,
+    },
+    symbol_in_winbar = {
+        enable = false,
+    },
     finder_action_keys = {
         open = "o",
         vsplit = "s",
@@ -26,16 +28,9 @@ lspsaga.setup({
         scroll_down = "<C-f>",
         scroll_up = "<C-b>",
     },
-
     hover = {
         max_width = 0.5,
     },
-    definition_preview_icon = "  ",
-    border_style = "single",
-    rename_prompt_prefix = "➤",
-    server_filetype_map = {},
-    diagnostic_prefix_format = "%d. ",
-
     rename = {
         auto_save = true,
         keys = {
@@ -43,14 +38,12 @@ lspsaga.setup({
             exec = '<CR>'
         }
     },
-
     code_action = {
+        quit = '<Esc>',
         keys = {
-            quit = '<Esc>',
             exec = '<CR>'
         }
     },
-    
     finder = {
         keys = {
             shuttle = '[w',
