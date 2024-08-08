@@ -10,7 +10,7 @@ g.formatoptions = "qn1"
 opt.backspace = "indent,eol,start"
 opt.wrap = false
 opt.showmode = false
-opt.updatetime = 300
+opt.updatetime = 100
 opt.undofile = true
 opt.title = false
 opt.shortmess:append("c")
