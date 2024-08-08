@@ -89,6 +89,7 @@
     │   ├── move.lua
     │   ├── neotree.lua
     │   ├── nerdy.lua
+    │   ├── noice.lua
     │   ├── nvim-notify.lua
     │   ├── surround.lua
     │   ├── telescope.lua
