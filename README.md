@@ -98,7 +98,7 @@
     │   └── whichkey.lua
     └── ascii-art.lua
 ```
-
+ 
 ### 📜 TODO
 
 - [x] Preview markdown

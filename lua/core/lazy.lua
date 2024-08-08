@@ -48,6 +48,7 @@ require("lazy").setup({
             'hrsh7th/vim-vsnip-integ'
         }
     },
+    { 'hrsh7th/vscode-langservers-extracted' },
     {
       'nvim-lualine/lualine.nvim',
       dependencies = {
@@ -138,11 +139,11 @@ require("lazy").setup({
         },
     },
     {
-        "ray-x/web-tools.nvim",
+        "ray-x/web-tools.nvim",         -- Website preview
         dependencies = {
-            'Orange-OpenSource/hurl',   --HTTP requests
+            'Orange-OpenSource/hurl',   -- HTTP requests
             'BrowserSync/browser-sync'
         },
     },
-    {"max397574/colortils.nvim"}
+    { "max397574/colortils.nvim" },     -- Color picker
 })

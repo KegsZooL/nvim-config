@@ -6,13 +6,13 @@ cmp.setup({
             vim.fn["vsnip#anonymous"](args.body)
         end
     },
-        window = {
-            completion = cmp.config.window.bordered(),
-            documentation = cmp.config.window.bordered()
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered()
     },
-    completion = {
-        autocomplete = false,
-    },
+    -- completion = {
+    --     autocomplete = false,
+    -- },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -41,7 +41,13 @@ cmp.setup({
         { name = 'nvim_lsp_signature_help' },
         { name = 'path' },
         { name = 'luasnip' },
-        { name = "emoji" },
+        { name = 'emoji' },
+        { name = 'vscode-json-language-server' },
+        { name = 'pyright-langserver' },
+        { name = 'sqls' },
+        { name = 'marksman' },
+        { name = 'vscode-html-language-server'},
+        { name = 'vscode-css-language-server'}
     })
 })
 
@@ -63,8 +69,3 @@ cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
 })
-
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['tsserver'].setup {capabilities = capabilities}
-require('lspconfig')['jdtls'].setup {capabilities = capabilities}

@@ -175,10 +175,10 @@ api.nvim_set_keymap('n', '<M-Left>', '<Cmd>bprev<CR>', opts)
 api.nvim_set_keymap('n', '<M-Right>', '<Cmd>bnext<CR>', opts)
 
 -- Changing the size of a split window
-api.nvim_set_keymap('n', '<C-h>', '<Cmd>vertical resize -2<CR>', opts)
-api.nvim_set_keymap('n', '<C-j>', '<Cmd>resize +2<CR>', opts)
-api.nvim_set_keymap('n', '<C-k>', '<Cmd>resize -2<CR>', opts)
-api.nvim_set_keymap('n', '<C-l>', '<Cmd>vertical resize +2<CR>', opts)
+api.nvim_set_keymap('n', '<A-h>', '<Cmd>vertical resize -2<CR>', opts)
+api.nvim_set_keymap('n', '<A-j>', '<Cmd>resize +2<CR>', opts)
+api.nvim_set_keymap('n', '<A-k>', '<Cmd>resize -2<CR>', opts)
+api.nvim_set_keymap('n', '<A-l>', '<Cmd>vertical resize +2<CR>', opts)
 
 -- Deleting the entire word using CTRL + Backspace
 api.nvim_set_keymap('n', '<C-BS>', 'daw', opts)

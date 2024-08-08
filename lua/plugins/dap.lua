@@ -17,3 +17,5 @@ dap.listeners.before.event_exited.dapui_config = function()
 end
 
 keymap.set('n', '<A-p>', dap.toggle_breakpoint, opts)
+keymap.set('n', '<F11>', dap.step_over, opts)
+keymap.set('n', '<F1>', dap.step_into, opts)
