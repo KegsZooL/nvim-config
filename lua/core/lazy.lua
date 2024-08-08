@@ -146,4 +146,11 @@ require("lazy").setup({
         },
     },
     { "max397574/colortils.nvim" },     -- Color picker
+    {
+        "folke/noice.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    }
 })

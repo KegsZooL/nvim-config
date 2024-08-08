@@ -1,4 +1,31 @@
 local cmp = require 'cmp'
+local kind_icons = {
+     Text          = "󰊄",
+     Method        = "󰊕",
+     Function      = "󰊕",
+     Constructor   = "",
+     Field         = "",
+     Variable      = "",
+     Class         = "",
+     Interface     = "",
+     Module        = "",
+     Property      = "",
+     Unit          = "",
+     Value         = "",
+     Enum          = "",
+     Keyword       = "",
+     Snippet       = "",
+     Color         = "",
+     File          = "",
+     Reference     = "",
+     Folder        = "",
+     EnumMember    = "",
+     Constant      = "",
+     Struct        = "",
+     Event         = "",
+     Operator      = "",
+     TypeParameter = "",
+}
 
 cmp.setup({
     snippet = {
@@ -48,7 +75,36 @@ cmp.setup({
         { name = 'marksman' },
         { name = 'vscode-html-language-server'},
         { name = 'vscode-css-language-server'}
-    })
+    }),
+    formatting = {
+        fields = { "abbr", "kind", "menu" },
+        format = function(entry, vim_item)
+           vim_item.kind = string.format('   %s %s', kind_icons[vim_item.kind], vim_item.kind)
+
+           local source = entry.source.name
+           vim_item.menu = ({
+              copilot	= "(copilot)",
+              luasnip	= "(luasnip)",
+              nvim_lua = "(nvim_lua)",
+              nvim_lsp = "(lsp)",
+              buffer	= "(buffer)",
+              abl		= "(abl)",
+              path		= "(path)",
+           })[source]
+
+           -- Removing dublicates
+           if source == "luasnip"
+              or source == "nvim_lsp"
+              or source == "nvim_lua"
+              or source == "abl" then
+              vim_item.dup = 0
+           end
+           return vim_item
+        end,
+    },
+    experimental = {
+        ghost_text = false
+    }
 })
 
 -- Set configuration for specific filetype.

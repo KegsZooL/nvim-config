@@ -104,3 +104,14 @@ cmd([[highlight clear SignColumn]])
 cmd("let g:netrw_liststyle = 3")
 cmd("filetype plugin indent on")
 cmd([[highlight WinSeparator guibg = None]])
+
+
+-- Automatic disabling of text highlight after search
+api.nvim_create_autocmd('CursorMoved', {
+  group = api.nvim_create_augroup('auto-hlsearch', { clear = true }),
+  callback = function ()
+    if vim.v.hlsearch == 1 and fn.searchcount().exact_match == 0 then
+      vim.schedule(function () cmd.nohlsearch() end)
+    end
+  end
+})
