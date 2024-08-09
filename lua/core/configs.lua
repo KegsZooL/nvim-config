@@ -99,13 +99,6 @@ api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-cmd([[highlight clear LineNr]])
-cmd([[highlight clear SignColumn]])
-cmd("let g:netrw_liststyle = 3")
-cmd("filetype plugin indent on")
-cmd([[highlight WinSeparator guibg = None]])
-
-
 -- Automatic disabling of text highlight after search
 api.nvim_create_autocmd('CursorMoved', {
   group = api.nvim_create_augroup('auto-hlsearch', { clear = true }),
@@ -115,3 +108,9 @@ api.nvim_create_autocmd('CursorMoved', {
     end
   end
 })
+
+cmd([[highlight clear LineNr]])
+cmd([[highlight clear SignColumn]])
+cmd("let g:netrw_liststyle = 3")
+cmd("filetype plugin indent on")
+cmd([[highlight WinSeparator guibg = None]])

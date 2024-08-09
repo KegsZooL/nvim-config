@@ -15,7 +15,7 @@ lspsaga.setup({
     diagnostic_prefix_format = "%d. ",
 
     lightbulb = {
-        enable = false,
+        enable = false
     },
     symbol_in_winbar = {
         enable = false,

@@ -1,11 +1,13 @@
-vim.fn.sign_define("DiagnosticSignError",
-{text = " ", texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn",
-{text = " ", texthl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignInfo",
-{text = " ", texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint",
-{text = "󰌵", texthl = "DiagnosticSignHint"})
+local fn = vim.fn;
+
+fn.sign_define("DiagnosticSignError",
+    {text = " ", texthl = "DiagnosticSignError"})
+fn.sign_define("DiagnosticSignWarn",
+    {text = " ", texthl = "DiagnosticSignWarn"})
+fn.sign_define("DiagnosticSignInfo",
+    {text = " ", texthl = "DiagnosticSignInfo"})
+fn.sign_define("DiagnosticSignHint",
+    {text = "󰌵", texthl = "DiagnosticSignHint"})
 
 require("neo-tree").setup({
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -14,7 +16,7 @@ require("neo-tree").setup({
     enable_diagnostics = false,
     open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
-    sort_function = nil , 
+    sort_function = nil ,
     default_component_configs = {
         container = {
         enable_character_fade = true
@@ -92,41 +94,36 @@ require("neo-tree").setup({
         nowait = true,
         },
         mappings = {
-        ["<space>"] = { 
-            "toggle_node", 
+        ["<space>"] = {
+            "toggle_node",
             nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
         },
         ["<2-LeftMouse>"] = "open",
         ["<cr>"] = "open",
         ["<esc>"] = "cancel", -- close preview or floating neo-tree window
-        ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+        ["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
         ["l"] = "focus_preview",
         ["S"] = "open_split",
         ["s"] = "open_vsplit",
         ["t"] = "open_tabnew",
         ["w"] = "open_with_window_picker",
-        ["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
         ["C"] = "close_node",
         ["z"] = "close_all_nodes",
         ["a"] = {
             "add",
             config = {
-            show_path = "none" -- "none", "relative", "absolute"
+            show_path = "relative" -- "none", "relative", "absolute"
             }
         },
         ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
         ["d"] = "delete",
         ["r"] = "rename",
-        ["y"] = "copy_to_clipboard",
-        ["x"] = "cut_to_clipboard",
-        ["p"] = "paste_from_clipboard",
-        ["c"] = "copy", 
+        ["<C-c>"] = "copy_to_clipboard",
+        ["y"] = "copy",
         ["m"] = "move",
         ["q"] = "close_window",
         ["R"] = "refresh",
         ["?"] = "show_help",
-        ["<"] = "prev_source",
-        [">"] = "next_source",
         ["i"] = "show_file_details",
         }
     },
@@ -145,7 +142,7 @@ require("neo-tree").setup({
         },
         always_show_by_pattern = {
         },
-        never_show = { 
+        never_show = {
         },
         never_show_by_pattern = {
         },
@@ -170,7 +167,7 @@ require("neo-tree").setup({
             ["H"] = "toggle_hidden",
             ["/"] = "fuzzy_finder",
             ["D"] = "fuzzy_finder_directory",
-            ["#"] = "fuzzy_sorter", 
+            ["#"] = "fuzzy_sorter",
             ["f"] = "filter_on_submit",
             ["<c-x>"] = "clear_filter",
             ["[g"] = "prev_git_modified",

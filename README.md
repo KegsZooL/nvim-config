@@ -1,20 +1,13 @@
-# My nvim config
-
-- This configuration was based on the gruvbox style
-
-![gruvbox_palette](./screenshots/gruvbox_palette_dark.png)
-
+### 🙏 This configuration is based on two other wonderful configurations:
+> ###  1. [GRIMVIM](https://github.com/bibjaw99/workstation)
+> ###  2. [GenesisNvim](https://github.com/Zproger/GenesisNvim)
+<br />
 <details>
-    <summary><strong>Preview config</strong></summary>
+    <summary style="font-size: 24px;"><strong>👀 Preview config</strong></summary>
     
 +   <details>
         <summary style="font-size: 1.0em; font-weight: bold;">Start page</summary>
         <img src="./screenshots/dashboard.png" alt="dashboard">
-    </details>
-
-+   <details>
-        <summary style="font-size: 1.0em; font-weight: bold;">Main file</summary>
-        <img src="./screenshots/main.png" alt="main-file">
     </details>
 
 +    <details>
@@ -24,13 +17,14 @@
         <img src="./screenshots/telescope-gs.png" alt="telescope">
         <img src="./screenshots/telescope-ff.png" alt="telescope">
         <img src="./screenshots/toggelterm.png" alt="toggelterm">
+        <img src="./screenshots/todo.png" alt="toggelterm">
+        <img src="./screenshots/gitsigns.png" alt="LSP">
      </details>
 
 +   <details>
         <summary style="font-size: 1.0em; font-weight: bold;">Language Server Protocol support</summary>
         <img src="./screenshots/java.png" alt="LSP">
-        <img src="./screenshots/gitsigns.png" alt="LSP">
-        <img src="./screenshots/lsp-info-lua.png" alt="LSP">
+        <img src="./screenshots/lsp-info-python.png" alt="LSP">
         <img src="./screenshots/lsp-info-jdtls.png" alt="LSP">
      </details>
 
@@ -48,6 +42,16 @@
 +    <details>
         <summary style="font-size: 1.0em; font-weight: bold;">Preview markdown file</summary>
         <img src="./screenshots/markdown.png" alt="markdown">
+     </details>
+
++    <details>
+        <summary style="font-size: 1.0em; font-weight: bold;">Syncing with the browser</summary>
+        <img src="./screenshots/browser-sync.png" alt="markdown">
+     </details>
+
++    <details>
+        <summary style="font-size: 1.0em; font-weight: bold;">Tools for working with colors</summary>
+        <img src="./screenshots/colors.png" alt="markdown">
      </details>
 
 </details>
@@ -85,7 +89,6 @@
     │   ├── mason-lspconfig.lua
     │   ├── mason-nvim-dap.lua
     │   ├── mason.lua
-    │   ├── mini-indentscope.lua
     │   ├── move.lua
     │   ├── neotree.lua
     │   ├── nerdy.lua
@@ -108,4 +111,4 @@
 - [x] Preview and insert nerd font glyphs
 - [x] Full DAP setup
 - [x] Language support: python, css, html
-- [ ] Description for all command/functions
+- [x] Description for all commands/functions
