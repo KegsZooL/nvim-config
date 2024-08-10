@@ -55,7 +55,7 @@ opt.showtabline = 0
 -- Mouse & cursor
 opt.mouse = "a"                 -- enable mouse support
 opt.mousefocus = true
-opt.cursorline = false           -- highlight current line
+opt.cursorline = false          -- highlight current line
 opt.cursorcolumn = false
 
 --Scroll
@@ -84,6 +84,12 @@ opt.fillchars = {
     foldclose = "▸"
 }
 
+cmd([[highlight clear LineNr]])
+cmd([[highlight clear SignColumn]])
+cmd("let g:netrw_liststyle = 3")
+cmd("filetype plugin indent on")
+cmd([[highlight WinSeparator guibg = None]])
+
 -- keep cursor unchanged after quiting
 api.nvim_create_autocmd("ExitPre", {
 	group = api.nvim_create_augroup("Exit", { clear = true }),
@@ -108,9 +114,3 @@ api.nvim_create_autocmd('CursorMoved', {
     end
   end
 })
-
-cmd([[highlight clear LineNr]])
-cmd([[highlight clear SignColumn]])
-cmd("let g:netrw_liststyle = 3")
-cmd("filetype plugin indent on")
-cmd([[highlight WinSeparator guibg = None]])
