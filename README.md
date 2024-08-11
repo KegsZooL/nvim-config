@@ -80,6 +80,7 @@
     │   ├── dashboard.lua
     │   ├── emoji.lua
     │   ├── gitsigns.lua
+    │   ├── illuminate.lua
     │   ├── indent.lua
     │   ├── java.lua
     │   ├── jdtls.lua

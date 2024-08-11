@@ -152,5 +152,6 @@ require("lazy").setup({
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
         }
-    }
+    },
+    {"RRethy/vim-illuminate"}                  --  Automatically highlighting other uses of the word under the cursor
 })
