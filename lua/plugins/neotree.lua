@@ -1,4 +1,5 @@
 local fn = vim.fn;
+local ignore_files = require("ignore_files").pattern
 
 fn.sign_define("DiagnosticSignError",
     {text = " ", texthl = "DiagnosticSignError"})
@@ -142,10 +143,8 @@ require("neo-tree").setup({
         },
         always_show_by_pattern = {
         },
-        never_show = {
-        },
-        never_show_by_pattern = {
-        },
+        never_show = ignore_files,
+        never_show_by_pattern = ignore_files,
         },
         follow_current_file = {
         enabled = false, -- This will find and focus the file in the active buffer every time

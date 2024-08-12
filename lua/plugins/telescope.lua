@@ -1,6 +1,7 @@
 local telescope = require("telescope")
 local open_with_trouble = require("trouble.sources.telescope").open
 local add_to_trouble = require("trouble.sources.telescope").add
+local ignore_files = require("ignore_files").pattern
 
 telescope.setup{
     pickers = {
@@ -14,13 +15,13 @@ telescope.setup{
         git_status = {
             prompt_prefix = "  ",
             git_icons = {
-                added = "+",
-                changed = "~",
-                copied = ">",
-                deleted = "-",
-                renamed = "➡",
+                added = "",
+                changed = "",
+                copied = "",
+                deleted = "󰆴",
+                renamed = "",
                 unmerged = "‡",
-                untracked = "?",
+                untracked = "",
             },
         },
         git_commits = {
@@ -42,8 +43,7 @@ telescope.setup{
     },
 
     defaults = {
-        file_ignore_patterns = {".git/", ".cache", "%.o", "%.a", "%.out", "%.class",
-            "%.pdf", "%.mkv", "%.mp4", "%.zip", "%.png", "%.jpeg", "%.jpg"},
+        file_ignore_patterns = ignore_files,
         mappings = {
             i = { ["<c-t>"] = open_with_trouble },
             n = { ["<c-t>"] = open_with_trouble },

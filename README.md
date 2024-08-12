@@ -101,7 +101,8 @@
     │   ├── treesitter.lua
     │   ├── trouble.lua
     │   └── whichkey.lua
-    └── ascii-art.lua
+    ├── ascii-art.lua
+    └── ignore_files.lua
 ```
  
 ### 📜 TODO
