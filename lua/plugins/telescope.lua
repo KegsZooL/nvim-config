@@ -16,7 +16,7 @@ telescope.setup{
             prompt_prefix = "  ",
             git_icons = {
                 added = "",
-                changed = "",
+                changed = "󰜥",
                 copied = "",
                 deleted = "󰆴",
                 renamed = "",
