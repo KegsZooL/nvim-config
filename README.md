@@ -1,3 +1,6 @@
+
+![color-palette](./screenshots/color-palette.png)
+---
 ### 🙏 This configuration is based on two other wonderful configurations:
 > ###  1. [GRIMVIM](https://github.com/bibjaw99/workstation)
 > ###  2. [GenesisNvim](https://github.com/Zproger/GenesisNvim)
@@ -104,7 +107,7 @@
     ├── ascii-art.lua
     └── ignore_files.lua
 ```
- 
+ ---
 ### 📜 TODO
 
 - [x] Preview markdown
