@@ -85,7 +85,7 @@ keymap.set('i', '<S-C-Left>', '<Esc>:normal! vwb<CR>a', opts)
 keymap.set('i', '<S-C-Right>', '<Esc>:normal! vwe<CR>a', opts)
 
 -- Copy/Paste
-keymap.set('n', '<C-c>', '"+y', opts)
+keymap.set('n', '<C-c>', 'vy<Esc>', opts)
 keymap.set('v', '<C-c>', '"+y', opts)
 
 keymap.set('n', '<C-v>', '"+p', opts)
