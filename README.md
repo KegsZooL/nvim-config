@@ -117,3 +117,4 @@
 - [x] Full DAP setup
 - [x] Language support: python, css, html
 - [x] Description for all commands/functions
+- [ ] Add configuration for [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
