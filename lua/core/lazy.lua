@@ -162,5 +162,6 @@ require("lazy").setup({
         config = function()
             require("inlay-hints").setup()
         end
-    }
+    },
+    { "ray-x/lsp_signature.nvim" },
 })

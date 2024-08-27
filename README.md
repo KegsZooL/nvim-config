@@ -71,6 +71,7 @@
     │   └── mappings.lua
     ├── plugins
     │   ├── autopairs.lua
+    │   ├── autotag.lua
     │   ├── bufferline.lua
     │   ├── cmp.lua
     │   ├── colorizer.lua

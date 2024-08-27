@@ -5,7 +5,6 @@ keymap.set('v', 'p', 'P', opts)
 keymap.set('n', 'p', 'P', opts)
 
 keymap.set('n', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-keymap.set('i', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
 keymap.set('n', '<BS>', '<Del>', opts)
 keymap.set('v', '<BS>', '<Del>', opts)
@@ -25,9 +24,9 @@ keymap.set('v', '<C-l>', '"_d', opts)
 keymap.set('i', '<C-l>', '<Esc>"_ddi', opts)
 
 -- Paste down the current line
-keymap.set('n', '<C-d>', 'yyp', opts)
-keymap.set('v', '<C-d>', 'y`>p', opts)
-keymap.set('i', '<C-d>', '<Esc>:call append(line("."), getline("."))<CR>a', opts)
+keymap.set('n', '<C-d>', ':t.<CR>', opts)
+keymap.set('v', '<C-d>', ':t \'><CR>gv', opts)
+keymap.set('i', '<C-d>', '<Esc>:t.<CR>gi', opts)
 
 -- Moving by words
 keymap.set('n', '<C-Left>', 'b', opts)
@@ -89,7 +88,7 @@ keymap.set('n', '<C-c>', 'vy<Esc>', opts)
 keymap.set('v', '<C-c>', '"+y', opts)
 
 keymap.set('n', '<C-v>', '"+p', opts)
-keymap.set('v', '<C-v>', 'P', opts)
+keymap.set('v', '<C-v>', '"_dP', opts)
 keymap.set('i', '<C-v>', '<Esc>"+pa', opts)
 
 -- Switching to i-mode by enter
