@@ -75,8 +75,8 @@ require("lazy").setup({
           "neovim/nvim-lspconfig",       -- mason lsp config uses mason to automatically ensure that the lsp servers
       }                                  -- you want to install are installed
     },
-    { "jay-babu/mason-nvim-dap.nvim" },   -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
-                                          -- mason-lspconfig will not automatically install debug adapters for us
+    { "jay-babu/mason-nvim-dap.nvim" },  -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
+                                         -- mason-lspconfig will not automatically install debug adapters for us
     { "windwp/nvim-autopairs" },
     { 'akinsho/bufferline.nvim', version = "*" },
     { "norcalli/nvim-colorizer.lua" },
@@ -153,5 +153,14 @@ require("lazy").setup({
             "rcarriga/nvim-notify",
         }
     },
-    {"RRethy/vim-illuminate"}                  --  Automatically highlighting other uses of the word under the cursor
+    { "RRethy/vim-illuminate" },        --  Automatically highlighting other uses of the word under the cursor
+    { "windwp/nvim-ts-autotag" },
+    {
+        "MysticalDevil/inlay-hints.nvim",
+        event = "LspAttach",
+        dependencies = { "neovim/nvim-lspconfig" },
+        config = function()
+            require("inlay-hints").setup()
+        end
+    }
 })

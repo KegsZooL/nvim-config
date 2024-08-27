@@ -50,7 +50,6 @@ ignore.pattern = {
     ".kbx",
     ".gz",
     ".db",
-    ".so",
     ".pak",
     ".MTREE",
     ".klib",
