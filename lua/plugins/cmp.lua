@@ -30,16 +30,13 @@ local kind_icons = {
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        end,
     },
     window = {
         completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered()
+        documentation = cmp.config.window.bordered(),
     },
-    -- completion = {
-    --     autocomplete = false,
-    -- },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -69,6 +66,7 @@ cmp.setup({
         { name = 'typescript-language-server' },
         { name = 'nvim_lsp_signature_help' },
         { name = 'prisma-language-server' },
+        { name = 'vim-dadbod-completion' },
         { name = 'pyright-langserver' },
         { name = 'svelteserver' },
         { name = 'graphql-lsp' },
@@ -76,35 +74,17 @@ cmp.setup({
         { name = 'marksman' },
         { name = 'emmet-ls' },
         { name = 'luasnip' },
-        { name = 'buffer' },
         { name = 'vsnip' },
         { name = 'emoji' },
         { name = 'path' },
-        { name = 'sqls' },
+    }, {
+        { name = 'buffer' },
     }),
+    
     formatting = {
         fields = { "abbr", "kind", "menu" },
         format = function(entry, vim_item)
            vim_item.kind = string.format('   %s %s', kind_icons[vim_item.kind], vim_item.kind)
-
-           local source = entry.source.name
-           vim_item.menu = ({
-              copilot	= "(copilot)",
-              luasnip	= "(luasnip)",
-              nvim_lua = "(nvim_lua)",
-              nvim_lsp = "(lsp)",
-              buffer	= "(buffer)",
-              abl		= "(abl)",
-              path		= "(path)",
-           })[source]
-
-           -- Removing dublicates
-           if source == "luasnip"
-              or source == "nvim_lsp"
-              or source == "nvim_lua"
-              or source == "abl" then
-              vim_item.dup = 0
-           end
            return vim_item
         end,
     },

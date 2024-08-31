@@ -222,5 +222,19 @@ keymap.set('n', '<leader>td', '<cmd>TodoTelescope<CR>', opts)
 keymap.set('i', '<leader>td', '<cmd>TodoTelescope<CR>', opts)
 
 -- Colortils
-keymap.set('n', '<leader>cp', ':Colortils picker blue<CR>', opts)
+keymap.set('n', '<leader>cp', '<cmd>Colortils picker blue<CR>', opts)
 keymap.set('n', '<leader>cl', '<cmd>Colortils css list<CR>', opts)
+
+--DBUI
+keymap.set('n', '<leader>d', '<cmd>Neotree close<CR><cmd>DBUIToggle<CR>', opts)
+keymap.set('i', '<leader>d', '<cmd>Neotree close<CR>DBUIToggle<CR>', opts)
+
+keymap.set('n', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
+keymap.set('i', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "sql",
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, 'n', '<Leader>ds', '<Plug>(DBUI_ExecuteQuery)', opts)
+    end
+})

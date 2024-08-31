@@ -39,10 +39,6 @@ lspconfig.jsonls.setup({
     capabilities = capabilities
 })
 
-lspconfig.sqls.setup({
-    capabilities = capabilities
-})
-
 lspconfig.cssls.setup({
     capabilities = capabilities
 })
