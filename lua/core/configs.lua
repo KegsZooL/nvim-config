@@ -5,6 +5,7 @@ local wo = vim.wo
 local fn = vim.fn
 local api = vim.api
 
+wo.relativenumber = true
 wo.number = true
 g.formatoptions = "qn1"
 opt.backspace = "indent,eol,start"
