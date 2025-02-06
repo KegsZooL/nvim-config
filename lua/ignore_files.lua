@@ -17,7 +17,7 @@ ignore.pattern = {
     "inkscape",
     "xournalpp",
     "discord",
-    ".git",
+    -- ".git",
     ".venv",
     ".conan",
     ".cache",

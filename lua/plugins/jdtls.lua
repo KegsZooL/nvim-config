@@ -3,11 +3,11 @@ require('lspconfig').jdtls.setup({
         java = {
             configuration = {
                 runtimes = {
-                {
-                    name = "JavaSE-22",
-                    path = "/usr/lib/jvm/java-22-openjdk",
-                    default = true,
-                }
+                    {
+                        name = "JavaSE-22",
+                        path = "/usr/lib/jvm/java-23-openjdk",
+                        default = true,
+                    }
                 }
             }
         }

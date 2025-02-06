@@ -10,7 +10,10 @@ lspconfig.lua_ls.setup({
                 arrayIndex = 'Disable',
             }
         }
-    }
+    },
+    presets = {
+        lsp_doc_border = true,
+    },
 })
 
 lspconfig.jdtls.setup({
@@ -47,7 +50,7 @@ lspconfig.html.setup({
     capabilities = capabilities
 })
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
     capabilities = capabilities,
     settings = {
         typescript = {

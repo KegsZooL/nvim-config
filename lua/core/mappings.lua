@@ -20,19 +20,19 @@ keymap.set('v', '<Right>', '<Nop>', opts)
 keymap.set('n', '<A-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
 -- Commenting on lines
-keymap.set('n', '<A-k>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
-keymap.set('v', '<A-k>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
-keymap.set('i', '<A-k>', '<Esc>:lua require("Comment.api").toggle.linewise.current()<CR>gi', opts)
+keymap.set('n', '<A-;>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
+keymap.set('v', '<A-;>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
+keymap.set('i', '<A-;>', '<Esc>:lua require("Comment.api").toggle.linewise.current()<CR>gi', opts)
 
 -- Save the current file
-keymap.set('n', '<A-s>', ':w<CR>', opts)
-keymap.set('v', '<A-s>', ':w<CR>', opts)
-keymap.set('i', '<A-s>', '<Esc>:w<CR>a', opts)
+keymap.set('n', '<C-s>', ':w<CR>', opts)
+keymap.set('v', '<C-s>', ':w<CR>', opts)
+keymap.set('i', '<C-s>', '<Esc>:w<CR>a', opts)
 
 -- Save all buffers
-keymap.set('n', '<A-s-a>', ':wa<CR>', opts)
-keymap.set('v', '<A-s-a>', ':wa<CR>', opts)
-keymap.set('i', '<A-s-a>', '<Esc>:wa<CR>a', opts)
+keymap.set('n', '<C-s-a>', ':wa<CR>', opts)
+keymap.set('v', '<C-s-a>', ':wa<CR>', opts)
+keymap.set('i', '<C-s-a>', '<Esc>:wa<CR>a', opts)
 
 -- Switching to i-mode by enter
 keymap.set('n', '<CR>', 'i<CR>', opts)
@@ -81,15 +81,15 @@ keymap.set('n', '<A-t>', '<Cmd>vsplit<CR>', opts)
 keymap.set('i', '<A-t>', '<Cmd>vsplit<CR>', opts)
 
 -- Change the focus in the current split window
-keymap.set('n', '<A-=>', '<Cmd>wincmd k<CR>', opts)
-keymap.set('n', '<A-->', '<Cmd>wincmd j<CR>', opts)
-keymap.set('n', '<A-[>', '<Cmd>wincmd h<CR>', opts)
-keymap.set('n', '<A-]>', '<Cmd>wincmd l<CR>', opts)
+keymap.set('n', '<A-a>', '<Cmd>wincmd h<CR>')
+keymap.set('n', '<A-e>', '<Cmd>wincmd k<CR>')
+keymap.set('n', '<A-d>', '<Cmd>wincmd j<CR>')
+keymap.set('n', '<A-s>', '<Cmd>wincmd l<CR>')
 
-keymap.set('i', '<A-=>', '<Esc>:wincmd k<CR>', opts)
-keymap.set('i', '<A-->', '<Esc>:wincmd j<CR>', opts)
-keymap.set('i', '<A-[>', '<Esc>:wincmd h<CR>', opts)
-keymap.set('i', '<A-]>', '<Esc>:wincmd l<CR>', opts)
+keymap.set('i', '<A-a>', '<Esc><Cmd>wincmd h<CR>')
+keymap.set('i', '<A-e>', '<Esc><Cmd>wincmd k<CR>')
+keymap.set('i', '<A-d>', '<Esc><Cmd>wincmd j<CR>')
+keymap.set('i', '<A-s>', '<Esc><Cmd>wincmd l<CR>')
 
 -- Move the current split window up
 keymap.set('n', '<C-K>', '<C-w>K', opts)
@@ -116,25 +116,31 @@ keymap.set('n', '<M-h>', '<Cmd>bprev<CR>', opts)
 keymap.set('n', '<M-l>', '<Cmd>bnext<CR>', opts)
 
 -- Changing the size of a split window
-keymap.set('n', '<H>', '<Cmd>vertical resize -2<CR>', opts)
-keymap.set('n', '<J>', '<Cmd>resize +2<CR>', opts)
-keymap.set('n', '<K>', '<Cmd>resize -2<CR>', opts)
-keymap.set('n', '<L>', '<Cmd>vertical resize +2<CR>', opts)
+keymap.set('n', '<A-->', '<Cmd>resize -2<CR>', opts)  -- Уменьшить высоту
+keymap.set('n', '<A-=>', '<Cmd>resize +2<CR>', opts)  -- Увеличить высоту
+keymap.set('n', '<A-,>', '<Cmd>vertical resize -2<CR>', opts) -- Уменьшить ширину
+keymap.set('n', '<A-.>', '<Cmd>vertical resize +2<CR>', opts) -- Увеличить ширину
 
 -- NeoTree
 keymap.set('n', '<leader>E', ':Neotree float reveal<CR>', opts)
 keymap.set('n', '<leader>ee', ':Neotree left reveal<CR>', opts)
 keymap.set('n', '<leader>o', ':Neotree float git_status<CR>', opts)
 
--- Lspsaga
-keymap.set('n', '<F12>', '<cmd>Lspsaga goto_definition<CR>', opts)
-keymap.set('i', '<F12>', '<cmd>Lspsaga goto_definition<CR>', opts)
+-- Lspsaga'
+keymap.set('n', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
+keymap.set('i', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 
 keymap.set('n', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
 keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
 
-keymap.set('n', '<A-q>', '<cmd>Lspsaga hover_doc<CR>', opts)
-keymap.set('i', '<A-q>', '<cmd>Lspsaga hover_doc<CR>', opts)
+-- keymap.set('n', '<A-o>', '<cmd>Lspsaga hover_doc ++keep<CR>', opts)
+-- keymap.set('i', '<A-o>', '<cmd>Lspsaga hover_doc ++keep<CR>', opts)
+
+keymap.set('n', '<A-z>', '<cmd>Lspsaga finder imp<CR>', opts)
+keymap.set('i', '<A-z>', '<cmd>Lspsaga finder imp<CR>', opts)
+
+keymap.set('n', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+keymap.set('i', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 keymap.set('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 keymap.set('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)

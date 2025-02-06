@@ -117,12 +117,6 @@ require("lazy").setup({
     },
     { "theHamsta/nvim-dap-virtual-text" },
     {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() fn["mkdp#util#install"]() end,
-    },
-    {
       "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
       build = "cd app && yarn install",
@@ -171,5 +165,6 @@ require("lazy").setup({
         { 'tpope/vim-dadbod' },
         { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }}
         }
-    }
+    },
+    {"Weyaaron/nvim-training"}
 })
