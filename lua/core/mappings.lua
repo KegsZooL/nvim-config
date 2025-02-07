@@ -17,12 +17,15 @@ keymap.set('v', '<Down>', '<Nop>', opts)
 keymap.set('v', '<Left>', '<Nop>', opts)
 keymap.set('v', '<Right>', '<Nop>', opts)
 
-keymap.set('n', '<A-p>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+keymap.set('n', '<A-y>', 'yyp', opts)
+
+keymap.set('n', 'dd', '"_dd', opts)
+keymap.set('v', 'd', '"_d', opts)
 
 -- Commenting on lines
-keymap.set('n', '<A-;>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
-keymap.set('v', '<A-;>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
-keymap.set('i', '<A-;>', '<Esc>:lua require("Comment.api").toggle.linewise.current()<CR>gi', opts)
+keymap.set('n', '<A-/>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
+keymap.set('v', '<A-/>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
+keymap.set('i', '<A-/>', '<Esc>:lua require("Comment.api").toggle.linewise.current()<CR>gi', opts)
 
 -- Save the current file
 keymap.set('n', '<C-s>', ':w<CR>', opts)
@@ -34,23 +37,16 @@ keymap.set('n', '<C-s-a>', ':wa<CR>', opts)
 keymap.set('v', '<C-s-a>', ':wa<CR>', opts)
 keymap.set('i', '<C-s-a>', '<Esc>:wa<CR>a', opts)
 
--- Switching to i-mode by enter
-keymap.set('n', '<CR>', 'i<CR>', opts)
-
--- Tabulation in i-mode
-keymap.set('n', '<Tab>', ':startinsert<CR><Tab>', opts)
+-- Tabulation
+keymap.set('n', '<Tab>', ':normal! I<Tab><CR>', opts)
+keymap.set('v', '<Tab>', '>gv', opts)
 
 -- Reverse tabulation
-keymap.set('i', '<S-Tab>', '<C-d>', opts)
-keymap.set('n', '<S-Tab>', ':startinsert<CR><C-d>', opts)
+keymap.set('n', '<S-Tab>', '<<', opts)
+keymap.set('v', '<S-Tab>', '<gv', opts)
 
 -- Tab from the beginning of the current line
-keymap.set('n', '<C-Tab>', '0i<Tab><Esc>', opts)
-keymap.set('i', '<C-Tab>', '<Esc>0i<Tab>', opts)
-
--- Adding/Removing tabs
-keymap.set('v', '<Tab>', '>gv', opts)
-keymap.set('v', '<S-Tab>', '<gv', opts)
+keymap.set('n', '<C-Tab>', ':normal! I<Tab><CR>', opts)
 
 -- Moving lines
 keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', opts)
@@ -139,14 +135,16 @@ keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
 keymap.set('n', '<A-z>', '<cmd>Lspsaga finder imp<CR>', opts)
 keymap.set('i', '<A-z>', '<cmd>Lspsaga finder imp<CR>', opts)
 
-keymap.set('n', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-keymap.set('i', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-
 keymap.set('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 keymap.set('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 
 keymap.set("n", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
 keymap.set("i", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
+
+-- Lsp actions
+keymap.set('n', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+keymap.set('n', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+keymap.set('i', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 -- Telescope
 local builtin = require('telescope.builtin')

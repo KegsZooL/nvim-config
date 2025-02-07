@@ -20,37 +20,37 @@ require("neo-tree").setup({
     sort_function = nil ,
     default_component_configs = {
         container = {
-        enable_character_fade = true
+            enable_character_fade = true
         },
         indent = {
-        indent_size = 2,
-        padding = 1, -- extra padding on left hand side
-        with_markers = true,
-        indent_marker = "│",
-        last_indent_marker = "└",
-        highlight = "NeoTreeIndentMarker",
-        with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
-        expander_collapsed = "",
-        expander_expanded = "",
-        expander_highlight = "NeoTreeExpander",
+            indent_size = 2,
+            padding = 1, -- extra padding on left hand side
+            with_markers = true,
+            indent_marker = "│",
+            last_indent_marker = "└",
+            highlight = "NeoTreeIndentMarker",
+            with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
+            expander_collapsed = "",
+            expander_expanded = "",
+            expander_highlight = "NeoTreeExpander",
         },
-        icon = {
         folder_closed = "",
-        folder_open = "",
-        folder_empty = "󰜌",
+        icon = {
+            folder_open = "",
+            folder_empty = "󰜌",
         -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
         -- then these will never be used.
-        default = "*",
-        highlight = "NeoTreeFileIcon"
+            default = "*",
+            highlight = "NeoTreeFileIcon"
         },
         modified = {
-        symbol = "[+]",
-        highlight = "NeoTreeModified",
+            symbol = "[+]",
+            highlight = "NeoTreeModified",
         },
         name = {
-        trailing_slash = false,
-        use_git_status_colors = true,
-        highlight = "NeoTreeFileName",
+            trailing_slash = false,
+            use_git_status_colors = true,
+            highlight = "NeoTreeFileName",
         },
         git_status = {
         symbols = {
@@ -67,74 +67,74 @@ require("neo-tree").setup({
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
         file_size = {
-        enabled = true,
-        required_width = 64, -- min width of window required to show this column
+            enabled = false,
+            -- required_width = 64, -- min width of window required to show this column
         },
         type = {
-        enabled = true,
-        required_width = 122, -- min width of window required to show this column
+            enabled = true,
+            -- required_width = 122, -- min width of window required to show this column
         },
         last_modified = {
-        enabled = true,
-        required_width = 88, -- min width of window required to show this column
+            enabled = false,
+            -- required_width = 88, -- min width of window required to show this column
         },
         created = {
-        enabled = true,
-        required_width = 110, -- min width of window required to show this column
+            enabled = false,
+            -- required_width = 110, -- min width of window required to show this column
         },
         symlink_target = {
-        enabled = false,
+           enabled = false,
         },
     },
     commands = {},
     window = {
         position = "left",
-        width = 40,
+        width = 70,
         mapping_options = {
         noremap = true,
         nowait = true,
         },
         mappings = {
-        ["<space>"] = {
-            "toggle_node",
-            nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
-        },
-        ["<2-LeftMouse>"] = "open",
-        ["<cr>"] = "open",
-        ["<esc>"] = "cancel", -- close preview or floating neo-tree window
-        ["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
-        ["l"] = "focus_preview",
-        ["S"] = "open_split",
-        ["s"] = "open_vsplit",
-        ["t"] = "open_tabnew",
-        ["w"] = "open_with_window_picker",
-        ["C"] = "close_node",
-        ["z"] = "close_all_nodes",
-        ["a"] = {
-            "add",
-            config = {
-            show_path = "relative" -- "none", "relative", "absolute"
-            }
-        },
-        ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
-        ["d"] = "delete",
-        ["r"] = "rename",
-        ["<C-c>"] = "copy_to_clipboard",
-        ["y"] = "copy",
-        ["m"] = "move",
-        ["q"] = "close_window",
-        ["R"] = "refresh",
-        ["?"] = "show_help",
-        ["i"] = "show_file_details",
+            ["<space>"] = {
+                "toggle_node",
+                nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
+            },
+            ["<2-LeftMouse>"] = "open",
+            ["<cr>"] = "open",
+            ["<esc>"] = "cancel", -- close preview or floating neo-tree window
+            ["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+            ["l"] = "focus_preview",
+            ["S"] = "open_split",
+            ["s"] = "open_vsplit",
+            ["t"] = "open_tabnew",
+            ["w"] = "open_with_window_picker",
+            ["C"] = "close_node",
+            ["z"] = "close_all_nodes",
+            ["a"] = {
+                "add",
+                config = {
+                show_path = "relative" -- "none", "relative", "absolute"
+                }
+            },
+            ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+            ["d"] = "delete",
+            ["r"] = "rename",
+            ["<C-c>"] = "copy_to_clipboard",
+            ["y"] = "copy",
+            ["m"] = "move",
+            ["q"] = "close_window",
+            ["R"] = "refresh",
+            ["?"] = "show_help",
+            ["i"] = "show_file_details",
         }
     },
     nesting_rules = {},
     filesystem = {
         filtered_items = {
-        visible = true, -- visible hiden file
-        hide_dotfiles = false,
-        hide_gitignored = true,
-        hide_hidden = true, -- only works on Windows for hidden files/directories
+            visible = true, -- visible hiden file
+            hide_dotfiles = false,
+            hide_gitignored = true,
+            hide_hidden = false, -- only works on Windows for hidden files/directories
         hide_by_name = {
         },
         hide_by_pattern = {
@@ -143,12 +143,12 @@ require("neo-tree").setup({
         },
         always_show_by_pattern = {
         },
-        never_show = ignore_files,
-        never_show_by_pattern = ignore_files,
+            never_show = ignore_files,
+            never_show_by_pattern = ignore_files,
         },
         follow_current_file = {
-        enabled = false, -- This will find and focus the file in the active buffer every time
-        --               -- the current file is changed while the tree is open.
+            enabled = false, -- This will find and focus the file in the active buffer every time
+            --               -- the current file is changed while the tree is open.
         leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         group_empty_dirs = false, -- when true, empty folders will be grouped together
@@ -192,9 +192,9 @@ require("neo-tree").setup({
     },
     buffers = {
         follow_current_file = {
-        enabled = true, -- This will find and focus the file in the active buffer every time
+            enabled = true, -- This will find and focus the file in the active buffer every time
         --              -- the current file is changed while the tree is open.
-        leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+            leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
         },
         group_empty_dirs = true, -- when true, empty folders will be grouped together
         show_unloaded = true,

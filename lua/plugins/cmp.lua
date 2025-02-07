@@ -30,16 +30,22 @@ local kind_icons = {
 cmp.setup({
     snippet = {
         expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            require("luasnip").lsp_expand(args.body)
         end,
     },
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+           max_width = 20,
+           max_height = 20
+        }),
+        documentation = cmp.config.window.bordered({
+            max_width = 20,
+            max_height = 20
+        }),
     },
-    -- completion = {
-    --     autocomplete = false,
-    -- },
+    completion = {
+        autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged  }
+    },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -80,10 +86,9 @@ cmp.setup({
         { name = 'vsnip' },
         { name = 'emoji' },
         { name = 'path' },
-    }, {
         { name = 'buffer' },
+        { name = 'jdtls'}
     }),
-    
     formatting = {
         fields = { "abbr", "kind", "menu" },
         format = function(entry, vim_item)

@@ -166,5 +166,4 @@ require("lazy").setup({
         { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }}
         }
     },
-    {"Weyaaron/nvim-training"}
 })

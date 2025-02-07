@@ -29,7 +29,7 @@ lspsaga.setup({
         scroll_up = "<C-b>",
     },
     hover = {
-        max_width = 0.5,
+        max_width = 0.9,
     },
     rename = {
         auto_save = true,
