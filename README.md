@@ -1,4 +1,3 @@
-
 ![color-palette](./screenshots/color-palette.png)
 ---
 ### 🙏 This configuration is based on two other wonderful configurations:
@@ -63,50 +62,48 @@
 
 ```
 .
-├── init.lua
-└── lua
-    ├── core
-    │   ├── configs.lua
-    │   ├── lazy.lua
-    │   └── mappings.lua
-    ├── plugins
-    │   ├── autopairs.lua
-    │   ├── autotag.lua
-    │   ├── bufferline.lua
-    │   ├── cmp.lua
-    │   ├── colorizer.lua
-    │   ├── colorscheme.lua
-    │   ├── colortils.lua
-    │   ├── comment.lua
-    │   ├── dap-ui.lua
-    │   ├── dap-virtual-text.lua
-    │   ├── dap.lua
-    │   ├── dashboard.lua
-    │   ├── emoji.lua
-    │   ├── gitsigns.lua
-    │   ├── illuminate.lua
-    │   ├── indent.lua
-    │   ├── java.lua
-    │   ├── jdtls.lua
-    │   ├── lspconfig.lua
-    │   ├── lspsaga.lua
-    │   ├── lualine.lua
-    │   ├── mason-lspconfig.lua
-    │   ├── mason-nvim-dap.lua
-    │   ├── mason.lua
-    │   ├── move.lua
-    │   ├── neotree.lua
-    │   ├── nerdy.lua
-    │   ├── noice.lua
-    │   ├── nvim-notify.lua
-    │   ├── surround.lua
-    │   ├── telescope.lua
-    │   ├── toggleterm.lua
-    │   ├── treesitter.lua
-    │   ├── trouble.lua
-    │   └── whichkey.lua
-    ├── ascii-art.lua
-    └── ignore_files.lua
+├── lua
+│   ├── ascii-art.lua
+│   ├── core
+│   │   ├── configs.lua
+│   │   ├── lazy.lua
+│   │   └── mappings.lua
+│   ├── ignore_files.lua
+│   └── plugins
+│       ├── autopairs.lua
+│       ├── autotag.lua
+│       ├── bufferline.lua
+│       ├── cmp.lua
+│       ├── colorizer.lua
+│       ├── colorscheme.lua
+│       ├── colortils.lua
+│       ├── comment.lua
+│       ├── dap.lua
+│       ├── dashboard.lua
+│       ├── emoji.lua
+│       ├── gitsigns.lua
+│       ├── illuminate.lua
+│       ├── indent.lua
+│       ├── java.lua
+│       ├── jdtls.lua
+│       ├── lspconfig.lua
+│       ├── lspsaga.lua
+│       ├── lualine.lua
+│       ├── mason-lspconfig.lua
+│       ├── mason.lua
+│       ├── mason-nvim-dap.lua
+│       ├── move.lua
+│       ├── neotree.lua
+│       ├── nerdy.lua
+│       ├── noice.lua
+│       ├── nvim-notify.lua
+│       ├── surround.lua
+│       ├── telescope.lua
+│       ├── toggleterm.lua
+│       ├── treesitter.lua
+│       ├── trouble.lua
+│       ├── web-tools.lua
+│       └── which-key.lua
 ```
  ---
 ### 📜 TODO
@@ -118,4 +115,4 @@
 - [x] Full DAP setup
 - [x] Language support: python, css, html
 - [x] Description for all commands/functions
-- [ ] Add configuration for [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
+- [x] Add configuration for [vim-visual-multi](https://github.com/mg979/vim-visual-multi)

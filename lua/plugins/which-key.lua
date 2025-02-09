@@ -1,6 +1,7 @@
 local wk = require("which-key")
 
 wk.setup({
+    delay = 500,
     icons = {
         rules = false,
         separator = "➜",

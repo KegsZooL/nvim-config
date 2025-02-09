@@ -17,10 +17,15 @@ keymap.set('v', '<Down>', '<Nop>', opts)
 keymap.set('v', '<Left>', '<Nop>', opts)
 keymap.set('v', '<Right>', '<Nop>', opts)
 
-keymap.set('n', '<A-y>', 'yyp', opts)
+keymap.set('n', '<A-y>', ':t.<CR>', opts)
+keymap.set('x', '<A-y>', ":t'><CR>", opts)
 
 keymap.set('n', 'dd', '"_dd', opts)
 keymap.set('v', 'd', '"_d', opts)
+
+keymap.set('n', 'daw', '"_daw', opts)
+
+keymap.set('n', '<C-w>', 'vi', opts)
 
 -- Commenting on lines
 keymap.set('n', '<A-/>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
@@ -63,14 +68,14 @@ keymap.set('n', '<A-ESC>', ':q!<CR>', opts)
 keymap.set('i', '<A-ESC>', '<Esc>:q!<CR>', opts)
 
 -- Close current split window
-keymap.set('n', '<A-q>', ':close<CR>', opts)
-keymap.set('i', '<A-q>', '<Esc>:close<CR>:startinsert<CR>', opts)
-keymap.set('v', '<A-q>', '<Esc>:close<CR>', opts)
+keymap.set('n', '<A-q>', ':close<CR>:wincmd p<CR>', opts)
+keymap.set('i', '<A-q>', '<Esc>:close<CR>:wincmd p<CR>', opts)
+keymap.set('v', '<A-q>', '<Esc>:close<CR>:wincmd p<CR>', opts)
 
 -- Close current buffer
-keymap.set('n', '<M-\\>', ':bd!<CR>', opts)
-keymap.set('i', '<M-\\>', '<Esc>:bd!<CR>:startinsert<CR>', opts)
-keymap.set('v', '<M-\\>', '<Esc>:bd!<CR>', opts)
+keymap.set('n', '<M-\\>', ':bd!<CR>:bprevious<CR>', opts)
+keymap.set('i', '<M-\\>', '<Esc>:bd!<CR>:bprevious<CR>', opts)
+keymap.set('v', '<M-\\>', '<Esc>:bd!<CR>:bprevious<CR>', opts)
 
 -- Split the window
 keymap.set('n', '<A-t>', '<Cmd>vsplit<CR>', opts)
@@ -120,7 +125,7 @@ keymap.set('n', '<A-.>', '<Cmd>vertical resize +2<CR>', opts) -- Увеличи�
 -- NeoTree
 keymap.set('n', '<leader>E', ':Neotree float reveal<CR>', opts)
 keymap.set('n', '<leader>ee', ':Neotree left reveal<CR>', opts)
-keymap.set('n', '<leader>o', ':Neotree float git_status<CR>', opts)
+keymap.set('n', '<leader>eg', ':Neotree float git_status<CR>', opts)
 
 -- Lspsaga'
 keymap.set('n', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
@@ -168,15 +173,37 @@ keymap.set('n', '<leader>cp', '<cmd>Colortils picker blue<CR>', opts)
 keymap.set('n', '<leader>cl', '<cmd>Colortils css list<CR>', opts)
 
 --DBUI
-keymap.set('n', '<leader>d', '<cmd>Neotree close<CR><cmd>DBUIToggle<CR>', opts)
-keymap.set('i', '<leader>d', '<cmd>Neotree close<CR>DBUIToggle<CR>', opts)
+-- keymap.set('n', '<leader>d', '<cmd>Neotree close<CR><cmd>DBUIToggle<CR>', opts)
+-- keymap.set('i', '<leader>d', '<cmd>Neotree close<CR>DBUIToggle<CR>', opts)
+--
+-- keymap.set('n', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
+-- keymap.set('i', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
 
-keymap.set('n', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
-keymap.set('i', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
+-- Markdown preview
+keymap.set("n", "<leader>md", "<cmd>MarkdownPreview<CR>", opts)
 
+-- Database UI
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "sql",
     callback = function()
         vim.api.nvim_buf_set_keymap(0, 'n', '<Leader>ds', '<Plug>(DBUI_ExecuteQuery)', opts)
     end
 })
+
+ -- DAP
+
+local dap = require("dap")
+
+keymap.set('n', '<A-p>', dap.toggle_breakpoint, opts)
+keymap.set('n', '<F11>', dap.step_over, opts)
+keymap.set('n', '<F1>', dap.step_into, opts)
+keymap.set('n', '<F10>', dap.continue, opts)
+
+-- Dashboard
+keymap.set('n', '<leader>hh', ':Dashboard<CR>', opts)
+
+-- Gitsigns
+keymap.set('n', 'GG', '<cmd>Gitsigns preview_hunk_inline<CR>', opts)
+keymap.set('n', 'gG', '<cmd>Gitsigns preview_hunk<CR>', opts)
+keymap.set('n', 'gn', ':silent! Gitsigns nav_hunk next<CR>', opts)
+keymap.set('n', 'gp', ':silent! Gitsigns nav_hunk prev<CR>', opts)

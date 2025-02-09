@@ -3,7 +3,7 @@ require("noice").setup({
         enabled = true,
     },
     messages = {
-        enabled = false, -- views standard vim/nvim log messages
+        enabled = true, -- views standard vim/nvim log messages
     },
     cmdline = {
         format = {

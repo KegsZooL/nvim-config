@@ -1,8 +1,10 @@
 local dap = require("dap")
 local dapui = require("dapui")
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
+local fn = vim.fn
 
+dapui.setup()
+
+-- Automatically open/close DAP UI
 dap.listeners.before.attach.dapui_config = function()
   dapui.open()
 end
@@ -16,6 +18,32 @@ dap.listeners.before.event_exited.dapui_config = function()
   dapui.close()
 end
 
-keymap.set('n', '<A-p>', dap.toggle_breakpoint, opts)
-keymap.set('n', '<F11>', dap.step_over, opts)
-keymap.set('n', '<F1>', dap.step_into, opts)
+require("neodev").setup({
+  library = { plugins = { "nvim-dap-ui" }, types = true },
+
+})
+
+require("nvim-dap-virtual-text").setup({
+    commented = true,
+})
+
+fn.sign_define("DapBreakpoint", {
+    text = "",
+    texthl = "DiagnosticSignError",
+    linehl = "",
+    numhl = "",
+})
+
+fn.sign_define("DapBreakpointRejected", {
+    text = "",
+    texthl = "DiagnosticSignError",
+    linehl = "",
+    numhl = "",
+})
+
+fn.sign_define("DapStopped", {
+    text = "",
+    texthl = "DiagnosticSignWarn",
+    linehl = "Visual",
+    numhl = "DiagnosticSignWarn",
+})

@@ -24,6 +24,13 @@ local get_todays_date = function()
     return result
 end
 
+local get_plugins_stats = function()
+    local stats = require("lazy").stats()
+    return { " ⚡Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins" }
+end
+
+local plugins_stats = table.concat(get_plugins_stats(), " ")
+
 db.setup {
     theme = "doom",
     config = {
@@ -54,7 +61,16 @@ db.setup {
             desc_hl = 'String',
             key = 'n',
             key_format = ' %s',
-            action = function() vim.cmd(':enew') end 
+            action = function() vim.cmd(':enew') end
+          },
+          {
+            icon = '󰦛  > ',
+            icon_hl = 'Title',
+            desc = 'Restore Session',
+            desc_hl = 'String',
+            key = 's',
+            key_format = ' %s',
+            action = 'lua require("persistence").load()'
           },
           {
             icon = '  > ',
@@ -63,7 +79,16 @@ db.setup {
             desc_hl = 'String',
             key = 'c',
             key_format = ' %s',
-            action = "edit ~/.config/nvim/init.lua" 
+            action = "edit ~/.config/nvim/init.lua"
+          },
+          {
+            icon = '󰒲  > ',
+            icon_hl = 'Title',
+            desc = 'Lazy',
+            desc_hl = 'String',
+            key = 'l',
+            key_format = ' %s',
+            action = "Lazy"
           },
           {
             icon = '󰈆  > ',
@@ -72,9 +97,9 @@ db.setup {
             desc_hl = 'String',
             key = 'q',
             key_format = ' %s',
-            action = ":quit" 
+            action = ":quit"
           },
         },
-        footer = { datetime .. nvim_version_info }
+        footer = { " ", datetime .. nvim_version_info, " ", plugins_stats  }
     }
 }

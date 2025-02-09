@@ -49,7 +49,7 @@ opt.smartindent = true          -- make indenting smarter
 
 -- Appearance
 opt.pumheight = 10
-opt.cmdheight = 0
+opt.cmdheight = 2
 opt.laststatus = 3
 opt.showtabline = 0
 
@@ -90,6 +90,8 @@ cmd([[highlight clear SignColumn]])
 cmd("let g:netrw_liststyle = 3")
 cmd("filetype plugin indent on")
 cmd([[highlight WinSeparator guibg = None]])
+cmd([[autocmd! FileType qf set nomodifiable]])
+cmd([[set shortmess+=A]])
 
 -- keep cursor unchanged after quiting
 api.nvim_create_autocmd("ExitPre", {

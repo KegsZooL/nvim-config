@@ -75,7 +75,7 @@ require("neo-tree").setup({
             -- required_width = 122, -- min width of window required to show this column
         },
         last_modified = {
-            enabled = false,
+            enabled = true,
             -- required_width = 88, -- min width of window required to show this column
         },
         created = {
@@ -133,7 +133,7 @@ require("neo-tree").setup({
         filtered_items = {
             visible = true, -- visible hiden file
             hide_dotfiles = false,
-            hide_gitignored = true,
+            hide_gitignored = false,
             hide_hidden = false, -- only works on Windows for hidden files/directories
         hide_by_name = {
         },

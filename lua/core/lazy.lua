@@ -166,4 +166,9 @@ require("lazy").setup({
         { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }}
         }
     },
+    { 'mg979/vim-visual-multi' },
+    {
+        "folke/persistence.nvim",
+        event = "BufReadPre",
+    }
 })
