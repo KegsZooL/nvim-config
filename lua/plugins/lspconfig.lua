@@ -123,13 +123,27 @@ lspconfig.graphql.setup({
     }
 })
 
+lspconfig.matlab_ls.setup({
+    capabilities = capabilities,
+    settings = {
+        MATLAB = {
+            indexWorkspace = true,
+            installPath = "/opt/matlab/R2023a", -- might need to change this
+            matlabConnectionTiming = "onStart",
+            telemetry = true,
+        },
+    },
+})
+
+lspconfig.asm_lsp.setup({
+    capabilities = capabilities,
+    filetypes = {
+        "asm", "vmasm", "s", "S"
+    }
+})
+
 require("lsp_signature").setup({
     bind = true,
-    hint_enable = true,
-    hint_prefix = {
-        above = " ",  -- when the hint is on the line above the current line
-        current = "  ",  -- when the hint is on the same line
-        below = " "  -- when the hint is on the line below the current line
-    },
+    hint_enable = false,
     floating_window = false,
 })

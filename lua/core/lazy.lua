@@ -77,7 +77,6 @@ require("lazy").setup({
     },
     { "jay-babu/mason-nvim-dap.nvim" },  -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
                                          -- mason-lspconfig will not automatically install debug adapters for us
-    { "windwp/nvim-autopairs" },
     { 'akinsho/bufferline.nvim', version = "*" },
     { "norcalli/nvim-colorizer.lua" },
     { 'akinsho/toggleterm.nvim', version = "*", config = true }, -- console in nvim
@@ -170,5 +169,6 @@ require("lazy").setup({
     {
         "folke/persistence.nvim",
         event = "BufReadPre",
-    }
+    },
+    { "bergercookie/asm-lsp" }
 })

@@ -28,9 +28,9 @@ keymap.set('n', 'daw', '"_daw', opts)
 keymap.set('n', '<C-w>', 'vi', opts)
 
 -- Commenting on lines
-keymap.set('n', '<A-/>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
-keymap.set('v', '<A-/>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
-keymap.set('i', '<A-/>', '<Esc>:lua require("Comment.api").toggle.linewise.current()<CR>gi', opts)
+keymap.set('n', '<A-\'>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
+keymap.set('v', '<A-\'>', ':lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
+keymap.set('i', '<A-\'>', '<Esc>:lua require("Comment.api").toggle.linewise.current()<CR>gi', opts)
 
 -- Save the current file
 keymap.set('n', '<C-s>', ':w<CR>', opts)
@@ -52,16 +52,6 @@ keymap.set('v', '<S-Tab>', '<gv', opts)
 
 -- Tab from the beginning of the current line
 keymap.set('n', '<C-Tab>', ':normal! I<Tab><CR>', opts)
-
--- Moving lines
-keymap.set('n', '<A-k>', ':MoveLine(-1)<CR>', opts)
-keymap.set('n', '<A-j>', ':MoveLine(1)<CR>', opts)
-
-keymap.set('v', '<A-k>', ':MoveBlock(-1)<CR>', opts)
-keymap.set('v', '<A-j>', ':MoveBlock(1)<CR>', opts)
-
-keymap.set('i', '<A-k>', '<Esc>:MoveLine(-1)<CR>gi', opts)
-keymap.set('i', '<A-j>', '<Esc>:MoveLine(1)<CR>gi', opts)
 
 -- Exiting nvim
 keymap.set('n', '<A-ESC>', ':q!<CR>', opts)
@@ -113,8 +103,8 @@ keymap.set('i', '<C-L>', '<Esc><C-w>L', opts)
 keymap.set('v', '<C-L>', '<Esc><C-w>L', opts)
 
 -- Moving between buffers in the current split window
-keymap.set('n', '<M-h>', '<Cmd>bprev<CR>', opts)
-keymap.set('n', '<M-l>', '<Cmd>bnext<CR>', opts)
+keymap.set('n', '<M-n>', '<Cmd>bprev<CR>', opts)
+keymap.set('n', '<M-m>', '<Cmd>bnext<CR>', opts)
 
 -- Changing the size of a split window
 keymap.set('n', '<A-->', '<Cmd>resize -2<CR>', opts)  -- Уменьшить высоту
@@ -127,15 +117,12 @@ keymap.set('n', '<leader>E', ':Neotree float reveal<CR>', opts)
 keymap.set('n', '<leader>ee', ':Neotree left reveal<CR>', opts)
 keymap.set('n', '<leader>eg', ':Neotree float git_status<CR>', opts)
 
--- Lspsaga'
+-- Lspsaga
 keymap.set('n', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 keymap.set('i', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 
 keymap.set('n', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
 keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
-
--- keymap.set('n', '<A-o>', '<cmd>Lspsaga hover_doc ++keep<CR>', opts)
--- keymap.set('i', '<A-o>', '<cmd>Lspsaga hover_doc ++keep<CR>', opts)
 
 keymap.set('n', '<A-z>', '<cmd>Lspsaga finder imp<CR>', opts)
 keymap.set('i', '<A-z>', '<cmd>Lspsaga finder imp<CR>', opts)
@@ -163,6 +150,7 @@ keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "Git commits" })
 keymap.set('n', '<leader>gs', builtin.git_status, { desc = "Git status" })
 keymap.set('n', '<leader>em', ':Telescope emoji<CR>', { desc = "Search and insert emoji" })
 keymap.set('n', '<leader>ne', ':Telescope nerdy<CR>', { desc = "Search and insert nerd font glyphs" })
+keymap.set('n', '<leader>nn', ':Telescope notify<CR>' )
 
 -- TODO
 keymap.set('n', '<leader>td', '<cmd>TodoTelescope<CR>', opts)
@@ -173,11 +161,11 @@ keymap.set('n', '<leader>cp', '<cmd>Colortils picker blue<CR>', opts)
 keymap.set('n', '<leader>cl', '<cmd>Colortils css list<CR>', opts)
 
 --DBUI
--- keymap.set('n', '<leader>d', '<cmd>Neotree close<CR><cmd>DBUIToggle<CR>', opts)
--- keymap.set('i', '<leader>d', '<cmd>Neotree close<CR>DBUIToggle<CR>', opts)
---
--- keymap.set('n', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
--- keymap.set('i', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
+keymap.set('n', '<leader>d', '<cmd>Neotree close<CR><cmd>DBUIToggle<CR>', opts)
+keymap.set('i', '<leader>d', '<cmd>Neotree close<CR>DBUIToggle<CR>', opts)
+
+keymap.set('n', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
+keymap.set('i', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
 
 -- Markdown preview
 keymap.set("n", "<leader>md", "<cmd>MarkdownPreview<CR>", opts)
@@ -190,8 +178,8 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
- -- DAP
 
+-- DAP
 local dap = require("dap")
 
 keymap.set('n', '<A-p>', dap.toggle_breakpoint, opts)

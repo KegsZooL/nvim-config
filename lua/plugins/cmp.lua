@@ -49,8 +49,13 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-Space>'] = cmp.mapping(function ()
+            if cmp.visible() then
+                cmp.abort()
+            else
+                cmp.complete()
+            end
+        end),
         ['<CR>'] = cmp.mapping.confirm({select = true}),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -87,7 +92,9 @@ cmp.setup({
         { name = 'emoji' },
         { name = 'path' },
         { name = 'buffer' },
-        { name = 'jdtls'}
+        { name = 'jdtls'},
+        { name = 'matlab_ls' },
+        { name = 'asm_lsp'}
     }),
     formatting = {
         fields = { "abbr", "kind", "menu" },
@@ -98,7 +105,7 @@ cmp.setup({
     },
     experimental = {
         ghost_text = false
-    }
+    },
 })
 
 -- Set configuration for specific filetype.

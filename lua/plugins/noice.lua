@@ -23,23 +23,8 @@ require("noice").setup({
             ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
         signature = {
-            enabled = true
+            enabled = false,
         },
-        -- hover = {
-        --     enabled = true,
-        --     size = {
-        --         max_width = 10,
-        --         max_height = 20
-        --     },
-        --     border = {
-        --         style = "rounded",
-        --         padding = { 3, 3 },
-        --     },
-        --     position = {
-        --         row = "10%",
-        --         col = "80%"
-        --     }
-        -- }
     },
     presets = {
         long_message_to_split = true, -- long messages will be sent to a split
