@@ -170,5 +170,5 @@ require("lazy").setup({
         "folke/persistence.nvim",
         event = "BufReadPre",
     },
-    { "bergercookie/asm-lsp" }
+    { "bergercookie/asm-lsp" },
 })

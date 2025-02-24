@@ -31,8 +31,35 @@ lspconfig.jdtls.setup({
 })
 
 lspconfig.pyright.setup({
-    capabilities = capabilities
+    capabilities = capabilities,
+    settings = {
+	    pyright = {
+	      -- Using Ruff's import organizer
+	      disableOrganizeImports = true,
+	    },
+	    python = {
+	      analysis = {
+	        -- Ignore all files for analysis to exclusively use Ruff for linting
+	        ignore = { '*' },
+	        },
+		},
+	},
 })
+
+lspconfig.ruff_lsp.setup {
+  init_options = {
+    settings = {
+      -- Any extra CLI arguments for `ruff` go here.
+      args = {
+		"--select=E,F,UP,N,I,ASYNC,S,PTH",
+		"--line-length=79",
+		"--respect-gitignore",
+      	"--target-version=py311",
+        "--fix"
+      },
+    }
+  }
+}
 
 lspconfig.marksman.setup({
    capabilities = capabilities

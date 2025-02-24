@@ -4,6 +4,7 @@ require("noice").setup({
     },
     messages = {
         enabled = true, -- views standard vim/nvim log messages
+        view_search = false, -- view for search count messages. Set to `false` to disable
     },
     cmdline = {
         format = {

@@ -94,7 +94,8 @@ cmp.setup({
         { name = 'buffer' },
         { name = 'jdtls'},
         { name = 'matlab_ls' },
-        { name = 'asm_lsp'}
+        { name = 'pyright' },
+        { name = 'ruff-lsp'}
     }),
     formatting = {
         fields = { "abbr", "kind", "menu" },

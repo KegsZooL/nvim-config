@@ -23,9 +23,13 @@ keymap.set('x', '<A-y>', ":t'><CR>", opts)
 keymap.set('n', 'dd', '"_dd', opts)
 keymap.set('v', 'd', '"_d', opts)
 
+keymap.set('n', 's', '"_s', opts)
+keymap.set('v', 's', '"_s', opts)
+
 keymap.set('n', 'daw', '"_daw', opts)
 
 keymap.set('n', '<C-w>', 'vi', opts)
+keymap.set('n', '<C-S-w>', 'va', opts)
 
 -- Commenting on lines
 keymap.set('n', '<A-\'>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
@@ -107,10 +111,10 @@ keymap.set('n', '<M-n>', '<Cmd>bprev<CR>', opts)
 keymap.set('n', '<M-m>', '<Cmd>bnext<CR>', opts)
 
 -- Changing the size of a split window
-keymap.set('n', '<A-->', '<Cmd>resize -2<CR>', opts)  -- Уменьшить высоту
-keymap.set('n', '<A-=>', '<Cmd>resize +2<CR>', opts)  -- Увеличить высоту
-keymap.set('n', '<A-,>', '<Cmd>vertical resize -2<CR>', opts) -- Уменьшить ширину
-keymap.set('n', '<A-.>', '<Cmd>vertical resize +2<CR>', opts) -- Увеличить ширину
+keymap.set('n', '<A-->', '<Cmd>resize -2<CR>', opts)
+keymap.set('n', '<A-=>', '<Cmd>resize +2<CR>', opts)
+keymap.set('n', '<A-,>', '<Cmd>vertical resize -2<CR>', opts)
+keymap.set('n', '<A-.>', '<Cmd>vertical resize +2<CR>', opts)
 
 -- NeoTree
 keymap.set('n', '<leader>E', ':Neotree float reveal<CR>', opts)
