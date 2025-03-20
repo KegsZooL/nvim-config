@@ -30,20 +30,54 @@ lspconfig.jdtls.setup({
     }
 })
 
-lspconfig.pyright.setup({
+-- lspconfig.pyright.setup({
+--     capabilities = capabilities,
+--     settings = {
+-- 	    pyright = {
+-- 	      -- Using Ruff's import organizer
+-- 	      disableOrganizeImports = true,
+-- 	    },
+-- 	    python = {
+-- 	      analysis = {
+-- 	        -- Ignore all files for analysis to exclusively use Ruff for linting
+-- 	        ignore = { '*' },
+-- 	        },
+-- 		},
+-- 	},
+-- })
+
+lspconfig.basedpyright.setup({
     capabilities = capabilities,
     settings = {
-	    pyright = {
-	      -- Using Ruff's import organizer
-	      disableOrganizeImports = true,
-	    },
-	    python = {
-	      analysis = {
-	        -- Ignore all files for analysis to exclusively use Ruff for linting
-	        ignore = { '*' },
-	        },
-		},
-	},
+      analysis = {
+        diagnosticMode = 'workspace',
+        useLibraryCodeForTypes = true,
+        diagnosticSeverityOverrides = {
+          autoSearchPaths = true,
+          reportGeneralTypeIssues = 'none',
+          reportArgumentType = 'none',
+          reportUnknownMemberType = 'warning',
+          reportAssignmentType = 'none',
+          reportCallIssue = 'none',
+          reportOptionalSubscript = 'none',
+          reportOptionalMemberAccess = 'none',
+          reportPrivateImportUsage = 'none',
+          reportUnusedImport = false,
+          reportUnusedVariable = false,
+          reportUnusedFunction = false,
+          reportUnnecessaryCast = 'warning',
+          reportUnnecessaryComparison = 'warning',
+          reportUnnecessaryIsInstance = 'warning',
+          reportImplicitStringConcatenation = 'none',
+          inlayHints = {
+              variableTypes = false,
+              genericTypes = false,
+              functionReturnTypes = true,
+              callArgumentNames = true,
+          },
+        },
+      },
+    }
 })
 
 lspconfig.ruff_lsp.setup {
@@ -167,6 +201,10 @@ lspconfig.asm_lsp.setup({
     filetypes = {
         "asm", "vmasm", "s", "S"
     }
+})
+
+lspconfig.jinja_lsp.setup({
+    capabilities = capabilities,
 })
 
 require("lsp_signature").setup({

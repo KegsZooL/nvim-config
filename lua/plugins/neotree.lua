@@ -89,10 +89,10 @@ require("neo-tree").setup({
     commands = {},
     window = {
         position = "left",
-        width = 70,
+        width = 45,
         mapping_options = {
-        noremap = true,
-        nowait = true,
+            noremap = true,
+            nowait = true,
         },
         mappings = {
             ["<space>"] = {
@@ -101,7 +101,7 @@ require("neo-tree").setup({
             },
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
-            ["<esc>"] = "cancel", -- close preview or floating neo-tree window
+            -- ["<esc>"] = "cancel", -- close preview or floating neo-tree window
             ["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
             ["l"] = "focus_preview",
             ["S"] = "open_split",
@@ -113,7 +113,7 @@ require("neo-tree").setup({
             ["a"] = {
                 "add",
                 config = {
-                show_path = "relative" -- "none", "relative", "absolute"
+                    show_path = "relative" -- "none", "relative", "absolute"
                 }
             },
             ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
@@ -143,8 +143,8 @@ require("neo-tree").setup({
         },
         always_show_by_pattern = {
         },
-            never_show = ignore_files,
-            never_show_by_pattern = ignore_files,
+            -- never_show = ignore_files,
+            -- never_show_by_pattern = ignore_files,
         },
         follow_current_file = {
             enabled = false, -- This will find and focus the file in the active buffer every time

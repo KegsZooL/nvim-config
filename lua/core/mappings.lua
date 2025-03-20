@@ -27,9 +27,12 @@ keymap.set('n', 's', '"_s', opts)
 keymap.set('v', 's', '"_s', opts)
 
 keymap.set('n', 'daw', '"_daw', opts)
+keymap.set('n', 'dw', '"_daw', opts)
 
 keymap.set('n', '<C-w>', 'vi', opts)
 keymap.set('n', '<C-S-w>', 'va', opts)
+
+keymap.set('n', 'C-S-O', '<C-I>', opts)
 
 -- Commenting on lines
 keymap.set('n', '<A-\'>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
@@ -182,14 +185,16 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
-
 -- DAP
 local dap = require("dap")
+local dap_python = require("dap-python")
 
 keymap.set('n', '<A-p>', dap.toggle_breakpoint, opts)
 keymap.set('n', '<F11>', dap.step_over, opts)
 keymap.set('n', '<F1>', dap.step_into, opts)
 keymap.set('n', '<F10>', dap.continue, opts)
+keymap.set('n', '<F5>', dap_python.test_method, opts)
+keymap.set('n', '<F7>', dap.disconnect, dap.close(), opts)
 
 -- Dashboard
 keymap.set('n', '<leader>hh', ':Dashboard<CR>', opts)
@@ -199,3 +204,14 @@ keymap.set('n', 'GG', '<cmd>Gitsigns preview_hunk_inline<CR>', opts)
 keymap.set('n', 'gG', '<cmd>Gitsigns preview_hunk<CR>', opts)
 keymap.set('n', 'gn', ':silent! Gitsigns nav_hunk next<CR>', opts)
 keymap.set('n', 'gp', ':silent! Gitsigns nav_hunk prev<CR>', opts)
+
+-- Inalay hints
+local lsp = vim.lsp
+keymap.set("n", "X", function()
+  local enabled = vim.lsp.inlay_hint.is_enabled()
+  if enabled then
+      lsp.inlay_hint.enable(false)
+  else
+      lsp.inlay_hint.enable(true)
+  end
+end, opts)

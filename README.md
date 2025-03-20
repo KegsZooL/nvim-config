@@ -61,7 +61,7 @@
 #### 📁 Nvim File tree
 
 ```
-.
+├── init.lua
 ├── lua
 │   ├── ascii-art.lua
 │   ├── core
@@ -70,7 +70,7 @@
 │   │   └── mappings.lua
 │   ├── ignore_files.lua
 │   └── plugins
-│       ├── autopairs.lua
+│       ├── autosave.lua
 │       ├── autotag.lua
 │       ├── bufferline.lua
 │       ├── cmp.lua
@@ -79,6 +79,7 @@
 │       ├── colortils.lua
 │       ├── comment.lua
 │       ├── dap.lua
+│       ├── dap-python.lua
 │       ├── dashboard.lua
 │       ├── emoji.lua
 │       ├── gitsigns.lua
@@ -92,11 +93,14 @@
 │       ├── mason-lspconfig.lua
 │       ├── mason.lua
 │       ├── mason-nvim-dap.lua
+│       ├── mini.lua
 │       ├── move.lua
 │       ├── neotree.lua
 │       ├── nerdy.lua
 │       ├── noice.lua
+│       ├── null-ls.lua
 │       ├── nvim-notify.lua
+│       ├── persistence.lua
 │       ├── surround.lua
 │       ├── telescope.lua
 │       ├── toggleterm.lua

@@ -34,14 +34,8 @@ cmp.setup({
         end,
     },
     window = {
-        completion = cmp.config.window.bordered({
-           max_width = 20,
-           max_height = 20
-        }),
-        documentation = cmp.config.window.bordered({
-            max_width = 20,
-            max_height = 20
-        }),
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
     },
     completion = {
         autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged  }
@@ -95,10 +89,10 @@ cmp.setup({
         { name = 'jdtls'},
         { name = 'matlab_ls' },
         { name = 'pyright' },
-        { name = 'ruff-lsp'}
+        { name = 'ruff-lsp'},
+        { name = 'jinja_lsp'}
     }),
     formatting = {
-        fields = { "abbr", "kind", "menu" },
         format = function(entry, vim_item)
            vim_item.kind = string.format('   %s %s', kind_icons[vim_item.kind], vim_item.kind)
            return vim_item
@@ -107,6 +101,7 @@ cmp.setup({
     experimental = {
         ghost_text = false
     },
+    matching = { disallow_symbol_nonprefix_matching = true }
 })
 
 -- Set configuration for specific filetype.
