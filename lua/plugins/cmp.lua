@@ -43,13 +43,13 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping(function ()
-            if cmp.visible() then
-                cmp.abort()
-            else
-                cmp.complete()
-            end
-        end),
+        -- ['<C-Space>'] = cmp.mapping(function ()
+        --     if cmp.visible() then
+        --         cmp.abort()
+        --     else
+        --         cmp.complete()
+        --     end
+        -- end),
         ['<CR>'] = cmp.mapping.confirm({select = true}),
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then

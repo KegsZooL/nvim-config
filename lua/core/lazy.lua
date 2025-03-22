@@ -175,5 +175,5 @@ require("lazy").setup({
     { "mfussenegger/nvim-dap-python" },
     { "typeddjango/django-stubs" },
     { "lvimuser/lsp-inlayhints.nvim" },
-    { "pocco81/auto-save.nvim" },
+    -- { "pocco81/auto-save.nvim" },
 })

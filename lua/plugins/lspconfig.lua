@@ -30,55 +30,65 @@ lspconfig.jdtls.setup({
     }
 })
 
--- lspconfig.pyright.setup({
---     capabilities = capabilities,
---     settings = {
--- 	    pyright = {
--- 	      -- Using Ruff's import organizer
--- 	      disableOrganizeImports = true,
--- 	    },
--- 	    python = {
--- 	      analysis = {
--- 	        -- Ignore all files for analysis to exclusively use Ruff for linting
--- 	        ignore = { '*' },
--- 	        },
--- 		},
--- 	},
--- })
-
-lspconfig.basedpyright.setup({
+lspconfig.pyright.setup({
     capabilities = capabilities,
     settings = {
-      analysis = {
-        diagnosticMode = 'workspace',
-        useLibraryCodeForTypes = true,
-        diagnosticSeverityOverrides = {
-          autoSearchPaths = true,
-          reportGeneralTypeIssues = 'none',
-          reportArgumentType = 'none',
-          reportUnknownMemberType = 'warning',
-          reportAssignmentType = 'none',
-          reportCallIssue = 'none',
-          reportOptionalSubscript = 'none',
-          reportOptionalMemberAccess = 'none',
-          reportPrivateImportUsage = 'none',
-          reportUnusedImport = false,
-          reportUnusedVariable = false,
-          reportUnusedFunction = false,
-          reportUnnecessaryCast = 'warning',
-          reportUnnecessaryComparison = 'warning',
-          reportUnnecessaryIsInstance = 'warning',
-          reportImplicitStringConcatenation = 'none',
-          inlayHints = {
-              variableTypes = false,
-              genericTypes = false,
-              functionReturnTypes = true,
-              callArgumentNames = true,
-          },
-        },
-      },
-    }
+	    pyright = {
+            disableOrganizeImports = true,
+            typeCheckingMode = "basic",
+            reportUnknownMemberType = true
+	    },
+	    python = {
+            analysis = {
+                stubPath = "~/typing-stubs/",
+                program = vim.fn.getcwd() .. '/manage.py',
+                extraPaths = { "./manage.py", "./" },
+                reportUnusedImport = false,
+                reportAttributeAccessIssue = false,
+                reportGeneralTypeIssues = false,
+                ignore = { '*' },
+            },
+		},
+	},
 })
+
+-- lspconfig.basedpyright.setup({
+--     capabilities = capabilities,
+--     settings = {
+--       analysis = {
+--         typeCheckingMode = "off",
+--         diagnosticMode = 'openFilesOnly',
+--         stubPath = "~/typing-stubs/",
+--         useLibraryCodeForTypes = true,
+--         autoSearchPaths = true,
+--         extraPaths = { "./manage.py", "./" },
+--         diagnosticSeverityOverrides = {
+--             reportAny = "none",
+--             reportOptionalMemberAccess = 'none',
+--             reportOptionalSubscript = 'none',
+--             reportOptionalCall = 'none',
+--             reportOptionalIterable = 'none',
+--             reportAttributeAccessIssue = "none",
+--             reportMissingTypeArgument = "none",
+--             reportGeneralTypeIssues = "none",
+--             reportMissingTypeStubs = "none",
+--             reportUnknownArgumentType = "none",
+--             reportUnknownMemberType = "none",
+--             reportUnknownParameterType = "none",
+--             reportUnknownVariableType = "none",
+--             reportTypedDictNotRequiredAccess = "none",
+--             reportPrivateImportUsage = "none",
+--             reportUnusedCallResult = "none",
+--             inlayHints = {
+--                 variableTypes = false,
+--                 genericTypes = false,
+--                 functionReturnTypes = true,
+--                 callArgumentNames = true,
+--             },
+--         },
+--       },
+--     }
+-- })
 
 lspconfig.ruff_lsp.setup {
   init_options = {
@@ -104,10 +114,6 @@ lspconfig.jsonls.setup({
 })
 
 lspconfig.cssls.setup({
-    capabilities = capabilities
-})
-
-lspconfig.html.setup({
     capabilities = capabilities
 })
 
@@ -142,7 +148,7 @@ lspconfig.ts_ls.setup({
 })
 
 lspconfig.tailwindcss.setup({
-    capabilities = capabilities
+    capabilities = capabilities,
 })
 
 lspconfig.svelte.setup({
@@ -165,15 +171,6 @@ lspconfig.prismals.setup({
     capabilities = capabilities
 })
 
-lspconfig.emmet_ls.setup({
-    capabilities = capabilities,
-    filetypes = {
-        "html", "typescriptreact",
-        "javascriptreact", "css",
-        "sass", "scss", "less",
-        "svelte"
-    },
-})
 
 lspconfig.graphql.setup({
     capabilities = capabilities,
