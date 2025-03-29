@@ -84,7 +84,6 @@ require("lazy").setup({
     { 'rafamadriz/friendly-snippets' },
     { 'L3MON4D3/LuaSnip' },
     { 'fedepujol/move.nvim' },
-    { 'nvim-java/nvim-java' },
     { 'onsails/lspkind.nvim' },
     { "christoomey/vim-system-copy" },
     { "numToStr/Comment.nvim" },
@@ -175,5 +174,4 @@ require("lazy").setup({
     { "mfussenegger/nvim-dap-python" },
     { "typeddjango/django-stubs" },
     { "lvimuser/lsp-inlayhints.nvim" },
-    -- { "pocco81/auto-save.nvim" },
 })

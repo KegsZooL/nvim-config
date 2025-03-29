@@ -40,14 +40,14 @@ keymap.set('v', '<A-\'>', ':lua require("Comment.api").toggle.linewise(vim.fn.vi
 keymap.set('i', '<A-\'>', '<Esc>:lua require("Comment.api").toggle.linewise.current()<CR>gi', opts)
 
 -- Save the current file
-keymap.set('n', '<C-s>', ':w<CR>', opts)
-keymap.set('v', '<C-s>', ':w<CR>', opts)
-keymap.set('i', '<C-s>', '<Esc>:w<CR>a', opts)
+keymap.set('n', '<C-s>', ':w!<CR>', opts)
+keymap.set('v', '<C-s>', ':w!<CR>', opts)
+keymap.set('i', '<C-s>', '<Esc>:w!<CR>a', opts)
 
 -- Save all buffers
-keymap.set('n', '<C-s-a>', ':wa<CR>', opts)
-keymap.set('v', '<C-s-a>', ':wa<CR>', opts)
-keymap.set('i', '<C-s-a>', '<Esc>:wa<CR>a', opts)
+keymap.set('n', '<C-s-a>', ':wa!<CR>', opts)
+keymap.set('v', '<C-s-a>', ':wa!<CR>', opts)
+keymap.set('i', '<C-s-a>', '<Esc>:wa!<CR>a', opts)
 
 -- Tabulation
 keymap.set('n', '<Tab>', ':normal! I<Tab><CR>', opts)

@@ -1,8 +1,8 @@
 require("mason-lspconfig").setup {
     ensure_installed = {
-        "lua_ls", "jdtls", "pyright", "marksman",
+        "lua_ls", "pyright", "marksman",
         "jsonls", "cssls", "tailwindcss",
-        "svelte", "graphql", "prismals", "matlab_ls", "asm_lsp",
+        "svelte", "graphql", "prismals",
         "ruff", 'jinja_lsp', "basedpyright",
     },
 }

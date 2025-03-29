@@ -1,5 +1,6 @@
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local fn = vim.fn
 
 lspconfig.lua_ls.setup({
     capabilities = capabilities,
@@ -30,70 +31,71 @@ lspconfig.jdtls.setup({
     }
 })
 
-lspconfig.pyright.setup({
-    capabilities = capabilities,
-    settings = {
-	    pyright = {
-            disableOrganizeImports = true,
-            typeCheckingMode = "basic",
-            reportUnknownMemberType = true
-	    },
-	    python = {
-            analysis = {
-                stubPath = "~/typing-stubs/",
-                program = vim.fn.getcwd() .. '/manage.py',
-                extraPaths = { "./manage.py", "./" },
-                reportUnusedImport = false,
-                reportAttributeAccessIssue = false,
-                reportGeneralTypeIssues = false,
-                ignore = { '*' },
-            },
-		},
-	},
-})
-
--- lspconfig.basedpyright.setup({
+-- lspconfig.pyright.setup({
 --     capabilities = capabilities,
 --     settings = {
---       analysis = {
---         typeCheckingMode = "off",
---         diagnosticMode = 'openFilesOnly',
---         stubPath = "~/typing-stubs/",
---         useLibraryCodeForTypes = true,
---         autoSearchPaths = true,
---         extraPaths = { "./manage.py", "./" },
---         diagnosticSeverityOverrides = {
---             reportAny = "none",
---             reportOptionalMemberAccess = 'none',
---             reportOptionalSubscript = 'none',
---             reportOptionalCall = 'none',
---             reportOptionalIterable = 'none',
---             reportAttributeAccessIssue = "none",
---             reportMissingTypeArgument = "none",
---             reportGeneralTypeIssues = "none",
---             reportMissingTypeStubs = "none",
---             reportUnknownArgumentType = "none",
---             reportUnknownMemberType = "none",
---             reportUnknownParameterType = "none",
---             reportUnknownVariableType = "none",
---             reportTypedDictNotRequiredAccess = "none",
---             reportPrivateImportUsage = "none",
---             reportUnusedCallResult = "none",
---             inlayHints = {
---                 variableTypes = false,
---                 genericTypes = false,
---                 functionReturnTypes = true,
---                 callArgumentNames = true,
+-- 	    -- pyright = {
+--      --        typeCheckingMode = "recommended",
+-- 	    -- },
+-- 	    python = {
+--             analysis = {
+--                 stubPath = "~/typing-stubs/",
+--                 program = vim.fn.getcwd() .. '/manage.py',
+--                 extraPaths = { "./manage.py", "./" },
+--                 reportUnusedImport = false,
 --             },
---         },
---       },
---     }
+-- 		},
+-- 	},
 -- })
+
+lspconfig.basedpyright.setup({
+  capabilities = capabilities,
+  settings = {
+    basedpyright = {
+      analysis = {
+        typeCheckingMode = "standard",  -- "off", "basic", "standard", "strict", "recommended", "all"
+        diagnosticMode = "workspace",
+        stubPath = fn.expand("~/.pyright/stubs"),
+        useLibraryCodeForTypes = true,
+        autoSearchPaths = true,
+        extraPaths = { "./manage.py", "./" },
+
+        diagnosticSeverityOverrides = {
+          reportAny = "none",                     -- игнорировать `Any`
+          -- reportOptionalMemberAccess = "none",    -- доступ к Optional[...].attr
+          -- reportOptionalSubscript = "none",       -- индексация Optional[...][...]
+          -- reportOptionalCall = "none",           -- вызов Optional[...]()
+          -- reportOptionalIterable = "none",        -- итерация Optional[...]
+          -- reportAttributeAccessIssue = "none",    -- доступ к несуществующим атрибутам
+          -- reportMissingTypeArgument = "none",     -- отсутствие Generic-типов
+          -- reportGeneralTypeIssues = "none",      -- общие проблемы с типами
+          -- reportMissingTypeStubs = "none",        -- отсутствие стабов
+          -- reportUnknownArgumentType = "none",     -- неизвестный тип аргумента
+          -- reportUnknownMemberType = "none",      -- неизвестный тип атрибута
+          -- reportUnknownParameterType = "none",   -- неизвестный тип параметра
+          -- reportUnknownVariableType = "none",     -- неизвестный тип переменной
+          -- reportTypedDictNotRequiredAccess = "none", -- доступ к необязательным полям TypedDict
+          -- reportPrivateImportUsage = "none",      -- использование приватных импортов
+          -- reportUnusedCallResult = "none",       -- неиспользуемый результат вызова
+          reportUnusedImport = "none",           -- неиспользуемые импорты
+          reportUnusedVariable = "none",          -- неиспользуемые переменные
+          reportUntypedFunctionDecorator = "none", -- декораторы без аннотаций
+        },
+
+        inlayHints = {
+          variableTypes = false,
+          genericTypes = false,
+          functionReturnTypes = true,
+          callArgumentNames = true,
+        },
+      },
+    },
+  },
+})
 
 lspconfig.ruff_lsp.setup {
   init_options = {
     settings = {
-      -- Any extra CLI arguments for `ruff` go here.
       args = {
 		"--select=E,F,UP,N,I,ASYNC,S,PTH",
 		"--line-length=79",
@@ -171,7 +173,6 @@ lspconfig.prismals.setup({
     capabilities = capabilities
 })
 
-
 lspconfig.graphql.setup({
     capabilities = capabilities,
     filetypes = {
@@ -179,18 +180,6 @@ lspconfig.graphql.setup({
         "svelte", "typescriptreact",
         "javascriptreact"
     }
-})
-
-lspconfig.matlab_ls.setup({
-    capabilities = capabilities,
-    settings = {
-        MATLAB = {
-            indexWorkspace = true,
-            installPath = "/opt/matlab/R2023a", -- might need to change this
-            matlabConnectionTiming = "onStart",
-            telemetry = true,
-        },
-    },
 })
 
 lspconfig.asm_lsp.setup({
