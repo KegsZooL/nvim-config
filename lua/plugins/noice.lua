@@ -34,15 +34,6 @@ require("noice").setup({
     },
     views = {
         cmdline_popup = {
-            position = {
-                row = "50%",
-                col = "50%",
-            },
-            size = {
-                width = "40%",
-                height = "auto",
-            },
-            filter_options = {},
             win_options = {
                 winhighlight = { Normal = "TelescopePromptNormal", FloatBorder = "DiagnosticInfo" },
             },
@@ -59,23 +50,6 @@ require("noice").setup({
             win_options = {
                 winblend = 0,
             }
-        },
-        popupmenu = {
-            relative = "editor",
-            position = {
-                row = 8,
-                col = "50%",
-            },
-            size = {
-                width = 60,
-                height = 10,
-            },
-            border = {
-                padding = { 0, 1 },
-            },
-            win_options = {
-                winhighlight = { Normal = "TelescopePromptNormal", FloatBorder = "DiagnosticInfo" },
-            },
         },
     },
     routes = {

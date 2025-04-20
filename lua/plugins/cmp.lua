@@ -86,11 +86,10 @@ cmp.setup({
         { name = 'emoji' },
         { name = 'path' },
         { name = 'buffer' },
-        { name = 'jdtls'},
-        { name = 'matlab_ls' },
         { name = 'pyright' },
         { name = 'ruff-lsp'},
-        { name = 'jinja_lsp'}
+        { name = 'jinja_lsp'},
+        { name = 'basedpyright'},
     }),
     formatting = {
         format = function(entry, vim_item)
