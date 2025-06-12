@@ -1,6 +1,6 @@
 require("noice").setup({
     notify = {
-        enabled = true,
+        enabled = false,
     },
     messages = {
         enabled = true, -- views standard vim/nvim log messages
@@ -24,8 +24,11 @@ require("noice").setup({
             ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
         signature = {
-            enabled = false,
+            enabled = true,
         },
+        hover = {
+            enabled = true,
+        }
     },
     presets = {
         long_message_to_split = true, -- long messages will be sent to a split

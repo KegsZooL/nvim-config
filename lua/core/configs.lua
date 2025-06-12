@@ -4,6 +4,7 @@ local g = vim.g
 local wo = vim.wo
 local fn = vim.fn
 local api = vim.api
+local diagnostic = vim.diagnostic
 
 wo.relativenumber = true
 wo.number = true
@@ -118,3 +119,10 @@ api.nvim_create_autocmd('CursorMoved', {
   end
 })
 
+diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})

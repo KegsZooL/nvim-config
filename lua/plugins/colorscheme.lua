@@ -15,3 +15,5 @@ api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
 api.nvim_set_hl(0, "LspInfoBorder", { link = "Normal" })
 api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
 
+
+api.nvim_set_hl(0, "IlluminatedWordRead", { fg = "#e78a4e", bold = true })

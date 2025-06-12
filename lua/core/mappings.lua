@@ -20,6 +20,8 @@ keymap.set('v', '<Right>', '<Nop>', opts)
 keymap.set('n', '<A-y>', ':t.<CR>', opts)
 keymap.set('x', '<A-y>', ":t'><CR>", opts)
 
+keymap.set("v", "p", '"_dP', opts)
+
 keymap.set('n', 'dd', '"_dd', opts)
 keymap.set('v', 'd', '"_d', opts)
 
@@ -70,9 +72,9 @@ keymap.set('i', '<A-q>', '<Esc>:close<CR>:wincmd p<CR>', opts)
 keymap.set('v', '<A-q>', '<Esc>:close<CR>:wincmd p<CR>', opts)
 
 -- Close current buffer
-keymap.set('n', '<M-\\>', ':bd!<CR>:bprevious<CR>', opts)
-keymap.set('i', '<M-\\>', '<Esc>:bd!<CR>:bprevious<CR>', opts)
-keymap.set('v', '<M-\\>', '<Esc>:bd!<CR>:bprevious<CR>', opts)
+keymap.set('n', '<M-\\>', ':bprevious | bd!#<CR>', opts)
+keymap.set('i', '<M-\\>', ':bprevious | bd!#<CR>', opts)
+keymap.set('v', '<M-\\>', ':bprevious | bd!#<CR>', opts)
 
 -- Split the window
 keymap.set('n', '<A-t>', '<Cmd>vsplit<CR>', opts)
@@ -142,6 +144,7 @@ keymap.set("i", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
 
 -- Lsp actions
 keymap.set('n', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+keymap.set('i', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 keymap.set('n', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 keymap.set('i', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
@@ -215,3 +218,8 @@ keymap.set("n", "X", function()
       lsp.inlay_hint.enable(true)
   end
 end, opts)
+
+-- Trouble
+keymap.set("n", "]D", '<cmd>Trouble diagnostics open<CR>', { desc = "Open diagnostics" })
+keymap.set("n", "[d", '<cmd>Trouble diagnostics next<CR>', { desc = "Next diagnostic" })
+keymap.set("n", "[d", '<cmd>Trouble diagnostics prev<CR>', { desc = "Prev diagnostic" })

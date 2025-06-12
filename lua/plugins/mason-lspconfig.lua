@@ -4,5 +4,6 @@ require("mason-lspconfig").setup {
         "jsonls", "cssls", "tailwindcss",
         "svelte", "graphql", "prismals",
         "ruff", 'jinja_lsp', "basedpyright",
+        "gopls",
     },
 }

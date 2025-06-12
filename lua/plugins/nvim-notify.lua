@@ -14,4 +14,10 @@ nvim_notify.setup {
     ["TRACE"] = log.levels.TRACE,
   }
 }
-vim.notify = nvim_notify
+vim.notify = function(msg, level, opts)
+  level = level or log.levels.INFO
+  if level == log.levels.INFO then
+    return
+  end
+  nvim_notify(msg, level, opts)
+end

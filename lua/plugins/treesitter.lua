@@ -4,7 +4,7 @@ require'nvim-treesitter.configs'.setup {
     {
         "java", "lua", "vim", "vimdoc",
         "gitignore", "markdown", "markdown_inline",
-        "css", "sql",
+        "css", "sql", "go"
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)

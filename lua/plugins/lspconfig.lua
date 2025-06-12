@@ -31,76 +31,30 @@ lspconfig.jdtls.setup({
     }
 })
 
--- lspconfig.pyright.setup({
---     capabilities = capabilities,
---     settings = {
--- 	    -- pyright = {
---      --        typeCheckingMode = "recommended",
--- 	    -- },
--- 	    python = {
---             analysis = {
---                 stubPath = "~/typing-stubs/",
---                 program = vim.fn.getcwd() .. '/manage.py',
---                 extraPaths = { "./manage.py", "./" },
---                 reportUnusedImport = false,
---             },
--- 		},
--- 	},
--- })
-
-lspconfig.basedpyright.setup({
-  capabilities = capabilities,
-  settings = {
-    basedpyright = {
-      analysis = {
-        typeCheckingMode = "standard",  -- "off", "basic", "standard", "strict", "recommended", "all"
-        diagnosticMode = "workspace",
-        stubPath = fn.expand("~/.pyright/stubs"),
-        useLibraryCodeForTypes = true,
-        autoSearchPaths = true,
-        extraPaths = { "./manage.py", "./" },
-
-        diagnosticSeverityOverrides = {
-          reportAny = "none",                     -- игнорировать `Any`
-          -- reportOptionalMemberAccess = "none",    -- доступ к Optional[...].attr
-          -- reportOptionalSubscript = "none",       -- индексация Optional[...][...]
-          -- reportOptionalCall = "none",           -- вызов Optional[...]()
-          -- reportOptionalIterable = "none",        -- итерация Optional[...]
-          -- reportAttributeAccessIssue = "none",    -- доступ к несуществующим атрибутам
-          -- reportMissingTypeArgument = "none",     -- отсутствие Generic-типов
-          -- reportGeneralTypeIssues = "none",      -- общие проблемы с типами
-          -- reportMissingTypeStubs = "none",        -- отсутствие стабов
-          -- reportUnknownArgumentType = "none",     -- неизвестный тип аргумента
-          -- reportUnknownMemberType = "none",      -- неизвестный тип атрибута
-          -- reportUnknownParameterType = "none",   -- неизвестный тип параметра
-          -- reportUnknownVariableType = "none",     -- неизвестный тип переменной
-          -- reportTypedDictNotRequiredAccess = "none", -- доступ к необязательным полям TypedDict
-          -- reportPrivateImportUsage = "none",      -- использование приватных импортов
-          -- reportUnusedCallResult = "none",       -- неиспользуемый результат вызова
-          reportUnusedImport = "none",           -- неиспользуемые импорты
-          reportUnusedVariable = "none",          -- неиспользуемые переменные
-          reportUntypedFunctionDecorator = "none", -- декораторы без аннотаций
-        },
-
-        inlayHints = {
-          variableTypes = false,
-          genericTypes = false,
-          functionReturnTypes = true,
-          callArgumentNames = true,
-        },
-      },
-    },
-  },
-})
+lspconfig.pyright.setup {
+	settings = {
+	    pyright = {
+	      -- Using Ruff's import organizer
+	      disableOrganizeImports = true,
+	    },
+	    python = {
+	      analysis = {
+	            -- Ignore all files for analysis to exclusively use Ruff for linting
+	            ignore = { '*' },
+	        },
+		},
+	}
+}
 
 lspconfig.ruff_lsp.setup {
   init_options = {
     settings = {
       args = {
-		"--select=E,F,UP,N,I,ASYNC,S,PTH",
-		"--line-length=79",
+		"--select=B,C90,C4,DTZ,EM,UP,FA,LOG,PTH,ASYNC,G,E,F,I,S,W,N,RUF,TD",
+        -- "--ignore=E722,ERA,N818,UP040,TD003,TD002,UP017",
+		"--line-length=120",
 		"--respect-gitignore",
-      	"--target-version=py311",
+      	"--target-version=py312",
         "--fix"
       },
     }
@@ -193,8 +147,17 @@ lspconfig.jinja_lsp.setup({
     capabilities = capabilities,
 })
 
+lspconfig.gopls.setup {
+    capabilities = capabilities,
+    cmd = {"gopls"},
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+}
+
 require("lsp_signature").setup({
     bind = true,
     hint_enable = false,
     floating_window = false,
+    handler_opts = {
+        border = "rounded"
+    }
 })
