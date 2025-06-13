@@ -1,5 +1,5 @@
 local fn = vim.fn;
-local ignore_files = require("ignore_files").pattern
+local ignore_files = require("ignore_files")
 
 fn.sign_define("DiagnosticSignError",
     {text = " ", texthl = "DiagnosticSignError"})
@@ -11,10 +11,10 @@ fn.sign_define("DiagnosticSignHint",
     {text = "󰌵", texthl = "DiagnosticSignHint"})
 
 require("neo-tree").setup({
-    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+    close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "rounded",
     enable_git_status = true,
-    enable_diagnostics = false,
+    enable_diagnostics = true,
     open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
     sort_case_insensitive = false, -- used when sorting files and directories in the tree
     sort_function = nil ,
@@ -66,7 +66,7 @@ require("neo-tree").setup({
         }
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
-        file_size = {
+            file_size = {
             enabled = false,
             -- required_width = 64, -- min width of window required to show this column
         },
@@ -85,6 +85,20 @@ require("neo-tree").setup({
         symlink_target = {
            enabled = false,
         },
+        diagnostics = {
+            symbols = {
+                hint = "󰌵",
+                info = " ",
+                warn = " ",
+                error = " ",
+            },
+            highlights = {
+                hint = "DiagnosticSignHint",
+                info = "DiagnosticSignInfo",
+                warn = "DiagnosticSignWarn",
+                error = "DiagnosticSignError",
+            },
+        },
     },
     commands = {},
     window = {
@@ -101,8 +115,8 @@ require("neo-tree").setup({
             },
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
-            -- ["<esc>"] = "cancel", -- close preview or floating neo-tree window
-            ["p"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+            ["<esc>"] = "cancel", -- close preview or floating neo-tree window
+            ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
             ["l"] = "focus_preview",
             ["S"] = "open_split",
             ["s"] = "open_vsplit",
@@ -143,8 +157,8 @@ require("neo-tree").setup({
         },
         always_show_by_pattern = {
         },
-            -- never_show = ignore_files,
-            -- never_show_by_pattern = ignore_files,
+            never_show = ignore_files,
+            never_show_by_pattern = ignore_files,
         },
         follow_current_file = {
             enabled = false, -- This will find and focus the file in the active buffer every time

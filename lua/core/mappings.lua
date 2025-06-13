@@ -133,8 +133,8 @@ keymap.set('i', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 keymap.set('n', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
 keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
 
-keymap.set('n', '<A-z>', '<cmd>Lspsaga finder imp<CR>', opts)
-keymap.set('i', '<A-z>', '<cmd>Lspsaga finder imp<CR>', opts)
+keymap.set('n', '<A-x>', '<cmd>Lspsaga finder imp<CR>', opts)
+keymap.set('i', '<A-x>', '<cmd>Lspsaga finder imp<CR>', opts)
 
 keymap.set('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 keymap.set('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
@@ -190,14 +190,12 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- DAP
 local dap = require("dap")
-local dap_python = require("dap-python")
 
 keymap.set('n', '<A-p>', dap.toggle_breakpoint, opts)
 keymap.set('n', '<F11>', dap.step_over, opts)
 keymap.set('n', '<F1>', dap.step_into, opts)
 keymap.set('n', '<F10>', dap.continue, opts)
-keymap.set('n', '<F5>', dap_python.test_method, opts)
-keymap.set('n', '<F7>', dap.disconnect, dap.close(), opts)
+keymap.set('n', '<F5>', dap.disconnect, dap.close(), opts)
 
 -- Dashboard
 keymap.set('n', '<leader>hh', ':Dashboard<CR>', opts)
