@@ -1,6 +1,18 @@
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local fn = vim.fn
+
+local util = lspconfig.util
+local path = util.path
+
+local function get_python_path()
+    -- Use activated virtualenv.
+    if vim.env.VIRTUAL_ENV then
+        return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+    end
+
+    -- Fallback to system Python.
+    return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
+end
 
 lspconfig.lua_ls.setup({
     capabilities = capabilities,
@@ -17,34 +29,51 @@ lspconfig.lua_ls.setup({
     },
 })
 
-lspconfig.jdtls.setup({
+-- lspconfig.pyright.setup {
+--     capabilities = capabilities,
+-- 	settings = {
+-- 	    pyright = {
+-- 	      -- Using Ruff's import organizer
+-- 	      disableOrganizeImports = true,
+-- 	    },
+-- 	    python = {
+-- 	      analysis = {
+--               autoSearchPaths =  true,
+--               useLibraryCodeForTypes = true
+-- 	        },
+-- 		},
+-- 	}
+-- }
+
+lspconfig.basedpyright.setup({
     capabilities = capabilities,
     settings = {
-        java = {
-            inlayHints = {
-                parameterNames = {
-                    enabled = "all",
-                    exclusions = { "this" },
+        basedpyright = {
+            analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "openFilesOnly",
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "basic",
+                diagnosticSeverityOverrides = {
+                    reportAny = false,
+                    reportMissingTypeArgument = false,
+                    reportMissingTypeStubs = false,
+                    reportUnknownArgumentType = false,
+                    reportUnknownMemberType = false,
+                    reportUnknownParameterType = false,
+                    reportUnknownVariableType = false,
+                    reportUnusedCallResult = false,
                 },
             },
-        }
-    }
+        },
+        python = {},
+    },
+    before_init = function(_, config)
+        local python_path = get_python_path()
+        config.settings.python.pythonPath = python_path
+        vim.notify(python_path)
+    end,
 })
-
-lspconfig.pyright.setup {
-	settings = {
-	    pyright = {
-	      -- Using Ruff's import organizer
-	      disableOrganizeImports = true,
-	    },
-	    python = {
-	      analysis = {
-	            -- Ignore all files for analysis to exclusively use Ruff for linting
-	            ignore = { '*' },
-	        },
-		},
-	}
-}
 
 lspconfig.ruff_lsp.setup {
   init_options = {
@@ -61,72 +90,6 @@ lspconfig.ruff_lsp.setup {
   }
 }
 
-lspconfig.marksman.setup({
-   capabilities = capabilities
-})
-
-lspconfig.jsonls.setup({
-    capabilities = capabilities
-})
-
-lspconfig.cssls.setup({
-    capabilities = capabilities
-})
-
-lspconfig.ts_ls.setup({
-    capabilities = capabilities,
-    settings = {
-        typescript = {
-            inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-            },
-        },
-        javascript = {
-            inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-            },
-        },
-    }
-})
-
-lspconfig.tailwindcss.setup({
-    capabilities = capabilities,
-})
-
-lspconfig.svelte.setup({
-    capabilities = capabilities,
-    settings = {
-        typescript = {
-            inlayHints = {
-                parameterNames = { enabled = 'all' },
-                parameterTypes = { enabled = true },
-                variableTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
-                enumMemberValues = { enabled = true },
-            },
-        },
-    },
-})
-
-lspconfig.prismals.setup({
-    capabilities = capabilities
-})
-
 lspconfig.graphql.setup({
     capabilities = capabilities,
     filetypes = {
@@ -134,17 +97,6 @@ lspconfig.graphql.setup({
         "svelte", "typescriptreact",
         "javascriptreact"
     }
-})
-
-lspconfig.asm_lsp.setup({
-    capabilities = capabilities,
-    filetypes = {
-        "asm", "vmasm", "s", "S"
-    }
-})
-
-lspconfig.jinja_lsp.setup({
-    capabilities = capabilities,
 })
 
 lspconfig.gopls.setup {

@@ -30,6 +30,7 @@ lspsaga.setup({
     },
     hover = {
         max_width = 0.9,
+        silent = true
     },
     rename = {
         auto_save = true,

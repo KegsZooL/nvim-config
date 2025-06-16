@@ -175,4 +175,5 @@ require("lazy").setup({
     { "typeddjango/django-stubs" },
     { "lvimuser/lsp-inlayhints.nvim" },
     { "leoluz/nvim-dap-go" },
+    { "VidocqH/lsp-lens.nvim" },
 })

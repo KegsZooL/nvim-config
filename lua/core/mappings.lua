@@ -142,11 +142,11 @@ keymap.set('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 keymap.set("n", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
 keymap.set("i", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
 
--- Lsp actions
 keymap.set('n', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 keymap.set('i', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-keymap.set('n', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-keymap.set('i', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
+keymap.set('n', '<A-o>', '<cmd>Lspsaga hover_doc<CR>', opts)
+keymap.set('i', '<A-o>', '<cmd>Lspsaga hover_doc<CR>', opts)
 
 -- Telescope
 local builtin = require('telescope.builtin')
