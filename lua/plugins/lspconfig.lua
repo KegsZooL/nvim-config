@@ -104,12 +104,3 @@ lspconfig.gopls.setup {
     cmd = {"gopls"},
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
 }
-
-require("lsp_signature").setup({
-    bind = true,
-    hint_enable = false,
-    floating_window = false,
-    handler_opts = {
-        border = "rounded"
-    }
-})

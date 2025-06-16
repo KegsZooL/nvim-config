@@ -155,7 +155,6 @@ require("lazy").setup({
             require("inlay-hints").setup()
         end
     },
-    { "ray-x/lsp_signature.nvim" },
     { "sqls-server/sqls" },
     {
         'kristijanhusak/vim-dadbod-ui',
