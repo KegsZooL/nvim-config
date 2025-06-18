@@ -20,14 +20,6 @@ lspsaga.setup({
     symbol_in_winbar = {
         enable = false,
     },
-    finder_action_keys = {
-        open = "o",
-        vsplit = "s",
-        split = "i",
-        quit = "q",
-        scroll_down = "<C-f>",
-        scroll_up = "<C-b>",
-    },
     hover = {
         max_width = 0.9,
         silent = true
@@ -45,11 +37,4 @@ lspsaga.setup({
             exec = '<CR>'
         }
     },
-    finder = {
-        keys = {
-            shuttle = '[w',
-            tabnew = '<CR>',
-            vsplit = '<C-A-Tab>'
-        }
-    }
 })

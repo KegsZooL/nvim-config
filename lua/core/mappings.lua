@@ -130,11 +130,11 @@ keymap.set('n', '<leader>eg', ':Neotree float git_status<CR>', opts)
 keymap.set('n', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 keymap.set('i', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 
-keymap.set('n', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
-keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref<CR>', opts)
+-- keymap.set('n', '<A-f>', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
+-- keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
 
-keymap.set('n', '<A-x>', '<cmd>Lspsaga finder imp<CR>', opts)
-keymap.set('i', '<A-x>', '<cmd>Lspsaga finder imp<CR>', opts)
+keymap.set('n', '<A-f>', '<cmd>Lspsaga finder ref+imp<CR>', opts)
+keymap.set('i', '<A-f>', '<cmd>Lspsaga finder ref+imp<CR>', opts)
 
 keymap.set('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 keymap.set('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)

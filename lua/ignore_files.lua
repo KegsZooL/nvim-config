@@ -1,23 +1,6 @@
 local ignore = {}
 
 ignore.pattern = {
-    "cargo",
-    "gem",
-    "Trash",
-    "autostart",
-    "pulse",
-    "swap",
-    "kdeconnect",
-    "downloads",
-    "secret",
-    "kernel",
-    "dic",
-    "mime",
-    "chromium",
-    "inkscape",
-    "xournalpp",
-    "discord",
-    -- ".git",
     ".venv",
     ".conan",
     ".cache",
