@@ -82,3 +82,24 @@ lspconfig.gopls.setup {
     cmd = {"gopls"},
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
 }
+
+-- lspconfig.golangci_lint_ls.setup {
+--     capabilities = capabilities,
+--     filetypes = {'go','gomod'},
+--     cmd = {'golangci-lint-langserver'},
+--     root_dir = lspconfig.util.root_pattern(".git", "go.mod"),
+-- 	init_options = {
+-- 		command = {
+--             "/home/kegszool/go/bin/golangci-lint",
+--             "run",
+--             "--out-format",
+--             "json",
+--             "--show-stats=false",
+--             "--issues-exit-code=1",
+--         }
+-- 	},
+-- }
+
+lspconfig.jsonls.setup {
+    capabilities = capabilities,
+}

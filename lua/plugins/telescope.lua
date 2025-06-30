@@ -1,6 +1,4 @@
 local telescope = require("telescope")
-local open_with_trouble = require("trouble.sources.telescope").open
-local add_to_trouble = require("trouble.sources.telescope").add
 local ignore_files = require("ignore_files").pattern
 
 telescope.setup{
@@ -44,10 +42,6 @@ telescope.setup{
 
     defaults = {
         file_ignore_patterns = ignore_files,
-        mappings = {
-            i = { ["<c-t>"] = open_with_trouble },
-            n = { ["<c-t>"] = open_with_trouble },
-        },
         prompt_prefix = "   ",
         layout_config = {
           horizontal = {

@@ -145,8 +145,8 @@ keymap.set("i", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
 keymap.set('n', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 keymap.set('i', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 
-keymap.set('n', '<A-o>', '<cmd>Lspsaga hover_doc<CR>', opts)
-keymap.set('i', '<A-o>', '<cmd>Lspsaga hover_doc<CR>', opts)
+keymap.set('n', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+keymap.set('i', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 -- Telescope
 local builtin = require('telescope.builtin')
@@ -221,3 +221,6 @@ end, opts)
 keymap.set("n", "]D", '<cmd>Trouble diagnostics open<CR>', { desc = "Open diagnostics" })
 keymap.set("n", "[d", '<cmd>Trouble diagnostics next<CR>', { desc = "Next diagnostic" })
 keymap.set("n", "[d", '<cmd>Trouble diagnostics prev<CR>', { desc = "Prev diagnostic" })
+
+-- GO
+keymap.set("n", "<leader>st", "<cmd>GoFillStruct<CR>", { desc = "[Golang] Fill struct" } )
