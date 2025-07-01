@@ -77,11 +77,18 @@ lspconfig.graphql.setup({
     }
 })
 
-lspconfig.gopls.setup {
-    capabilities = capabilities,
-    cmd = {"gopls"},
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+require('go').setup{
+  lsp_cfg = false,
+  capabilities = capabilities
 }
+local cfg = require'go.lsp'.config()
+lspconfig.gopls.setup(cfg)
+
+-- lspconfig.gopls.setup {
+--     capabilities = capabilities,
+--     cmd = {"gopls"},
+--     filetypes = { "go", "gomod", "gowork", "gotmpl" },
+-- }
 
 -- lspconfig.golangci_lint_ls.setup {
 --     capabilities = capabilities,
@@ -102,4 +109,9 @@ lspconfig.gopls.setup {
 
 lspconfig.jsonls.setup {
     capabilities = capabilities,
+}
+
+lspconfig.jinja_lsp.setup {
+  capabilities = capabilities,
+  filetypes = { 'jinja', 'salt' },
 }
