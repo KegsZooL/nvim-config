@@ -38,8 +38,7 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     completion = {
-        autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged  }
-        -- autocomplete = false
+        autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged }
     },
     mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -68,23 +67,28 @@ cmp.setup({
         end, {"i", "s"})
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'vim-dadbod-completion' },
-        { name = 'graphql-lsp' },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'vsnip' },
         { name = 'path' },
         { name = 'buffer' },
-        { name = 'pylsp' },
-        { name = 'jsonls' },
-        { name = 'jinja_lsp'},
-        { name = 'gopls'},
+        { name = 'vim-dadbod-completion' }, -- SQL
     }),
     formatting = {
-        format = function(entry, vim_item)
-           vim_item.kind = string.format('   %s %s', kind_icons[vim_item.kind], vim_item.kind)
-           return vim_item
+        fields = { 'abbr', 'menu', 'kind' },
+        format = function(entry, item)
+            if kind_icons and kind_icons[item.kind] then
+                item.kind = string.format('   %s %s', kind_icons[item.kind], item.kind)
+            end
+
+            local n = entry.source.name
+            if n == 'nvim_lsp' then
+                item.menu = '[LSP]'
+            else
+                item.menu = string.format('[%s]', n)
+            end
+
+            return item
         end,
     },
     experimental = {
@@ -98,16 +102,4 @@ cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
         {name = 'cmp_git'} -- You can specify the `cmp_git` source if you were installed it.
     }, {{name = 'buffer'}})
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({'/', '?'}, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {{name = 'buffer'}}
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
 })

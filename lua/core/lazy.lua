@@ -28,12 +28,16 @@ require("lazy").setup({
         'hrsh7th/nvim-cmp',
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/vim-vsnip',
             'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip-integ'
+            'hrsh7th/vim-vsnip',
+            'hrsh7th/vim-vsnip-integ',
+            'saadparwaiz1/cmp_luasnip',
+            'L3MON4D3/LuaSnip',
+            'ray-x/lsp_signature.nvim',
+            'rafamadriz/friendly-snippets',
         }
     },
     { 'hrsh7th/vscode-langservers-extracted' },

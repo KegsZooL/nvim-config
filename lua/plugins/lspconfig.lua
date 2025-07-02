@@ -5,6 +5,15 @@ lspconfig.lua_ls.setup({
     capabilities = capabilities,
     settings = {
         Lua = {
+            runtime = {
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                globals = { 'vim' },
+            },
+            workspace = {
+                library = { vim.env.VIMRUNTIME },
+            },
             hint = {
                 enable = true,
                 arrayIndex = 'Disable',
@@ -109,6 +118,14 @@ lspconfig.gopls.setup(cfg)
 
 lspconfig.jsonls.setup {
     capabilities = capabilities,
+}
+
+vim.filetype.add {
+    extension = {
+      jinja = 'jinja',
+      jinja2 = 'jinja',
+      j2 = 'jinja',
+    },
 }
 
 lspconfig.jinja_lsp.setup {
