@@ -130,6 +130,8 @@ keymap.set('n', '<leader>eg', ':Neotree float git_status<CR>', opts)
 keymap.set('n', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 keymap.set('i', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 
+keymap.set('n', '<A-x>', vim.lsp.buf.implementation, opts)
+
 -- keymap.set('n', '<A-f>', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
 -- keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
 
@@ -190,12 +192,17 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- DAP
 local dap = require("dap")
+local dap_ui = require("dapui")
 
 keymap.set('n', '<A-p>', dap.toggle_breakpoint, opts)
 keymap.set('n', '<F11>', dap.step_over, opts)
 keymap.set('n', '<F1>', dap.step_into, opts)
 keymap.set('n', '<F10>', dap.continue, opts)
-keymap.set('n', '<F5>', dap.disconnect, dap.close(), opts)
+keymap.set('n', '<F5>', function ()
+    dap_ui.close()
+    dap.terminate()
+end,
+opts)
 
 -- Dashboard
 keymap.set('n', '<leader>hh', ':Dashboard<CR>', opts)

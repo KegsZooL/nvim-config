@@ -88,7 +88,8 @@ lspconfig.graphql.setup({
 
 require('go').setup{
   lsp_cfg = false,
-  capabilities = capabilities
+  capabilities = capabilities,
+  root_dir = require('lspconfig.util').root_pattern(".git", "go.mod", ".")
 }
 local cfg = require'go.lsp'.config()
 lspconfig.gopls.setup(cfg)
@@ -108,7 +109,7 @@ lspconfig.gopls.setup(cfg)
 -- 		command = {
 --             "/home/kegszool/go/bin/golangci-lint",
 --             "run",
---             "--out-format",
+--             -- "--out-format",
 --             "json",
 --             "--show-stats=false",
 --             "--issues-exit-code=1",
