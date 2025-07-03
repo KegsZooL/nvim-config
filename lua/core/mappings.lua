@@ -34,7 +34,8 @@ keymap.set('n', 'dw', '"_daw', opts)
 keymap.set('n', '<C-w>', 'vi', opts)
 keymap.set('n', '<C-S-w>', 'va', opts)
 
-keymap.set('n', 'C-S-O', '<C-I>', opts)
+-- Jump forward
+keymap.set('n', '<C-i>', '<C-i>', opts)
 
 -- Commenting on lines
 keymap.set('n', '<A-\'>', ':lua require("Comment.api").toggle.linewise.current()<CR>', opts)
