@@ -20,6 +20,7 @@ opt.virtualedit = "block"
 opt.shell = "/bin/zsh"
 opt.whichwrap = "<,>,[,],b,s,h,l"
 opt.autoindent = true
+opt.autoread = true
 opt.undodir = fn.stdpath "cache" .. "/undo"
 opt.autochdir = false
 opt.signcolumn = "yes"
@@ -93,6 +94,16 @@ cmd("filetype plugin indent on")
 cmd([[highlight WinSeparator guibg = None]])
 cmd([[autocmd! FileType qf set nomodifiable]])
 cmd([[set shortmess+=A]])
+
+-- Disable readonly warning notification
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.bo.readonly then
+      vim.bo.readonly = false
+    end
+  end,
+})
 
 -- keep cursor unchanged after quiting
 api.nvim_create_autocmd("ExitPre", {

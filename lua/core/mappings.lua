@@ -141,9 +141,11 @@ keymap.set('i', '<A-f>', '<cmd>Lspsaga finder ref+imp<CR>', opts)
 
 keymap.set('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 keymap.set('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
+--
+-- keymap.set("n", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
+-- keymap.set("i", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
 
-keymap.set("n", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
-keymap.set("i", "<A-r>", "<cmd>Lspsaga rename<CR>", opts)
+keymap.set("n", "<A-r>", vim.lsp.buf.rename, opts)
 
 keymap.set('n', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 keymap.set('i', '<A-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -201,9 +203,12 @@ keymap.set('n', '<F1>', dap.step_into, opts)
 keymap.set('n', '<F10>', dap.continue, opts)
 keymap.set('n', '<F5>', function ()
     dap_ui.close()
+    dap.disconnect()
     dap.terminate()
 end,
 opts)
+
+keymap.set('n', '<F4>', dap_ui.toggle, opts)
 
 -- Dashboard
 keymap.set('n', '<leader>hh', ':Dashboard<CR>', opts)

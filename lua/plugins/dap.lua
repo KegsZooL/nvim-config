@@ -46,3 +46,18 @@ fn.sign_define("DapStopped", {
     linehl = "Visual",
     numhl = "DiagnosticSignWarn",
 })
+
+dap.configurations.python = {
+  {
+    name = "FastAPI (uvicorn)",
+    type = "debugpy",
+    request = "launch",
+    module = "uvicorn",
+    pythonPath = "python",
+    args = {
+        "salt_box_core.main:app", -- source to main.py
+    },
+    justMyCode = false,
+    jinja = true
+  },
+}

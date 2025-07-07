@@ -122,8 +122,22 @@ ins_left {
   cond = conditions.buffer_not_empty,
 }
 
+-- ins_left {
+--   'filename',
+--   cond = conditions.buffer_not_empty,
+--   color = { fg = colors.orange, gui = 'bold' },
+-- }
+
 ins_left {
-  'filename',
+  function()
+    local fullpath = fn.expand('%:p')
+    local home = os.getenv("HOME")
+    if fullpath:find(home, 1, true) == 1 then
+      return fullpath:sub(#home + 1)
+    else
+      return fullpath
+    end
+  end,
   cond = conditions.buffer_not_empty,
   color = { fg = colors.orange, gui = 'bold' },
 }

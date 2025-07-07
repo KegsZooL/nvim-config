@@ -8,7 +8,7 @@ require('dap-go').setup({
       type = "go",
       name = "Debug Package (root .git)",
       request = "launch",
-      program = root_dir,  -- запускать именно из корня проекта (где .git)
+      program = root_dir,
     },
   },
   delve = {
@@ -18,7 +18,6 @@ require('dap-go').setup({
     args = {},
     build_flags = {},
     detached = vim.fn.has("win32") == 0,
-    cwd = root_dir,  -- важная строка — рабочая директория для dlv
   },
   tests = {
     verbose = false,

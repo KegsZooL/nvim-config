@@ -129,7 +129,51 @@ vim.filetype.add {
     },
 }
 
-lspconfig.jinja_lsp.setup {
+lspconfig.jinja_lsp.setup ({
   capabilities = capabilities,
-  filetypes = { 'jinja', 'salt' },
-}
+  filetypes = { 'jinja', 'salt', 'sls' },
+})
+
+lspconfig.ts_ls.setup({
+    capabilities = capabilities,
+    settings = {
+       typescript = {
+           inlayHints = {
+               includeInlayParameterNameHints = "all",
+               includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+               includeInlayFunctionParameterTypeHints = true,
+               includeInlayVariableTypeHints = true,
+               includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+               includeInlayPropertyDeclarationTypeHints = true,
+               includeInlayFunctionLikeReturnTypeHints = true,
+               includeInlayEnumMemberValueHints = true,
+           },
+
+       },
+       javascript = {
+           inlayHints = {
+               includeInlayParameterNameHints = "all",
+               includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+               includeInlayFunctionParameterTypeHints = true,
+               includeInlayVariableTypeHints = true,
+               includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+               includeInlayPropertyDeclarationTypeHints = true,
+               includeInlayFunctionLikeReturnTypeHints = true,
+               includeInlayEnumMemberValueHints = true,
+            },
+        },
+    }
+})
+
+lspconfig.bashls.setup({
+    capabilities = capabilities
+})
+
+lspconfig.dockerls.setup({
+    capabilities = capabilities
+})
+
+lspconfig.yamlls.setup({
+    capabilities = capabilities,
+    filetypes = { "yaml" }
+})
