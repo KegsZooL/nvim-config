@@ -71,7 +71,7 @@ cmp.setup({
         { name = 'luasnip' },
         { name = 'vsnip' },
         { name = 'path' },
-        -- { name = 'buffer' },
+        { name = 'buffer' },
         { name = 'vim-dadbod-completion' }, -- SQL
     }),
     formatting = {

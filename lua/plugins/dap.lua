@@ -55,7 +55,8 @@ dap.configurations.python = {
     module = "uvicorn",
     pythonPath = "python",
     args = {
-        "salt_box_core.main:app", -- source to main.py
+        -- "salt_box_core.main:app", -- source to main.py
+        "salt_box_core.agent_service:app", -- source to main.py
     },
     justMyCode = false,
     jinja = true

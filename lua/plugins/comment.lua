@@ -1,1 +1,5 @@
-require('Comment').setup()
+require('Comment').setup({
+    opleader = {
+        block = 'ggb',
+    },
+})

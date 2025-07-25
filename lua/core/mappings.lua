@@ -97,7 +97,7 @@ keymap.set('n', '<C-K>', '<C-w>K', opts)
 keymap.set('i', '<C-K>', '<Esc><C-w>K', opts)
 keymap.set('v', '<C-K>', '<Esc><C-w>K', opts)
 
--- Move the current split window down 
+-- Move the current split window down
 keymap.set('n', '<C-J>', '<C-w>J', opts)
 keymap.set('i', '<C-J>', '<Esc><C-w>J', opts)
 keymap.set('v', '<C-J>', '<Esc><C-w>J', opts)
@@ -216,8 +216,9 @@ keymap.set('n', '<leader>hh', ':Dashboard<CR>', opts)
 -- Gitsigns
 keymap.set('n', 'GG', '<cmd>Gitsigns preview_hunk_inline<CR>', opts)
 keymap.set('n', 'gG', '<cmd>Gitsigns preview_hunk<CR>', opts)
-keymap.set('n', 'gn', ':silent! Gitsigns nav_hunk next<CR>', opts)
-keymap.set('n', 'gp', ':silent! Gitsigns nav_hunk prev<CR>', opts)
+keymap.set('n', 'gn', '<cmd>Gitsigns nav_hunk next<CR>', opts)
+keymap.set('n', 'gp', '<cmd>Gitsigns nav_hunk prev<CR>', opts)
+keymap.set("n", "gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)
 
 -- Inalay hints
 local lsp = vim.lsp
