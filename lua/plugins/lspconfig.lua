@@ -25,21 +25,89 @@ lspconfig.lua_ls.setup({
     },
 })
 
-lspconfig.pyright.setup({
+
+lspconfig.basedpyright.setup({
   capabilities = capabilities,
   settings = {
-    pyright = {
-      -- Using Ruff's import organizer
-      disableOrganizeImports = true,
-    },
-    python = {
+    basedpyright = {
       analysis = {
-        -- Ignore all files for analysis to exclusively use Ruff for linting
-        ignore = { '*' },
+        useLibraryCodeForTypes = true,
+        diagnosticMode = 'workspace',
+        diagnosticSeverityOverrides = {
+          reportAttributeAccessIssue = "warning",
+          reportMissingTypeArgument = "warning",
+          reportIncompatibleMethodOverride = "warning",
+          reportUnusedCallResult = "warning",
+          reportImportCycles = "warning",
+          reportCallIssue = "warning",
+          reportArgumentType = "warning",
+          reportUnknownParameterType = false,
+          reportUnknownArgumentType = false,
+          reportUnknownMemberType = false,
+          reportUnknownVariableType = false,
+          reportUnannotatedClassAttribute = false,
+          reportAny = false,
+          reportExplicitAny = false,
+          reportAssignmentType = false,
+          reportConstantRedefinition = false,
+          reportExplictAny = false,
+          reportImplicitOverride = false,
+          reportIndexIssue = false,
+          reportGeneralTypeIssues = false,
+          reportMissingTypeStubs = false,
+          reportImplicitRelativeImport = false,
+          reportUndefinedVariable = false, -- using in ruff
+          reportUnusedImport = false, -- using in ruff
+          reportUnusedVariable = false, -- using in ruff
+        },
+        inlayHints = {
+          callArgumentNames = true,
+        },
+      },
+      python = {
+        analysis = {
+          ignore = { '*' },
+        },
       },
     },
   },
 })
+
+-- lspconfig.pyright.setup({
+--   capabilities = capabilities,
+--   settings = {
+--     pyright = {
+--       -- Using Ruff's import organizer
+--       disableOrganizeImports = true,
+--     },
+--     python = {
+--       analysis = {
+--         -- Ignore all files for analysis to exclusively use Ruff for linting
+--         ignore = { '*' },
+--       },
+--     },
+--   },
+-- })
+
+-- lspconfig.pylsp.setup {
+--   capabilities = capabilities,
+--   settings = {
+--     pylsp = {
+--       configurationSources = { 'flake8' },
+--       plugins = {
+--         mypy = {
+--           enable = true,
+--           overrides = { '--check-untyped-defs' },
+--         },
+--         flake8 = { enabled = false },      -- concurrents with Ruff
+--         mccabe = { enabled = false },      -- already in Flake8
+--         pycodestyle = { enabled = false }, -- already in Flake8
+--         pyflakes = { enabled = false },    -- already in Flake8
+--         pylint = { enabled = false },
+--       }
+--     }
+--   }
+-- }
 
 lspconfig.ruff.setup {
   capabilities = capabilities,

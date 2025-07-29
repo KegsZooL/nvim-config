@@ -231,6 +231,16 @@ keymap.set("n", "X", function()
   end
 end, opts)
 
+local diagnostics_visible = true
+keymap.set('n', 'C', function ()
+  if diagnostics_visible then
+    vim.diagnostic.hide()
+  else
+    vim.diagnostic.show()
+  end
+  diagnostics_visible = not diagnostics_visible
+end, opts)
+
 -- Trouble
 keymap.set("n", "]D", '<cmd>Trouble diagnostics open<CR>', { desc = "Open diagnostics" })
 keymap.set("n", "[d", '<cmd>Trouble diagnostics next<CR>', { desc = "Next diagnostic" })
