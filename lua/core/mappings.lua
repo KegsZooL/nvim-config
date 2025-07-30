@@ -232,12 +232,9 @@ keymap.set("n", "X", function()
 end, opts)
 
 local diagnostics_visible = true
+
 keymap.set('n', 'C', function ()
-  if diagnostics_visible then
-    vim.diagnostic.hide()
-  else
-    vim.diagnostic.show()
-  end
+  require("tiny-inline-diagnostic").toggle()
   diagnostics_visible = not diagnostics_visible
 end, opts)
 

@@ -166,7 +166,6 @@ require("lazy").setup({
     { "typeddjango/django-stubs" },
     { "lvimuser/lsp-inlayhints.nvim" },
     { "leoluz/nvim-dap-go" },
-    { "VidocqH/lsp-lens.nvim" },
     {
       "ray-x/go.nvim",
       dependencies = {  -- optional packages
@@ -186,4 +185,5 @@ require("lazy").setup({
       build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
     { "pocco81/auto-save.nvim" },
+    { "rachartier/tiny-inline-diagnostic.nvim" },
 })
