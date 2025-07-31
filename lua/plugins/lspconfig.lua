@@ -31,33 +31,34 @@ lspconfig.basedpyright.setup({
   settings = {
     basedpyright = {
       analysis = {
+        diagnosticMode = "workspace",
         autoSearchPaths = true,
-        diagnosticMode = "openFilesOnly",
         enableReachabilityAnalysis = false,
         useLibraryCodeForTypes = true,
+        autoImportCompletions = true,
         diagnosticSeverityOverrides = {
-          -- reportAttributeAccessIssue = "warning",
-          -- reportMissingTypeArgument = "warning",
-          -- reportIncompatibleMethodOverride = "warning",
-          -- reportUnusedCallResult = "warning",
-          -- reportImportCycles = "warning",
-          -- reportCallIssue = "warning",
-          -- reportArgumentType = "warning",
-          -- reportUnknownParameterType = false,
-          -- reportUnknownArgumentType = false,
-          -- reportUnknownMemberType = false,
-          -- reportUnknownVariableType = false,
-          -- reportUnannotatedClassAttribute = false,
-          -- reportAny = false,
-          -- reportExplicitAny = false,
-          -- reportAssignmentType = false,
-          -- reportConstantRedefinition = false,
-          -- reportExplictAny = false,
-          -- reportImplicitOverride = false,
-          -- reportIndexIssue = false,
-          -- reportGeneralTypeIssues = false,
-          -- reportMissingTypeStubs = false,
-          -- reportImplicitRelativeImport = false,
+          reportImportCycles = true,
+          reportArgumentType = true,
+          reportMissingTypeStubs = "warning",
+          reportAttributeAccessIssue = true,
+          reportMissingTypeArgument = "warning",
+          reportIncompatibleMethodOverride = "warning",
+          reportUnusedCallResult = "warning",
+          reportOptionalSubscript = "warning",
+          reportCallIssue = true,
+          reportConstantRedefinition = "warning",
+          reportImplicitRelativeImport = "warning",
+          reportUnannotatedClassAttribute = false,
+          reportUnknownParameterType = false,
+          reportUnknownArgumentType = false,
+          reportUnknownMemberType = false,
+          reportUnknownVariableType = false,
+          reportAny = false,
+          reportExplicitAny = false,
+          reportAssignmentType = false,
+          reportImplicitOverride = false,
+          reportIndexIssue = false,
+          reportGeneralTypeIssues = false,
           reportUndefinedVariable = false, -- using in ruff
           reportUnusedImport = false, -- using in ruff
           reportUnusedVariable = false, -- using in ruff
@@ -65,11 +66,9 @@ lspconfig.basedpyright.setup({
         inlayHints = {
           callArgumentNames = true,
         },
-      },
-      python = {
-        analysis = {
-          ignore = { '*' },
-        },
+        extraPaths = {
+          "./saltbox_bridge",
+        }
       },
     },
   },
