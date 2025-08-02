@@ -239,9 +239,20 @@ keymap.set('n', 'C', function ()
 end, opts)
 
 -- Trouble
-keymap.set("n", "]D", '<cmd>Trouble diagnostics open<CR>', { desc = "Open diagnostics" })
-keymap.set("n", "[d", '<cmd>Trouble diagnostics next<CR>', { desc = "Next diagnostic" })
-keymap.set("n", "[d", '<cmd>Trouble diagnostics prev<CR>', { desc = "Prev diagnostic" })
+keymap.set("n", "]D", '<cmd>Trouble diagnostics open<CR>', opts)
+keymap.set("n", "[d", '<cmd>Trouble diagnostics next<CR>', opts)
+keymap.set("n", "[d", '<cmd>Trouble diagnostics prev<CR>', opts)
 
 -- GO
-keymap.set("n", "<leader>st", "<cmd>GoFillStruct<CR>", { desc = "[Golang] Fill struct" } )
+keymap.set("n", "<leader>st", "<cmd>GoFillStruct<CR>", opts )
+
+-- Aider
+keymap.set('n', '<leader>ai', '<cmd>Aider toggle<CR>', opts)
+keymap.set('n', '<leader>as', '<cmd>Aider send<CR>', opts)
+keymap.set('v', '<leader>as', '<cmd>Aider send<CR>', opts)
+keymap.set('n', '<leader>ac', '<cmd>Aider command<CR>', opts)
+keymap.set('n', '<leader>ab', '<cmd>Aider buffer<CR>', opts)
+keymap.set('n', '<leader>a+', '<cmd>Aider add<CR>', opts)
+keymap.set('n', '<leader>a-', '<cmd>Aider drop<CR>', opts)
+keymap.set('n', '<leader>ar', '<cmd>Aider add readonly<CR>', opts)
+keymap.set('n', '<leader>aR', '<cmd>Aider reset<CR>', opts)

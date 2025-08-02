@@ -186,4 +186,10 @@ require("lazy").setup({
     },
     { "pocco81/auto-save.nvim" },
     { "rachartier/tiny-inline-diagnostic.nvim" },
+    {
+      "GeorgesAlkhouri/nvim-aider",
+      dependencies = {
+        "folke/snacks.nvim"
+      }
+    },
 })
