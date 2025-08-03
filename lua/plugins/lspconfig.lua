@@ -74,42 +74,6 @@ lspconfig.basedpyright.setup({
   },
 })
 
--- lspconfig.pyright.setup({
---   capabilities = capabilities,
---   settings = {
---     pyright = {
---       -- Using Ruff's import organizer
---       disableOrganizeImports = true,
---     },
---     python = {
---       analysis = {
---         -- Ignore all files for analysis to exclusively use Ruff for linting
---         ignore = { '*' },
---       },
---     },
---   },
--- })
-
--- lspconfig.pylsp.setup {
---   capabilities = capabilities,
---   settings = {
---     pylsp = {
---       configurationSources = { 'flake8' },
---       plugins = {
---         mypy = {
---           enable = true,
---           overrides = { '--check-untyped-defs' },
---         },
---         flake8 = { enabled = false },      -- concurrents with Ruff
---         mccabe = { enabled = false },      -- already in Flake8
---         pycodestyle = { enabled = false }, -- already in Flake8
---         pyflakes = { enabled = false },    -- already in Flake8
---         pylint = { enabled = false },
---       }
---     }
---   }
--- }
-
 lspconfig.ruff.setup {
   capabilities = capabilities,
   root_dir = require("lspconfig.util").root_pattern("pyproject.toml", ".git"),
