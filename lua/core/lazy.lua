@@ -48,15 +48,6 @@ require("lazy").setup({
       }
     },
     {
-      "nvim-neo-tree/neo-tree.nvim",
-      branch = "v3.x",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        "s1n7ax/nvim-window-picker"
-      }
-    },
-    {
       'nvim-telescope/telescope.nvim', tag = '0.1.6',
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
@@ -192,4 +183,5 @@ require("lazy").setup({
         "folke/snacks.nvim"
       }
     },
+    {"mikavilpas/yazi.nvim"}
 })

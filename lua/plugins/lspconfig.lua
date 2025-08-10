@@ -25,7 +25,6 @@ lspconfig.lua_ls.setup({
     },
 })
 
-
 lspconfig.basedpyright.setup({
   capabilities = capabilities,
   settings = {
@@ -74,10 +73,9 @@ lspconfig.basedpyright.setup({
   },
 })
 
-lspconfig.ruff.setup {
+lspconfig.ruff.setup({
   capabilities = capabilities,
-  root_dir = require("lspconfig.util").root_pattern("pyproject.toml", ".git"),
-}
+})
 
 lspconfig.graphql.setup({
     capabilities = capabilities,
