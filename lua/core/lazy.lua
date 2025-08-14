@@ -184,5 +184,4 @@ require("lazy").setup({
       }
     },
     {"mikavilpas/yazi.nvim"},
-    {"mireq/luasnip-snippets"}
 })

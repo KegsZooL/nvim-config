@@ -236,7 +236,6 @@ keymap.set('n', 'C', function ()
   diagnostics_visible = not diagnostics_visible
   vim.diagnostic.config({
       underline = diagnostics_visible,
-      virtual_text = diagnostics_visible
   })
 end, opts)
 

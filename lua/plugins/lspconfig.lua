@@ -30,7 +30,8 @@ lspconfig.basedpyright.setup({
   settings = {
     basedpyright = {
       analysis = {
-        diagnosticMode = "workspace",
+        -- diagnosticMode = "workspace",
+        diagnosticMode = "openFilesOnly",
         autoSearchPaths = true,
         enableReachabilityAnalysis = false,
         useLibraryCodeForTypes = true,
