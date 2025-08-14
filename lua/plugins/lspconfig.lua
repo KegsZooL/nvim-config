@@ -38,9 +38,9 @@ lspconfig.basedpyright.setup({
         autoImportCompletions = true,
         diagnosticSeverityOverrides = {
           reportImportCycles = true,
+          reportAttributeAccessIssue = true,
           reportArgumentType = "warning",
           reportMissingTypeStubs = "warning",
-          reportAttributeAccessIssue = true,
           reportMissingTypeArgument = "warning",
           reportIncompatibleMethodOverride = "warning",
           reportPossiblyUnboundVariable = "warning",
@@ -51,6 +51,7 @@ lspconfig.basedpyright.setup({
           reportImplicitRelativeImport = "warning",
           reportUnsafeMultipleInheritance = "warning",
           reportIncompatibleVariableOverride = "warning",
+          reportUninitializedInstanceVariable = false,
           reportUnannotatedClassAttribute = false,
           reportUnknownParameterType = false,
           reportUnknownArgumentType = false,

@@ -54,10 +54,12 @@ dap.configurations.python = {
     request = "launch",
     module = "uvicorn",
     pythonPath = "python",
-    args = {
-        -- "salt_box_core.main:app", -- source to main.py
-        "salt_box_core.agent_service:app", -- source to main.py
-    },
+    args = function ()
+        return {
+            vim.fn.input("Enter app path (e.g., src.main:app)", "src.main:app"),
+            "--reload"
+        }
+    end,
     justMyCode = false,
     jinja = true
   },
