@@ -183,5 +183,6 @@ require("lazy").setup({
         "folke/snacks.nvim"
       }
     },
-    {"mikavilpas/yazi.nvim"}
+    {"mikavilpas/yazi.nvim"},
+    {"mireq/luasnip-snippets"}
 })

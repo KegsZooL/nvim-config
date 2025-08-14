@@ -5,6 +5,7 @@ require("core.mappings")
 
 -- Plugins setting
 require("plugins.colorscheme")
+require("plugins.snippetes")
 require("plugins.lualine")
 require("plugins.treesitter")
 require("plugins.telescope")

@@ -27,6 +27,13 @@ local kind_icons = {
      TypeParameter = "",
 }
 
+local ls = require('luasnip')
+ls.setup({
+    load_ft_func = require('luasnip_snippets.common.snip_utils').load_ft_func,
+    ft_func = require('luasnip_snippets.common.snip_utils').ft_func,
+    enable_autosnippets = true,
+})
+
 cmp.setup({
     snippet = {
         expand = function(args)
