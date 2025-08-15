@@ -257,3 +257,6 @@ keymap.set('n', '<leader>a+', '<cmd>Aider add<CR>', opts)
 keymap.set('n', '<leader>a-', '<cmd>Aider drop<CR>', opts)
 keymap.set('n', '<leader>ar', '<cmd>Aider add readonly<CR>', opts)
 keymap.set('n', '<leader>aR', '<cmd>Aider reset<CR>', opts)
+
+-- Docker
+keymap.set({ 'n', 't' }, '<leader>ld', '<Cmd>lua LazyDocker.toggle()<CR>')
