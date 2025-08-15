@@ -2,7 +2,43 @@ local dap = require("dap")
 local dapui = require("dapui")
 local fn = vim.fn
 
-dapui.setup()
+dapui.setup({
+    layouts = { {
+        elements = { {
+            id = "scopes",
+            size = 0.8
+          }, {
+            id = "breakpoints",
+            size = 0.1
+          }, {
+            id = "stacks",
+            size = 0.1
+          }, {
+            id = "watches",
+            size = 0.1
+          } },
+        position = "left",
+        size = 100
+      }, {
+        elements = { {
+            id = "repl",
+            size = 0.5
+          }, {
+            id = "console",
+            size = 0.5
+          } },
+        position = "bottom",
+        size = 10
+      } },
+    mappings = {
+      edit = "<leader>nk",
+      expand = { "<CR>", "<2-LeftMouse>" },
+      open = "o",
+      remove = "d",
+      repl = "r",
+      toggle = "t"
+    },
+})
 
 -- Automatically open/close DAP UI
 dap.listeners.before.attach.dapui_config = function()
