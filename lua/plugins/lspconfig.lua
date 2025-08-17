@@ -52,6 +52,7 @@ lspconfig.basedpyright.setup({
           reportUnsafeMultipleInheritance = "warning",
           reportIncompatibleVariableOverride = "warning",
           reportUninitializedInstanceVariable = false,
+          reportOperatorIssue = false,
           reportUnannotatedClassAttribute = false,
           reportUnknownParameterType = false,
           reportUnknownArgumentType = false,
