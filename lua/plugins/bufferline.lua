@@ -1,3 +1,7 @@
 local bufferline = require("bufferline")
 
-bufferline.setup {}
+bufferline.setup {
+    options = {
+        separator_style = { "", "" },
+    }
+}
