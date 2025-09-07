@@ -154,14 +154,27 @@ lspconfig.ts_ls.setup({
 })
 
 lspconfig.bashls.setup({
-    capabilities = capabilities
+    capabilities = capabilities,
 })
 
 lspconfig.dockerls.setup({
-    capabilities = capabilities
+    capabilities = capabilities,
 })
 
 lspconfig.yamlls.setup({
     capabilities = capabilities,
     filetypes = { "yaml" }
+})
+
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.template", "*.tmpl" },
+  callback = function()
+    vim.bo.filetype = "nginx"
+  end,
+})
+
+lspconfig.nginx.setup({
+    capabilities = capabilities,
+    filetypes = { 'template', 'tmpl', 'nginx' },
 })

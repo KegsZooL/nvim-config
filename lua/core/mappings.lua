@@ -177,8 +177,8 @@ keymap.set('n', '<leader>cp', '<cmd>Colortils picker blue<CR>', opts)
 keymap.set('n', '<leader>cl', '<cmd>Colortils css list<CR>', opts)
 
 --DBUI
-keymap.set('n', '<leader>d', '<cmd>Neotree close<CR><cmd>DBUIToggle<CR>', opts)
-keymap.set('i', '<leader>d', '<cmd>Neotree close<CR>DBUIToggle<CR>', opts)
+keymap.set('n', '<leader>d', '<cmd>DBUIToggle<CR>', opts)
+keymap.set('i', '<leader>d', '<cmd>DBUIToggle<CR>', opts)
 
 keymap.set('n', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
 keymap.set('i', '<leader>dc', '<cmd>DBUIAddConnection<CR>', opts)
