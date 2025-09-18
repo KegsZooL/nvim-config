@@ -185,4 +185,5 @@ require("lazy").setup({
     },
     {"mikavilpas/yazi.nvim"},
     {"crnvl96/lazydocker.nvim"},
+    { "0xfraso/nvim-listchars", opts = true }
 })

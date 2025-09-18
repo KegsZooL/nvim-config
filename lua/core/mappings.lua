@@ -263,3 +263,6 @@ keymap.set('n', '<leader>aR', '<cmd>Aider reset<CR>', opts)
 
 -- Docker
 keymap.set({ 'n', 't' }, '<leader>ld', '<Cmd>lua LazyDocker.toggle()<CR>')
+
+-- Listchars
+keymap.set({'n', 'v'}, '<A-;>', '<cmd>ListcharsToggle<CR>', opts)

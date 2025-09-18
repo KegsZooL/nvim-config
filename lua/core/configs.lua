@@ -6,6 +6,8 @@ local fn = vim.fn
 local api = vim.api
 local diagnostic = vim.diagnostic
 
+vim.o.list = true
+
 wo.relativenumber = true
 wo.number = true
 g.formatoptions = "qn1"
