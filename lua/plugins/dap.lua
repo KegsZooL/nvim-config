@@ -83,7 +83,33 @@ fn.sign_define("DapStopped", {
     numhl = "DiagnosticSignWarn",
 })
 
+local get_args = function()
+  local cmd_args = vim.fn.input('CommandLine Args:')
+  local params = {}
+  for param in string.gmatch(cmd_args, "[^%s]+") do
+    table.insert(params, param)
+  end
+  return params
+end
+
 dap.configurations.python = {
+  {
+    name = "File | justMyCode = false",
+    type = "python",
+    request = "launch",
+    program = '${file}',
+    pythonPath = "python",
+    justMyCode = false,
+  },
+  {
+    name = "File:args | justMyCode = false",
+    type = "python",
+    request = "launch",
+    program = '${file}',
+    pythonPath = "python",
+    args=get_args,
+    justMyCode = false,
+  },
   {
     name = "FastAPI (uvicorn)",
     type = "debugpy",
