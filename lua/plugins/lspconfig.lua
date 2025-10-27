@@ -60,11 +60,11 @@ lspconfig.basedpyright.setup({
           reportUnknownVariableType = false,
           reportAny = false,
           reportExplicitAny = false,
-          reportAssignmentType = false,
+          -- reportAssignmentType = false,
           reportImplicitOverride = false,
           reportIndexIssue = false,
           reportGeneralTypeIssues = false,
-          reportUndefinedVariable = false, -- using in ruff
+          -- reportUndefinedVariable = false, -- using in ruff
           reportUnusedImport = false, -- using in ruff
           reportUnusedVariable = false, -- using in ruff
         },
