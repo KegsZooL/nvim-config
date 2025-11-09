@@ -1,5 +1,23 @@
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local mason_registry = require('mason-registry')
+local mason_settings = require('mason.settings')
+
+local function vue_ts_plugin_path()
+
+    if not mason_registry.has_package('vue-language-server') then
+     return nil
+   end
+
+   return vim.fs.joinpath(
+     mason_settings.current.install_root_dir,
+     'packages',
+     'vue-language-server',
+     'node_modules', '@vue', 'language-server',
+     'node_modules', '@vue', 'typescript-plugin'
+   )
+end
+
 
 lspconfig.lua_ls.setup({
     capabilities = capabilities,
@@ -122,8 +140,18 @@ lspconfig.jinja_lsp.setup ({
   filetypes = { 'jinja', 'salt', 'sls', 'tmpl' },
 })
 
+local vue_ls_path = vue_ts_plugin_path()
 lspconfig.ts_ls.setup({
     capabilities = capabilities,
+    init_options = {
+        plugins = {
+            {
+               name = '@vue/typescript-plugin',
+               location = vue_ls_path,
+               languages = { 'vue' },
+            }
+        },
+    },
     settings = {
        typescript = {
            inlayHints = {
@@ -149,8 +177,18 @@ lspconfig.ts_ls.setup({
                includeInlayFunctionLikeReturnTypeHints = true,
                includeInlayEnumMemberValueHints = true,
             },
-        },
+       },
+       filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
     }
+})
+
+lspconfig.html.setup({
+    capabilities = capabilities,
+    filetypes = { "html", "ejs" },
+})
+
+lspconfig.volar.setup({
+    capabilities = capabilities,
 })
 
 lspconfig.bashls.setup({

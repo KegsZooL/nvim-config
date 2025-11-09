@@ -118,7 +118,7 @@ dap.configurations.python = {
     pythonPath = "python",
     args = function ()
         return {
-            vim.fn.input("Enter app path (e.g., src.main:app)", "src.main:app"),
+            vim.fn.input("Enter app path (e.g., src.main:app)", "src.backend.app.main:app"),
             "--reload"
         }
     end,
