@@ -129,10 +129,10 @@ keymap.set('n', '<leader>ee', ':Yazi toggle<CR>', opts)
 keymap.set('n', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 keymap.set('i', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 
-keymap.set('n', '<A-z>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-keymap.set('i', '<A-z>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+keymap.set('n', '<A-x>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+keymap.set('i', '<A-x>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 
-keymap.set('n', '<A-x>', vim.lsp.buf.implementation, opts)
+-- keymap.set('n', '<A-x>', vim.lsp.buf.implementation, opts)
 
 -- keymap.set('n', '<A-f>', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
 -- keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
