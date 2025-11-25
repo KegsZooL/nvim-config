@@ -212,7 +212,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-lspconfig.nginx.setup({
+lspconfig.nginx_language_server.setup({
     capabilities = capabilities,
-    filetypes = { 'template', 'tmpl', 'nginx' },
+    filetypes = { 'template', 'tmpl', 'nginx', 'conf', },
 })
