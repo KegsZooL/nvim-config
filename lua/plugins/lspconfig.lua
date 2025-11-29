@@ -19,19 +19,49 @@ local function vue_ts_plugin_path()
 end
 
 
+-------------------------------------
+--            TS/Vue               --
+-------------------------------------
+
+local vue_ts_plugin = {
+  name = '@vue/typescript-plugin',
+  location = vue_ts_plugin_path(),
+  languages = { 'vue' },
+  configNamespace = 'typescript',
+}
+local ts_filetypes = { 'javascript','javascriptreact','typescript','typescriptreact','vue' }
+
+lspconfig.vtsls.setup({
+  capabilities = capabilities,
+  filetypes = ts_filetypes,
+  settings = { vtsls = { tsserver = { globalPlugins = { vue_ts_plugin } } } },
+})
+
+lspconfig.ts_ls.setup({
+  capabilities = capabilities,
+  filetypes = ts_filetypes,
+  init_options = { plugins = { vue_ts_plugin } },
+  settings = { typescript = { inlayHints = { '…' } }, javascript = { inlayHints = { '…' } } },
+})
+
+lspconfig.vue_ls.setup({
+  capabilities = capabilities,
+  on_init = function(client)
+  client.handlers['tsserver/request'] = function(_, result, ctx)
+  local ts = vim.lsp.get_clients({ bufnr = ctx.bufnr, name = 'vtsls' })[1]
+    if not ts then return end
+    local id, command, payload = table.unpack(result)
+      ts:exec_cmd({ command = 'typescript.tsserverRequest', arguments = { command, payload } }, { bufnr = ctx.bufnr },
+        function(_, r) client:notify('tsserver/response', { { id, r and r.body } }) end)
+      end
+  end,
+})
+
+
 lspconfig.lua_ls.setup({
     capabilities = capabilities,
     settings = {
         Lua = {
-            runtime = {
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                globals = { 'vim' },
-            },
-            workspace = {
-                library = { vim.env.VIMRUNTIME },
-            },
             hint = {
                 enable = true,
                 arrayIndex = 'Disable',
@@ -43,12 +73,19 @@ lspconfig.lua_ls.setup({
     },
 })
 
+-------------------------------------
+--             Python              --
+-------------------------------------
+
+lspconfig.ruff.setup({
+  capabilities = capabilities,
+})
+
 lspconfig.basedpyright.setup({
   capabilities = capabilities,
   settings = {
     basedpyright = {
       analysis = {
-        -- diagnosticMode = "workspace",
         diagnosticMode = "openFilesOnly",
         autoSearchPaths = true,
         enableReachabilityAnalysis = false,
@@ -78,11 +115,9 @@ lspconfig.basedpyright.setup({
           reportUnknownVariableType = false,
           reportAny = false,
           reportExplicitAny = false,
-          -- reportAssignmentType = false,
           reportImplicitOverride = false,
           reportIndexIssue = false,
           reportGeneralTypeIssues = false,
-          -- reportUndefinedVariable = false, -- using in ruff
           reportUnusedImport = false, -- using in ruff
           reportUnusedVariable = false, -- using in ruff
         },
@@ -97,9 +132,6 @@ lspconfig.basedpyright.setup({
   },
 })
 
-lspconfig.ruff.setup({
-  capabilities = capabilities,
-})
 
 lspconfig.graphql.setup({
     capabilities = capabilities,
@@ -110,6 +142,11 @@ lspconfig.graphql.setup({
     }
 })
 
+
+-------------------------------------
+--              GO                 --
+-------------------------------------
+
 require('go').setup{
   lsp_cfg = false,
   capabilities = capabilities,
@@ -119,9 +156,14 @@ require('go').setup{
 local cfg = require'go.lsp'.config()
 lspconfig.gopls.setup(cfg)
 
+
 lspconfig.jsonls.setup {
     capabilities = capabilities,
 }
+
+-------------------------------------
+--             JINJA2              --
+-------------------------------------
 
 vim.filetype.add {
     extension = {
@@ -134,76 +176,36 @@ vim.filetype.add {
       ['.*%.cfg%.tmpl'] = 'jinja',
     }
 }
-
 lspconfig.jinja_lsp.setup ({
   capabilities = capabilities,
   filetypes = { 'jinja', 'salt', 'sls', 'tmpl' },
 })
 
-local vue_ls_path = vue_ts_plugin_path()
-lspconfig.ts_ls.setup({
-    capabilities = capabilities,
-    init_options = {
-        plugins = {
-            {
-               name = '@vue/typescript-plugin',
-               location = vue_ls_path,
-               languages = { 'vue' },
-            }
-        },
-    },
-    settings = {
-       typescript = {
-           inlayHints = {
-               includeInlayParameterNameHints = "all",
-               includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-               includeInlayFunctionParameterTypeHints = true,
-               includeInlayVariableTypeHints = true,
-               includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-               includeInlayPropertyDeclarationTypeHints = true,
-               includeInlayFunctionLikeReturnTypeHints = true,
-               includeInlayEnumMemberValueHints = true,
-           },
-
-       },
-       javascript = {
-           inlayHints = {
-               includeInlayParameterNameHints = "all",
-               includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-               includeInlayFunctionParameterTypeHints = true,
-               includeInlayVariableTypeHints = true,
-               includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-               includeInlayPropertyDeclarationTypeHints = true,
-               includeInlayFunctionLikeReturnTypeHints = true,
-               includeInlayEnumMemberValueHints = true,
-            },
-       },
-       filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
-    }
-})
 
 lspconfig.html.setup({
     capabilities = capabilities,
     filetypes = { "html", "ejs" },
 })
 
-lspconfig.volar.setup({
-    capabilities = capabilities,
-})
 
 lspconfig.bashls.setup({
     capabilities = capabilities,
 })
 
+
 lspconfig.dockerls.setup({
     capabilities = capabilities,
 })
+
 
 lspconfig.yamlls.setup({
     capabilities = capabilities,
     filetypes = { "yaml" }
 })
 
+-------------------------------------
+--             NGINX               --
+-------------------------------------
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = { "*.template", "*.tmpl" },
