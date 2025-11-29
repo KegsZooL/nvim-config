@@ -18,10 +18,17 @@ local function vue_ts_plugin_path()
   )
 end
 
-
 -------------------------------------
 --            TS/Vue               --
 -------------------------------------
+
+local ts_filetypes = {
+  'javascript',
+  'javascriptreact',
+  'typescript',
+  'typescriptreact',
+  'vue'
+}
 
 local vue_ts_plugin = {
   name = '@vue/typescript-plugin',
@@ -29,33 +36,23 @@ local vue_ts_plugin = {
   languages = { 'vue' },
   configNamespace = 'typescript',
 }
-local ts_filetypes = { 'javascript','javascriptreact','typescript','typescriptreact','vue' }
 
-lspconfig.vtsls.setup({
-  capabilities = capabilities,
+local vtsls_config = {
+  settings = {
+    vtsls = {
+      tsserver = {
+        globalPlugins = {
+          vue_ts_plugin,
+        },
+      },
+    },
+  },
   filetypes = ts_filetypes,
-  settings = { vtsls = { tsserver = { globalPlugins = { vue_ts_plugin } } } },
-})
+}
 
-lspconfig.ts_ls.setup({
-  capabilities = capabilities,
-  filetypes = ts_filetypes,
-  init_options = { plugins = { vue_ts_plugin } },
-  settings = { typescript = { inlayHints = { '…' } }, javascript = { inlayHints = { '…' } } },
-})
-
-lspconfig.vue_ls.setup({
-  capabilities = capabilities,
-  on_init = function(client)
-  client.handlers['tsserver/request'] = function(_, result, ctx)
-  local ts = vim.lsp.get_clients({ bufnr = ctx.bufnr, name = 'vtsls' })[1]
-    if not ts then return end
-    local id, command, payload = table.unpack(result)
-      ts:exec_cmd({ command = 'typescript.tsserverRequest', arguments = { command, payload } }, { bufnr = ctx.bufnr },
-        function(_, r) client:notify('tsserver/response', { { id, r and r.body } }) end)
-      end
-  end,
-})
+vim.lsp.config('vtsls', vtsls_config)
+vim.lsp.config('vue_ls', {})
+vim.lsp.enable({'vtsls', 'vue_ls'})
 
 -------------------------------------
 --            HTML/CSS             --
