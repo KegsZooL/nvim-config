@@ -1,5 +1,6 @@
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local util           = require("lspconfig.util")
+local lspconfig      = require("lspconfig")
+local capabilities   = require("cmp_nvim_lsp").default_capabilities()
 local mason_registry = require('mason-registry')
 local mason_settings = require('mason.settings')
 
@@ -54,6 +55,34 @@ lspconfig.vue_ls.setup({
         function(_, r) client:notify('tsserver/response', { { id, r and r.body } }) end)
       end
   end,
+})
+
+-------------------------------------
+--            HTML/CSS             --
+-------------------------------------
+
+local root_dir_css = {
+  "package.json",
+  "package-lock.json",
+  "tsconfig.json",
+  "tsconfig.node.json",
+  "vite.config.ts"
+}
+
+lspconfig.html.setup({
+  capabilities = capabilities,
+  filetypes = { "html", "ejs" },
+})
+
+lspconfig.cssls.setup({
+  capabilities = capabilities,
+  filetypes = { "css", "scss", "less" },
+  settigns = {
+    css = { validate = true },
+    scss = { validate = true },
+    less = { validate = true },
+  },
+  root_dir = util.root_pattern(root_dir_css)
 })
 
 
@@ -181,12 +210,6 @@ lspconfig.jinja_lsp.setup ({
 })
 
 
-lspconfig.html.setup({
-  capabilities = capabilities,
-  filetypes = { "html", "ejs" },
-})
-
-
 lspconfig.bashls.setup({
   capabilities = capabilities,
 })
@@ -200,10 +223,6 @@ lspconfig.dockerls.setup({
 lspconfig.yamlls.setup({
   capabilities = capabilities,
   filetypes = { "yaml" }
-})
-
-lspconfig.tailwindcss.setup({
-  capabilities = capabilities
 })
 
 -------------------------------------
