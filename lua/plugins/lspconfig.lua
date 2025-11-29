@@ -4,18 +4,17 @@ local mason_registry = require('mason-registry')
 local mason_settings = require('mason.settings')
 
 local function vue_ts_plugin_path()
+  if not mason_registry.has_package('vue-language-server') then
+    return nil
+  end
 
-    if not mason_registry.has_package('vue-language-server') then
-     return nil
-   end
-
-   return vim.fs.joinpath(
-     mason_settings.current.install_root_dir,
-     'packages',
-     'vue-language-server',
-     'node_modules', '@vue', 'language-server',
-     'node_modules', '@vue', 'typescript-plugin'
-   )
+  return vim.fs.joinpath(
+    mason_settings.current.install_root_dir,
+    'packages',
+    'vue-language-server',
+    'node_modules', '@vue', 'language-server',
+    'node_modules', '@vue', 'typescript-plugin'
+  )
 end
 
 
@@ -59,18 +58,18 @@ lspconfig.vue_ls.setup({
 
 
 lspconfig.lua_ls.setup({
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            hint = {
-                enable = true,
-                arrayIndex = 'Disable',
-            }
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+        hint = {
+          enable = true,
+          arrayIndex = 'Disable',
         }
-    },
-    presets = {
-        lsp_doc_border = true,
-    },
+    }
+  },
+  presets = {
+    lsp_doc_border = true,
+  },
 })
 
 -------------------------------------
@@ -134,12 +133,12 @@ lspconfig.basedpyright.setup({
 
 
 lspconfig.graphql.setup({
-    capabilities = capabilities,
-    filetypes = {
-        "graphql", "gql",
-        "svelte", "typescriptreact",
-        "javascriptreact"
-    }
+  capabilities = capabilities,
+  filetypes = {
+    "graphql", "gql",
+    "svelte", "typescriptreact",
+    "javascriptreact"
+  }
 })
 
 
@@ -158,7 +157,7 @@ lspconfig.gopls.setup(cfg)
 
 
 lspconfig.jsonls.setup {
-    capabilities = capabilities,
+  capabilities = capabilities,
 }
 
 -------------------------------------
@@ -166,15 +165,15 @@ lspconfig.jsonls.setup {
 -------------------------------------
 
 vim.filetype.add {
-    extension = {
-      jinja = 'jinja',
-      jinja2 = 'jinja',
-      j2 = 'jinja',
-      tmpl = 'jinja'
-    },
-    pattern = {
-      ['.*%.cfg%.tmpl'] = 'jinja',
-    }
+  extension = {
+    jinja = 'jinja',
+    jinja2 = 'jinja',
+    j2 = 'jinja',
+    tmpl = 'jinja'
+  },
+  pattern = {
+    ['.*%.cfg%.tmpl'] = 'jinja',
+  }
 }
 lspconfig.jinja_lsp.setup ({
   capabilities = capabilities,
@@ -183,24 +182,28 @@ lspconfig.jinja_lsp.setup ({
 
 
 lspconfig.html.setup({
-    capabilities = capabilities,
-    filetypes = { "html", "ejs" },
+  capabilities = capabilities,
+  filetypes = { "html", "ejs" },
 })
 
 
 lspconfig.bashls.setup({
-    capabilities = capabilities,
+  capabilities = capabilities,
 })
 
 
 lspconfig.dockerls.setup({
-    capabilities = capabilities,
+  capabilities = capabilities,
 })
 
 
 lspconfig.yamlls.setup({
-    capabilities = capabilities,
-    filetypes = { "yaml" }
+  capabilities = capabilities,
+  filetypes = { "yaml" }
+})
+
+lspconfig.tailwindcss.setup({
+  capabilities = capabilities
 })
 
 -------------------------------------
@@ -215,6 +218,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 lspconfig.nginx_language_server.setup({
-    capabilities = capabilities,
-    filetypes = { 'template', 'tmpl', 'nginx', 'conf', },
+  capabilities = capabilities,
+  filetypes = { 'template', 'tmpl', 'nginx', 'conf', },
 })
