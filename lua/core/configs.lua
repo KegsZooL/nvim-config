@@ -51,6 +51,31 @@ opt.breakindent = true
 opt.expandtab = true            -- convert tabs to spaces
 opt.smartindent = true          -- make indenting smarter
 
+local indent_by_ft = {
+  lua = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
+  javascript = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
+  typescript = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
+  vue = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
+  sh = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
+  go = { shiftwidth = 4, tabstop = 4, softtabstop = 4, expandtab = false },
+  make = { shiftwidth = 8, tabstop = 8, softtabstop = 0, expandtab = false },
+}
+
+api.nvim_create_autocmd("FileType", {
+  group = api.nvim_create_augroup("IndentByFiletype", { clear = true }),
+  pattern = "*",
+  callback = function(event)
+    local opts = indent_by_ft[event.match]
+    if not opts then
+      return
+    end
+
+    for name, value in pairs(opts) do
+      vim.opt_local[name] = value
+    end
+  end,
+})
+
 -- Appearance
 opt.pumheight = 10
 opt.cmdheight = 2
