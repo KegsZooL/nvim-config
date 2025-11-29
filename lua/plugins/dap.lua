@@ -53,11 +53,6 @@ end
 dap.listeners.before.event_exited.dapui_config = function() dapui.close()
 end
 
-require("neodev").setup({
-  library = { plugins = { "nvim-dap-ui" }, types = true },
-
-})
-
 require("nvim-dap-virtual-text").setup({
     commented = true,
 })

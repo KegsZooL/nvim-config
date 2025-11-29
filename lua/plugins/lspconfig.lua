@@ -77,7 +77,7 @@ lspconfig.html.setup({
 lspconfig.cssls.setup({
   capabilities = capabilities,
   filetypes = { "css", "scss", "less" },
-  settigns = {
+  settings = {
     css = { validate = true },
     scss = { validate = true },
     less = { validate = true },
@@ -85,15 +85,22 @@ lspconfig.cssls.setup({
   root_dir = util.root_pattern(root_dir_css)
 })
 
+-------------------------------------
+--              Lua                --
+-------------------------------------
+
+require("neodev").setup({
+  library = { plugins = { "nvim-dap-ui" }, types = true },
+})
 
 lspconfig.lua_ls.setup({
   capabilities = capabilities,
   settings = {
     Lua = {
-        hint = {
-          enable = true,
-          arrayIndex = 'Disable',
-        }
+      hint = {
+        enable = true,
+        arrayIndex = 'Disable',
+      }
     }
   },
   presets = {
@@ -179,7 +186,7 @@ require('go').setup{
   lsp_cfg = false,
   capabilities = capabilities,
   filetypes = { 'go' },
-  root_dir = require('lspconfig.util').root_pattern(".git", "go.mod", ".")
+  root_dir = util.root_pattern(".git", "go.mod", ".")
 }
 local cfg = require'go.lsp'.config()
 lspconfig.gopls.setup(cfg)
