@@ -55,6 +55,7 @@ local indent_by_ft = {
   lua = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   javascript = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   typescript = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
+  salt = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   vue = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   sh = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   go = { shiftwidth = 4, tabstop = 4, softtabstop = 4, expandtab = false },
