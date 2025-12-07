@@ -1,6 +1,11 @@
 local util           = require("lspconfig.util")
 local lspconfig      = require("lspconfig")
 local capabilities   = require("cmp_nvim_lsp").default_capabilities()
+-- Allow servers (basedpyright, ruff, etc.) to register file watchers so external renames are noticed
+capabilities.workspace = capabilities.workspace or {}
+capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
+capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+capabilities.workspace.workspaceFolders = true
 local mason_registry = require('mason-registry')
 local mason_settings = require('mason.settings')
 
@@ -118,7 +123,7 @@ lspconfig.basedpyright.setup({
   settings = {
     basedpyright = {
       analysis = {
-        diagnosticMode = "openFilesOnly",
+        diagnosticMode = "workspace",
         autoSearchPaths = true,
         enableReachabilityAnalysis = false,
         useLibraryCodeForTypes = true,

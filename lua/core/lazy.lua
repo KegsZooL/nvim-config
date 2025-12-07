@@ -185,5 +185,16 @@ require("lazy").setup({
     },
     {"mikavilpas/yazi.nvim"},
     {"crnvl96/lazydocker.nvim"},
-    { "0xfraso/nvim-listchars", opts = true }
+    { "0xfraso/nvim-listchars", opts = true },
+    {
+      "alexpasmantier/pymple.nvim",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        -- optional (nicer ui)
+        "stevearc/dressing.nvim",
+        "nvim-tree/nvim-web-devicons",
+      },
+      build = ":PympleBuild",
+    }
 })
