@@ -196,5 +196,11 @@ require("lazy").setup({
         "nvim-tree/nvim-web-devicons",
       },
       build = ":PympleBuild",
-    }
+    },
+    {
+    "kdheepak/lazygit.nvim",
+      requires = {
+        "nvim-lua/plenary.nvim",
+      },
+    },
 })

@@ -221,6 +221,9 @@ keymap.set('n', 'gn', '<cmd>Gitsigns nav_hunk next<CR>', opts)
 keymap.set('n', 'gp', '<cmd>Gitsigns nav_hunk prev<CR>', opts)
 keymap.set("n", "gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)
 
+-- Git
+keymap.set('n',"<leader>lg", "<cmd>LazyGit<cr>", opts )
+
 -- Inalay hints
 local lsp = vim.lsp
 keymap.set("n", "X", function()
