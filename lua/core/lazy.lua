@@ -203,4 +203,5 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
       },
     },
+    { 'benomahony/uv.nvim' }
 })
