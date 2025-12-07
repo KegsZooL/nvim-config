@@ -163,7 +163,6 @@ keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffer" })
 keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
 keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "Git branches" })
 keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "Git commits" })
-keymap.set('n', '<leader>gs', builtin.git_status, { desc = "Git status" })
 keymap.set('n', '<leader>em', ':Telescope emoji<CR>', { desc = "Search and insert emoji" })
 keymap.set('n', '<leader>ne', ':Telescope nerdy<CR>', { desc = "Search and insert nerd font glyphs" })
 keymap.set('n', '<leader>nn', ':Telescope notify<CR>' )
@@ -222,7 +221,7 @@ keymap.set('n', 'gp', '<cmd>Gitsigns nav_hunk prev<CR>', opts)
 keymap.set("n", "gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)
 
 -- Git
-keymap.set('n',"<leader>lg", "<cmd>LazyGit<cr>", opts )
+keymap.set('n', '<leader>gs', "<cmd>LazyGit<cr>", opts)
 
 -- Inalay hints
 local lsp = vim.lsp
