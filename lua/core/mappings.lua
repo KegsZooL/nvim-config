@@ -270,4 +270,4 @@ keymap.set({ 'n', 't' }, '<leader>ld', '<Cmd>lua LazyDocker.toggle()<CR>')
 keymap.set({'n', 'v'}, '<A-;>', '<cmd>ListcharsToggle<CR>', opts)
 
 -- Resolve python import
-keymap.set('n', '<A-i>', '<cmd>PympleResolveImport<CR>')
+keymap.set('n', '<A-[>', '<cmd>PympleResolveImport<CR>')
