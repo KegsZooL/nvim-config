@@ -216,11 +216,21 @@ keymap.set('n', '<F4>', dap_ui.toggle, opts)
 keymap.set('n', '<leader>hh', ':Dashboard<CR>', opts)
 
 -- Gitsigns
+keymap.set('n', 'gr', '<cmd>Gitsigns reset_hunk<CR>', opts)
+keymap.set('v', 'gr', '<cmd>Gitsigns reset_hunk<CR>', opts)
 keymap.set('n', 'GG', '<cmd>Gitsigns preview_hunk_inline<CR>', opts)
 keymap.set('n', 'gG', '<cmd>Gitsigns preview_hunk<CR>', opts)
 keymap.set('n', 'gn', '<cmd>Gitsigns nav_hunk next<CR>', opts)
 keymap.set('n', 'gp', '<cmd>Gitsigns nav_hunk prev<CR>', opts)
-keymap.set("n", "gb", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)
+
+local gs = require('gitsigns')
+local notify = vim.notify
+
+keymap.set('n', 'gb', function()
+  local on = gs.toggle_current_line_blame()
+  notify(string.format('Gitsigns: line blame %s', on and 'ON' or 'OFF'),
+    vim.log.levels.INFO, { title = 'gitsigns' })
+end, opts)
 
 -- Git
 keymap.set('n', '<leader>gs', "<cmd>LazyGit<cr>", opts)
