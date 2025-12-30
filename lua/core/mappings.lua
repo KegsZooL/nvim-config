@@ -157,12 +157,14 @@ keymap.set('i', '<A-o>', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 -- Telescope
 local builtin = require('telescope.builtin')
 
+keymap.set('n', '<leader>fr', builtin.resume, { desc = "Resume Telescope" })
 keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
 keymap.set('n', '<leader>fw', builtin.live_grep, { desc = "Find text" })
 keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Find buffer" })
 keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
 keymap.set('n', '<leader>gb', builtin.git_branches, { desc = "Git branches" })
 keymap.set('n', '<leader>gc', builtin.git_commits, { desc = "Git commits" })
+
 keymap.set('n', '<leader>em', ':Telescope emoji<CR>', { desc = "Search and insert emoji" })
 keymap.set('n', '<leader>ne', ':Telescope nerdy<CR>', { desc = "Search and insert nerd font glyphs" })
 keymap.set('n', '<leader>nn', ':Telescope notify<CR>' )
