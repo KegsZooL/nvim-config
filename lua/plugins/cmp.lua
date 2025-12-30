@@ -26,6 +26,24 @@ local kind_icons = {
      Operator      = "",
      TypeParameter = "",
 }
+local ls = require("luasnip")
+require("luasnip.loaders.from_vscode").lazy_load()
+
+ls.filetype_extend("python", { "pydoc" })
+ls.filetype_extend("sh", { "shelldoc" })
+ls.filetype_extend("typescript", { "tsdoc" })
+ls.filetype_extend("javascript", { "jsdoc" })
+ls.filetype_extend("lua", { "luadoc" })
+ls.filetype_extend("python", { "pydoc" })
+ls.filetype_extend("rust", { "rustdoc" })
+ls.filetype_extend("cs", { "csharpdoc" })
+ls.filetype_extend("java", { "javadoc" })
+ls.filetype_extend("c", { "cdoc" })
+ls.filetype_extend("cpp", { "cppdoc" })
+ls.filetype_extend("php", { "phpdoc" })
+ls.filetype_extend("kotlin", { "kdoc" })
+ls.filetype_extend("ruby", { "rdoc" })
+ls.filetype_extend("sh", { "shelldoc" })
 
 cmp.setup({
     snippet = {
