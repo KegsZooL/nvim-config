@@ -27,7 +27,20 @@ local kind_icons = {
      TypeParameter = "",
 }
 local ls = require("luasnip")
-require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({
+  include = {
+    "python",
+    "javascript",
+    "go",
+    "typescript",
+    "sh",
+    "c",
+    "cpp",
+    "ruby",
+    "rust",
+    "lua",
+  }
+})
 
 ls.filetype_extend("python", { "pydoc" })
 ls.filetype_extend("sh", { "shelldoc" })
@@ -37,6 +50,7 @@ ls.filetype_extend("lua", { "luadoc" })
 ls.filetype_extend("python", { "pydoc" })
 ls.filetype_extend("rust", { "rustdoc" })
 ls.filetype_extend("cs", { "csharpdoc" })
+ls.filetype_extend("go", { "godoc" })
 ls.filetype_extend("java", { "javadoc" })
 ls.filetype_extend("c", { "cdoc" })
 ls.filetype_extend("cpp", { "cppdoc" })
