@@ -1,4 +1,7 @@
 require("trouble").setup({
-    opts = {},
-    cmd = "Trouble",
+  modes = {
+    diagnostics = {
+      filter = { buf = 0 }, -- only current buffer
+    },
+  },
 })
