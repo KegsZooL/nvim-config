@@ -1,5 +1,4 @@
 local util           = require("lspconfig.util")
-local lspconfig      = require("lspconfig")
 local capabilities   = require("cmp_nvim_lsp").default_capabilities()
 
 -- Allow servers (basedpyright, ruff, etc.) to register file watchers so external renames are noticed
@@ -73,12 +72,12 @@ local root_dir_css = {
   "vite.config.ts"
 }
 
-lspconfig.html.setup({
+vim.lsp.config('html', {
   capabilities = capabilities,
   filetypes = { "html", "ejs" },
 })
 
-lspconfig.cssls.setup({
+vim.lsp.config('cssls', {
   capabilities = capabilities,
   filetypes = { "css", "scss", "less" },
   settings = {
@@ -97,7 +96,7 @@ require("neodev").setup({
   library = { plugins = { "nvim-dap-ui" }, types = true },
 })
 
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -116,12 +115,19 @@ lspconfig.lua_ls.setup({
 --             Python              --
 -------------------------------------
 
-lspconfig.ruff.setup({
+vim.lsp.config('ruff', {
   capabilities = capabilities,
 })
 
-lspconfig.basedpyright.setup({
+vim.lsp.config('basedpyright', {
   capabilities = capabilities,
+  before_init = function(_, config)
+    local python_path = vim.fn.system("pyenv which python3 2>/dev/null"):gsub("%s+", "")
+    if python_path ~= "" and vim.fn.executable(python_path) == 1 then
+      config.settings.python = config.settings.python or {}
+      config.settings.python.pythonPath = python_path
+    end
+  end,
   settings = {
     basedpyright = {
       analysis = {
@@ -130,6 +136,8 @@ lspconfig.basedpyright.setup({
         enableReachabilityAnalysis = false,
         useLibraryCodeForTypes = true,
         autoImportCompletions = true,
+        venvPath = vim.fn.expand("~/.pyenv/versions"),
+        venv = vim.fn.system("pyenv version-name 2>/dev/null"):gsub("%s+", ""),
         diagnosticSeverityOverrides = {
           reportAttributeAccessIssue = true,
           reportImportCycles = "warning",
@@ -163,16 +171,26 @@ lspconfig.basedpyright.setup({
         inlayHints = {
           callArgumentNames = true,
         },
-        extraPaths = {
-          "./saltbox_bridge",
-        }
+        extraPaths = (function()
+          local paths = { "./saltbox_bridge" }
+          local pyenv_root = vim.fn.expand("~/.pyenv/versions")
+          local version_name = vim.fn.system("pyenv version-name 2>/dev/null"):gsub("%s+", "")
+          if version_name ~= "" then
+            local site_packages = string.format("%s/%s/lib/python*/site-packages", pyenv_root, version_name)
+            local expanded = vim.fn.glob(site_packages, false, true)
+            for _, path in ipairs(expanded) do
+              table.insert(paths, path)
+            end
+          end
+          return paths
+        end)()
       },
     },
   },
 })
 
 
-lspconfig.graphql.setup({
+vim.lsp.config('graphql', {
   capabilities = capabilities,
   filetypes = {
     "graphql", "gql",
@@ -193,12 +211,12 @@ require('go').setup{
   root_dir = util.root_pattern(".git", "go.mod", ".")
 }
 local cfg = require'go.lsp'.config()
-lspconfig.gopls.setup(cfg)
+vim.lsp.config('gopls', cfg)
 
 
-lspconfig.jsonls.setup {
+vim.lsp.config('jsonls', {
   capabilities = capabilities,
-}
+})
 
 -------------------------------------
 --             JINJA2              --
@@ -215,23 +233,23 @@ vim.filetype.add {
     ['.*%.cfg%.tmpl'] = 'jinja',
   }
 }
-lspconfig.jinja_lsp.setup ({
+vim.lsp.config('jinja_lsp', {
   capabilities = capabilities,
   filetypes = { 'jinja', 'salt', 'sls', 'tmpl' },
 })
 
 
-lspconfig.bashls.setup({
+vim.lsp.config('bashls', {
   capabilities = capabilities,
 })
 
 
-lspconfig.dockerls.setup({
+vim.lsp.config('dockerls', {
   capabilities = capabilities,
 })
 
 
-lspconfig.yamlls.setup({
+vim.lsp.config('yamlls', {
   capabilities = capabilities,
   filetypes = { "yaml" }
 })
@@ -247,7 +265,27 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-lspconfig.nginx_language_server.setup({
+vim.lsp.config('nginx_language_server', {
   capabilities = capabilities,
   filetypes = { 'template', 'tmpl', 'nginx', 'conf', },
+})
+
+-------------------------------------
+--        Enable all servers       --
+-------------------------------------
+
+vim.lsp.enable({
+  'html',
+  'cssls',
+  'lua_ls',
+  'ruff',
+  'basedpyright',
+  'graphql',
+  'gopls',
+  'jsonls',
+  'jinja_lsp',
+  'bashls',
+  'dockerls',
+  'yamlls',
+  'nginx_language_server',
 })
