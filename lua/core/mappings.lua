@@ -283,3 +283,6 @@ keymap.set({'n', 'v'}, '<A-;>', '<cmd>ListcharsToggle<CR>', opts)
 
 -- Resolve python import
 keymap.set('n', '<A-[>', '<cmd>PympleResolveImport<CR>')
+
+-- Autosave toggle
+keymap.set('n', '<leader>at', '<cmd>ASToggle<CR>', { noremap = true, silent = true, desc = "Toggle autosave" })

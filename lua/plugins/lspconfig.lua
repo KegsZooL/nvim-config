@@ -131,8 +131,8 @@ lspconfig.basedpyright.setup({
         useLibraryCodeForTypes = true,
         autoImportCompletions = true,
         diagnosticSeverityOverrides = {
-          reportImportCycles = true,
           reportAttributeAccessIssue = true,
+          reportImportCycles = "warning",
           reportArgumentType = "warning",
           reportMissingTypeStubs = "warning",
           reportMissingTypeArgument = "warning",
