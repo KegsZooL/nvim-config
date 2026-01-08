@@ -25,6 +25,12 @@ require("noice").setup({
         },
         signature = {
             enabled = true,
+            auto_open = {
+                enabled = true,
+                trigger = true,
+                luasnip = true,
+                throttle = 50,
+            },
         },
         hover = {
             enabled = true,
@@ -53,6 +59,19 @@ require("noice").setup({
             win_options = {
                 winblend = 0,
             }
+        },
+        hover = {
+            border = {
+                style = "rounded",
+            },
+            size = {
+                max_width = 120,
+                max_height = 30,
+            },
+            win_options = {
+                wrap = true,
+                linebreak = true,
+            },
         },
     },
     routes = {
