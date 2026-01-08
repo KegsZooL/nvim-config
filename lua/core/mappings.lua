@@ -285,4 +285,14 @@ keymap.set({'n', 'v'}, '<A-;>', '<cmd>ListcharsToggle<CR>', opts)
 keymap.set('n', '<A-[>', '<cmd>PympleResolveImport<CR>')
 
 -- Autosave toggle
-keymap.set('n', '<leader>at', '<cmd>ASToggle<CR>', { noremap = true, silent = true, desc = "Toggle autosave" })
+local autosave_enabled = true
+
+keymap.set('n', '<leader>at', function()
+  vim.cmd('ASToggle')
+  autosave_enabled = not autosave_enabled
+  notify(
+    string.format('Autosave: %s', autosave_enabled and 'ON' or 'OFF'),
+    vim.log.levels.INFO,
+    { title = 'Autosave' }
+  )
+end, opts)

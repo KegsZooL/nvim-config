@@ -73,6 +73,34 @@ require("noice").setup({
       },
       {
         filter = {
+            event = "msg_show",
+            find = "DB:",
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+            event = "msg_show",
+            find = "E21:",
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+            event = "msg_show",
+            find = "yanked",
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+            event = "msg_show",
+            find = "more lines",
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
             event = "lsp",
             kind = "progress",
         },
