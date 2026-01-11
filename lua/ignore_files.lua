@@ -6,6 +6,7 @@ ignore.pattern = {
     ".pdf",
     ".zip",
     ".png",
+    ".venv",
     ".jpeg",
     ".jpg",
     ".ttf",
