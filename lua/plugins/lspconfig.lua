@@ -119,13 +119,69 @@ vim.lsp.config('ruff', {
   capabilities = capabilities,
 })
 
+-- Helper: find Python environment (prefers .venv, falls back to pyenv)
+local function find_python_env(root_dir)
+  local result = {
+    python_path = nil,
+    venv_path = nil,
+    venv_name = nil,
+    site_packages = {},
+  }
+
+  -- 1. Check for .venv in project root
+  local venv_python = root_dir .. "/.venv/bin/python"
+  if vim.fn.executable(venv_python) == 1 then
+    result.python_path = venv_python
+    result.venv_path = root_dir
+    result.venv_name = ".venv"
+
+    -- Find site-packages in .venv
+    local site_pattern = root_dir .. "/.venv/lib/python*/site-packages"
+    local expanded = vim.fn.glob(site_pattern, false, true)
+    for _, path in ipairs(expanded) do
+      table.insert(result.site_packages, path)
+    end
+    return result
+  end
+
+  -- 2. Fallback to pyenv
+  local pyenv_version = vim.fn.system("pyenv version-name 2>/dev/null"):gsub("%s+", "")
+  if pyenv_version ~= "" and pyenv_version ~= "system" then
+    local pyenv_python = vim.fn.system("pyenv which python3 2>/dev/null"):gsub("%s+", "")
+    if pyenv_python ~= "" and vim.fn.executable(pyenv_python) == 1 then
+      result.python_path = pyenv_python
+      result.venv_path = vim.fn.expand("~/.pyenv/versions")
+      result.venv_name = pyenv_version
+
+      -- Find site-packages in pyenv
+      local pyenv_root = vim.fn.expand("~/.pyenv/versions")
+      local site_pattern = string.format("%s/%s/lib/python*/site-packages", pyenv_root, pyenv_version)
+      local expanded = vim.fn.glob(site_pattern, false, true)
+      for _, path in ipairs(expanded) do
+        table.insert(result.site_packages, path)
+      end
+    end
+  end
+
+  return result
+end
+
 vim.lsp.config('basedpyright', {
   capabilities = capabilities,
   before_init = function(_, config)
-    local python_path = vim.fn.system("pyenv which python3 2>/dev/null"):gsub("%s+", "")
-    if python_path ~= "" and vim.fn.executable(python_path) == 1 then
+    local root_dir = config.root_dir or vim.fn.getcwd()
+    local env = find_python_env(root_dir)
+
+    if env.python_path then
       config.settings.python = config.settings.python or {}
-      config.settings.python.pythonPath = python_path
+      config.settings.python.pythonPath = env.python_path
+    end
+
+    if env.venv_path and env.venv_name then
+      config.settings.basedpyright = config.settings.basedpyright or {}
+      config.settings.basedpyright.analysis = config.settings.basedpyright.analysis or {}
+      config.settings.basedpyright.analysis.venvPath = env.venv_path
+      config.settings.basedpyright.analysis.venv = env.venv_name
     end
   end,
   settings = {
@@ -136,8 +192,6 @@ vim.lsp.config('basedpyright', {
         enableReachabilityAnalysis = false,
         useLibraryCodeForTypes = true,
         autoImportCompletions = true,
-        venvPath = vim.fn.expand("~/.pyenv/versions"),
-        venv = vim.fn.system("pyenv version-name 2>/dev/null"):gsub("%s+", ""),
         diagnosticSeverityOverrides = {
           reportAttributeAccessIssue = true,
           reportImportCycles = "warning",
@@ -171,19 +225,7 @@ vim.lsp.config('basedpyright', {
         inlayHints = {
           callArgumentNames = true,
         },
-        extraPaths = (function()
-          local paths = { "./saltbox_bridge" }
-          local pyenv_root = vim.fn.expand("~/.pyenv/versions")
-          local version_name = vim.fn.system("pyenv version-name 2>/dev/null"):gsub("%s+", "")
-          if version_name ~= "" then
-            local site_packages = string.format("%s/%s/lib/python*/site-packages", pyenv_root, version_name)
-            local expanded = vim.fn.glob(site_packages, false, true)
-            for _, path in ipairs(expanded) do
-              table.insert(paths, path)
-            end
-          end
-          return paths
-        end)()
+        extraPaths = { "./saltbox_bridge" },
       },
     },
   },
