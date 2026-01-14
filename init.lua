@@ -1,23 +1,3 @@
--- -- Set up environment BEFORE loading plugins
--- local function setup_env()
---   -- Add cargo bin to PATH (for gg used by pymple)
---   local cargo_bin = vim.fn.expand("~/.cargo/bin")
---   if vim.fn.isdirectory(cargo_bin) == 1 then
---     vim.env.PATH = cargo_bin .. ":" .. vim.env.PATH
---   end
---
---   -- Set up Python venv
---   local cwd = vim.fn.getcwd()
---   local venv_path = cwd .. "/.venv"
---
---   if vim.fn.isdirectory(venv_path) == 1 then
---     vim.env.VIRTUAL_ENV = venv_path
---     vim.env.PATH = venv_path .. "/bin:" .. vim.env.PATH
---   end
--- end
--- setup_env()
-
--- Basic config
 require("core.lazy")
 require("core.configs")
 require("core.mappings")
