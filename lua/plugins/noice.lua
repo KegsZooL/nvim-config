@@ -72,6 +72,7 @@ require("noice").setup({
                 wrap = true,
                 linebreak = true,
             },
+            focusable = true,
         },
     },
     routes = {
