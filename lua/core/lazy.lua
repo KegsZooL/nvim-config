@@ -152,7 +152,7 @@ require("lazy").setup({
         event = "BufReadPre",
     },
     { "bergercookie/asm-lsp" },
-    { "jose-elias-alvarez/null-ls.nvim" },
+    { "nvimtools/none-ls.nvim" },
     { "mfussenegger/nvim-dap-python" },
     { "typeddjango/django-stubs" },
     { "lvimuser/lsp-inlayhints.nvim" },
