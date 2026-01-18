@@ -48,14 +48,21 @@ local implement_interface_action = {
 null_ls.setup({
     sources = {
         null_ls.builtins.diagnostics.mypy.with({
-            extra_args = function()
-                local root_dir = util.root_pattern("pyproject.toml")(vim.fn.getcwd())
+            condition = function(utils)
+                return utils.root_has_file({ "pyproject.toml", "mypy.ini", ".mypy.ini" })
+            end,
+            cwd = function(params)
+                return util.root_pattern("pyproject.toml", "mypy.ini", ".mypy.ini")(params.bufname)
+                    or vim.fn.getcwd()
+            end,
+            extra_args = function(params)
+                local root_dir = util.root_pattern("pyproject.toml")(params.bufname)
                 if root_dir then
                     return { "--config-file", root_dir .. "/pyproject.toml" }
                 else
                     return {}
                 end
-            end
+            end,
         }),
         implement_interface_action,
     },

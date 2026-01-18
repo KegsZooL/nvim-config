@@ -161,17 +161,21 @@ api.nvim_create_autocmd('CursorMoved', {
 
 diagnostic.config({
   virtual_text = true,
-  signs = true,
+  signs = {
+    text = {
+      [diagnostic.severity.ERROR] = " ",
+      [diagnostic.severity.WARN] = " ",
+      [diagnostic.severity.INFO] = " ",
+      [diagnostic.severity.HINT] = "󰌵",
+    },
+    numhl = {
+      [diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [diagnostic.severity.WARN] = "DiagnosticSignWarn",
+      [diagnostic.severity.INFO] = "DiagnosticSignInfo",
+      [diagnostic.severity.HINT] = "DiagnosticSignHint",
+    },
+  },
   underline = true,
   update_in_insert = false,
   severity_sort = true,
 })
-
-fn.sign_define("DiagnosticSignError",
-    {text = " ", texthl = "DiagnosticSignError"})
-fn.sign_define("DiagnosticSignWarn",
-    {text = " ", texthl = "DiagnosticSignWarn"})
-fn.sign_define("DiagnosticSignInfo",
-    {text = " ", texthl = "DiagnosticSignInfo"})
-fn.sign_define("DiagnosticSignHint",
-    {text = "󰌵", texthl = "DiagnosticSignHint"})

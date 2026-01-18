@@ -21,7 +21,11 @@ require("lazy").setup({
     { "folke/neodev.nvim" },
     { "ellisonleao/gruvbox.nvim" },
     { "sainnhe/gruvbox-material" },
-    { 'nvim-treesitter/nvim-treesitter' },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      build = ':TSUpdate'
+    },
     { 'neovim/nvim-lspconfig' },
     { 'nvim-tree/nvim-web-devicons' },
     {
@@ -48,7 +52,7 @@ require("lazy").setup({
       }
     },
     {
-      'nvim-telescope/telescope.nvim', tag = '0.1.6',
+      'nvim-telescope/telescope.nvim', branch = 'master',
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
     { "williamboman/mason.nvim" },
