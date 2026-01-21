@@ -55,6 +55,34 @@ null_ls.setup({
                 return util.root_pattern("pyproject.toml", "mypy.ini", ".mypy.ini")(params.bufname)
                     or vim.fn.getcwd()
             end,
+            command = function(params)
+                local root_dir = util.root_pattern("pyproject.toml")(params.bufname)
+                if root_dir then
+                    -- Check .venv
+                    local venv_mypy = root_dir .. "/.venv/bin/mypy"
+                    if vim.fn.filereadable(venv_mypy) == 1 then
+                        return venv_mypy
+                    end
+                    -- Check pyenv virtualenv by project folder name
+                    local project_name = vim.fn.fnamemodify(root_dir, ":t")
+                    local pyenv_venv_mypy = vim.fn.expand("~/.pyenv/versions/" .. project_name .. "/bin/mypy")
+                    if vim.fn.filereadable(pyenv_venv_mypy) == 1 then
+                        return pyenv_venv_mypy
+                    end
+                    -- Check pyenv local version from .python-version
+                    local python_version_file = root_dir .. "/.python-version"
+                    if vim.fn.filereadable(python_version_file) == 1 then
+                        local version = vim.fn.readfile(python_version_file)[1]
+                        if version then
+                            local pyenv_mypy = vim.fn.expand("~/.pyenv/versions/" .. version .. "/bin/mypy")
+                            if vim.fn.filereadable(pyenv_mypy) == 1 then
+                                return pyenv_mypy
+                            end
+                        end
+                    end
+                end
+                return "mypy"
+            end,
             extra_args = function(params)
                 local root_dir = util.root_pattern("pyproject.toml")(params.bufname)
                 if root_dir then
