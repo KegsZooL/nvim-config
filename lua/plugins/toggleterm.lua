@@ -1,4 +1,7 @@
-require("toggleterm").setup{
+local ok, toggleterm = pcall(require, "toggleterm")
+if not ok then return end
+
+toggleterm.setup{
     size = 15,
     open_mapping = [[<c-\>]], -- CTRL+\
     start_in_insert = true,

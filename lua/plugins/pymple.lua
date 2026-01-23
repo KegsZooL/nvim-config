@@ -1,4 +1,7 @@
-require("pymple").setup({
+local ok, pymple = pcall(require, "pymple")
+if not ok then return end
+
+pymple.setup({
   update_imports = {
     filetypes = { "python", "markdown" }
   },

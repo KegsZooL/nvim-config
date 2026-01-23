@@ -1,4 +1,7 @@
-require("auto-save").setup({
+local ok, autosave = pcall(require, "auto-save")
+if not ok then return end
+
+autosave.setup({
 	execution_message = {
 		message = function()
 			return ""

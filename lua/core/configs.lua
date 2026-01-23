@@ -6,6 +6,17 @@ local fn = vim.fn
 local api = vim.api
 local diagnostic = vim.diagnostic
 
+-- Suppress deprecated warnings (Lspsaga uses old API)
+vim.g.deprecation_warnings = false
+
+local orig_deprecate = vim.deprecate
+vim.deprecate = function(name, alternative, version, plugin, backtrace)
+    if name and name:match("jump_to_location") then
+        return
+    end
+    return orig_deprecate(name, alternative, version, plugin, backtrace)
+end
+
 vim.o.list = true
 
 wo.relativenumber = true
@@ -160,7 +171,7 @@ api.nvim_create_autocmd('CursorMoved', {
 })
 
 diagnostic.config({
-  virtual_text = true,
+  virtual_text = false,  -- handled by tiny-inline-diagnostic.nvim
   signs = {
     text = {
       [diagnostic.severity.ERROR] = " ",

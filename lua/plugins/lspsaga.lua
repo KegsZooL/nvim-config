@@ -1,4 +1,5 @@
-local lspsaga = require("lspsaga")
+local ok, lspsaga = pcall(require, "lspsaga")
+if not ok then return end
 
 lspsaga.setup({
     debug = false,
@@ -36,5 +37,16 @@ lspsaga.setup({
         keys = {
             exec = '<CR>'
         }
+    },
+    callhierarchy = {
+        keys = {
+            edit = 'o',           -- jump to location
+            vsplit = 's',         -- open in vsplit
+            split = 'i',          -- open in split
+            tabe = 't',           -- open in new tab
+            quit = 'q',           -- close window
+            shuttle = '[w',       -- switch between windows
+            toggle_or_req = 'u',  -- expand or collapse
+        },
     },
 })

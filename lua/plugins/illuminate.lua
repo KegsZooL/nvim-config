@@ -5,9 +5,9 @@ illuminate.configure({
   providers = {
     "lsp",
     "treesitter",
-    "regex",
+    -- "regex",  -- disabled for performance
   },
-  delay = 100,
+  delay = 200,  -- increased from 100 for better performance
   filetype_overrides = {},
   filetypes_denylist = {
     "lube",
@@ -58,7 +58,9 @@ illuminate.configure({
   providers_regex_syntax_denylist = {},
   providers_regex_syntax_allowlist = {},
   under_cursor = true,
-  large_file_cutoff = nil,
-  large_file_overrides = nil,
-  min_count_to_highlight = 1,
+  large_file_cutoff = 5000,  -- disable for files > 5000 lines
+  large_file_overrides = {
+    providers = { "lsp" },  -- only use LSP for large files
+  },
+  min_count_to_highlight = 2,  -- don't highlight unique occurrences
 })

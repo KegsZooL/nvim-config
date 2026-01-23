@@ -1,8 +1,10 @@
-local util = require('lspconfig.util')
+local ok, dap_go = pcall(require, 'dap-go')
+if not ok then return end
 
+local util = require('lspconfig.util')
 local root_dir = util.root_pattern(".git")(vim.fn.getcwd()) or vim.fn.getcwd()
 
-require('dap-go').setup({
+dap_go.setup({
   dap_configurations = {
     {
       type = "go",

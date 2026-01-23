@@ -1,5 +1,5 @@
-local util           = require("lspconfig.util")
-local capabilities   = require("cmp_nvim_lsp").default_capabilities()
+local util = require("lspconfig.util")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- Allow servers (basedpyright, ruff, etc.) to register file watchers so external renames are noticed
 capabilities.workspace = capabilities.workspace or {}
@@ -119,8 +119,16 @@ vim.lsp.config('ruff', {
   capabilities = capabilities,
 })
 
+-- Cache for Python environments (avoid repeated shell calls)
+local python_env_cache = {}
+
 -- Helper: find Python environment (prefers .venv, falls back to pyenv)
 local function find_python_env(root_dir)
+  -- Return cached result if available
+  if python_env_cache[root_dir] then
+    return python_env_cache[root_dir]
+  end
+
   local result = {
     python_path = nil,
     venv_path = nil,
@@ -128,7 +136,7 @@ local function find_python_env(root_dir)
     site_packages = {},
   }
 
-  -- 1. Check for .venv in project root
+  -- 1. Check for .venv in project root (fast, no shell call)
   local venv_python = root_dir .. "/.venv/bin/python"
   if vim.fn.executable(venv_python) == 1 then
     result.python_path = venv_python
@@ -141,10 +149,11 @@ local function find_python_env(root_dir)
     for _, path in ipairs(expanded) do
       table.insert(result.site_packages, path)
     end
+    python_env_cache[root_dir] = result
     return result
   end
 
-  -- 2. Fallback to pyenv
+  -- 2. Fallback to pyenv (requires shell calls, cached)
   local pyenv_version = vim.fn.system("pyenv version-name 2>/dev/null"):gsub("%s+", "")
   if pyenv_version ~= "" and pyenv_version ~= "system" then
     local pyenv_python = vim.fn.system("pyenv which python3 2>/dev/null"):gsub("%s+", "")
@@ -163,6 +172,7 @@ local function find_python_env(root_dir)
     end
   end
 
+  python_env_cache[root_dir] = result
   return result
 end
 
@@ -187,7 +197,7 @@ vim.lsp.config('basedpyright', {
   settings = {
     basedpyright = {
       analysis = {
-        diagnosticMode = "workspace",
+        diagnosticMode = "openFilesOnly",  -- "workspace" is slow for large projects
         autoSearchPaths = true,
         enableReachabilityAnalysis = false,
         useLibraryCodeForTypes = true,

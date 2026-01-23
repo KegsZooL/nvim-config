@@ -1,6 +1,9 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- Disable Ctrl-Z (suspend)
+keymap.set({'n', 'i', 'v'}, '<C-z>', '<Nop>', opts)
+
 -- Disabling arrows
 keymap.set('n', '<Up>', '<Nop>', opts)
 keymap.set('n', '<Down>', '<Nop>', opts)
@@ -132,13 +135,16 @@ keymap.set('i', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 keymap.set('n', '<A-x>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 keymap.set('i', '<A-x>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 
--- keymap.set('n', '<A-x>', vim.lsp.buf.implementation, opts)
+keymap.set('n', '<A-f>', '<cmd>Lspsaga finder ref<CR>', opts)
+keymap.set('i', '<A-f>', '<cmd>Lspsaga finder ref<CR>', opts)
 
--- keymap.set('n', '<A-f>', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
--- keymap.set('i', '<A-f>', '<cmd>Lspsaga finder def+ref+imp<CR>', opts)
+-- Show only implementations (child classes)
+keymap.set('n', '<A-z>', '<cmd>Lspsaga finder imp<CR>', { desc = "Find implementations" })
 
-keymap.set('n', '<A-f>', '<cmd>Lspsaga finder ref+imp<CR>', opts)
-keymap.set('i', '<A-f>', '<cmd>Lspsaga finder ref+imp<CR>', opts)
+-- Type hierarchy (incoming = parents, outgoing = children)
+keymap.set('n', '<leader>lc', '<cmd>Lspsaga incoming_calls<CR>', { desc = "Incoming calls" })
+keymap.set('n', '<C-x>', '<cmd>Lspsaga outgoing_calls<CR>', { desc = "Outgoing calls" })
+keymap.set('n', '<C-s-x>', '<cmd>Lspsaga incoming_calls<CR>', { desc = "Outgoing calls" })
 
 keymap.set('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 keymap.set('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)

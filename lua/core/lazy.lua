@@ -16,7 +16,6 @@ end
 opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    { "folke/which-key.nvim" },
     { "folke/neoconf.nvim", cmd = "Neoconf" },
     { "folke/neodev.nvim" },
     { "ellisonleao/gruvbox.nvim" },
@@ -26,10 +25,11 @@ require("lazy").setup({
       lazy = false,
       build = ':TSUpdate'
     },
-    { 'neovim/nvim-lspconfig' },
-    { 'nvim-tree/nvim-web-devicons' },
+    { 'neovim/nvim-lspconfig', event = { "BufReadPre", "BufNewFile" } },
+    { 'nvim-tree/nvim-web-devicons', lazy = true },
     {
         'hrsh7th/nvim-cmp',
+        lazy = false,  -- cmp must load early for LSP capabilities
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
@@ -39,10 +39,9 @@ require("lazy").setup({
             'hrsh7th/vim-vsnip',
             'hrsh7th/vim-vsnip-integ',
             'saadparwaiz1/cmp_luasnip',
-            'L3MON4D3/LuaSnip',
-            'ray-x/lsp_signature.nvim',
+            { 'L3MON4D3/LuaSnip', build = "make install_jsregexp" },
             'rafamadriz/friendly-snippets',
-        }
+        },
     },
     { 'hrsh7th/vscode-langservers-extracted' },
     {
@@ -53,9 +52,11 @@ require("lazy").setup({
     },
     {
       'nvim-telescope/telescope.nvim', branch = 'master',
+      cmd = "Telescope",
+      keys = { "<leader>f", "<leader>g" },
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    { "williamboman/mason.nvim" },
+    { "williamboman/mason.nvim", cmd = "Mason" },
     {
       "williamboman/mason-lspconfig.nvim",
       dependencies = {
@@ -65,26 +66,23 @@ require("lazy").setup({
     { "jay-babu/mason-nvim-dap.nvim" },  -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
                                          -- mason-lspconfig will not automatically install debug adapters for us
     { 'akinsho/bufferline.nvim', version = "*" },
-    { "norcalli/nvim-colorizer.lua" },
-    { 'akinsho/toggleterm.nvim', version = "*", config = true }, -- console in nvim
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'rafamadriz/friendly-snippets' },
-    { 'L3MON4D3/LuaSnip' },
+    { "norcalli/nvim-colorizer.lua", event = "BufReadPost" },
+    { 'akinsho/toggleterm.nvim', version = "*", config = true, cmd = "ToggleTerm" },
     { 'fedepujol/move.nvim' },
     { 'onsails/lspkind.nvim' },
     { "christoomey/vim-system-copy" },
-    { "numToStr/Comment.nvim" },
+    { "numToStr/Comment.nvim", event = "BufReadPost" },
     { "nvimdev/dashboard-nvim" },
     { "rcarriga/nvim-notify" },
-    { "folke/trouble.nvim" },
-    { "nvimdev/lspsaga.nvim" },
+    { "folke/trouble.nvim", cmd = "Trouble", event = "LspAttach" },
+    { "nvimdev/lspsaga.nvim", event = "LspAttach" },
     { "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         opts = {}
     },
     { 'echasnovski/mini.nvim', version = false },
-    { 'lewis6991/gitsigns.nvim' },
-    { "folke/which-key.nvim" },
+    { 'lewis6991/gitsigns.nvim', event = "BufReadPre" },
+    { "folke/which-key.nvim", event = "VeryLazy" },
     {
       "folke/todo-comments.nvim",
       dependencies = { "nvim-lua/plenary.nvim" },
@@ -96,11 +94,12 @@ require("lazy").setup({
         version = "*",                  -- Use for stability; omit to use `main` branch for the latest features
     },
     { "rcarriga/nvim-dap-ui",
+      lazy = true,
       dependencies = {
           "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"
       }
     },
-    { "theHamsta/nvim-dap-virtual-text" },
+    { "theHamsta/nvim-dap-virtual-text", lazy = true },
     {
       "iamcco/markdown-preview.nvim",
       cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -132,8 +131,8 @@ require("lazy").setup({
             "rcarriga/nvim-notify",
         }
     },
-    { "RRethy/vim-illuminate" },        --  Automatically highlighting other uses of the word under the cursor
-    { "windwp/nvim-ts-autotag" },
+    { "RRethy/vim-illuminate", event = "BufReadPost" },
+    { "windwp/nvim-ts-autotag", event = "InsertEnter" },
     {
         "MysticalDevil/inlay-hints.nvim",
         event = "LspAttach",
@@ -157,10 +156,9 @@ require("lazy").setup({
     },
     { "bergercookie/asm-lsp" },
     { "nvimtools/none-ls.nvim" },
-    { "mfussenegger/nvim-dap-python" },
+    { "mfussenegger/nvim-dap-python", ft = "python", lazy = true },
     { "typeddjango/django-stubs" },
-    { "lvimuser/lsp-inlayhints.nvim" },
-    { "leoluz/nvim-dap-go" },
+    { "leoluz/nvim-dap-go", ft = "go", lazy = true },
     {
       "ray-x/go.nvim",
       dependencies = {  -- optional packages
@@ -179,33 +177,52 @@ require("lazy").setup({
       ft = {"go", 'gomod'},
       build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
-    { "pocco81/auto-save.nvim" },
-    { "rachartier/tiny-inline-diagnostic.nvim" },
+    { "pocco81/auto-save.nvim", event = { "InsertLeave", "TextChanged" } },
+    { "rachartier/tiny-inline-diagnostic.nvim", event = "LspAttach" },
     {
       "GeorgesAlkhouri/nvim-aider",
       dependencies = {
         "folke/snacks.nvim"
       }
     },
-    {"mikavilpas/yazi.nvim"},
-    {"crnvl96/lazydocker.nvim"},
+    {"mikavilpas/yazi.nvim", cmd = "Yazi" },
+    {"crnvl96/lazydocker.nvim", cmd = "Lazydocker" },
     { "0xfraso/nvim-listchars", opts = true },
     {
       "alexpasmantier/pymple.nvim",
+      ft = "python",
       dependencies = {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
-        -- optional (nicer ui)
         "stevearc/dressing.nvim",
         "nvim-tree/nvim-web-devicons",
       },
       build = ":PympleBuild",
     },
     {
-    "kdheepak/lazygit.nvim",
-      requires = {
+      "kdheepak/lazygit.nvim",
+      cmd = "LazyGit",
+      dependencies = {
         "nvim-lua/plenary.nvim",
       },
     },
-    { 'benomahony/uv.nvim' }
+    { 'benomahony/uv.nvim', ft = "python" }
+}, {
+  -- Performance optimizations
+  performance = {
+    cache = { enabled = true },
+    reset_packpath = true,
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 })
