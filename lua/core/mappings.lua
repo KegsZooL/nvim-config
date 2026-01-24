@@ -132,9 +132,6 @@ keymap.set('n', '<leader>ee', ':Yazi toggle<CR>', opts)
 keymap.set('n', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 keymap.set('i', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)
 
-keymap.set('n', '<A-x>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-keymap.set('i', '<A-x>', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-
 keymap.set('n', '<A-f>', '<cmd>Lspsaga finder ref<CR>', opts)
 keymap.set('i', '<A-f>', '<cmd>Lspsaga finder ref<CR>', opts)
 
@@ -143,8 +140,8 @@ keymap.set('n', '<A-z>', '<cmd>Lspsaga finder imp<CR>', { desc = "Find implement
 
 -- Type hierarchy (incoming = parents, outgoing = children)
 keymap.set('n', '<leader>lc', '<cmd>Lspsaga incoming_calls<CR>', { desc = "Incoming calls" })
-keymap.set('n', '<C-x>', '<cmd>Lspsaga outgoing_calls<CR>', { desc = "Outgoing calls" })
-keymap.set('n', '<C-s-x>', '<cmd>Lspsaga incoming_calls<CR>', { desc = "Outgoing calls" })
+keymap.set('n', '<A-s-x>', '<cmd>Lspsaga outgoing_calls<CR>', { desc = "Outgoing calls" })
+keymap.set('n', '<A-x>', '<cmd>Lspsaga incoming_calls<CR>', { desc = "Outgoing calls" })
 
 keymap.set('n', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
 keymap.set('i', '<A-1>', '<cmd>Lspsaga code_action<CR>', opts)
