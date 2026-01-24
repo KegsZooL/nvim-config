@@ -219,7 +219,8 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
       },
     },
-    { 'benomahony/uv.nvim', ft = "python" }
+    { 'benomahony/uv.nvim', ft = "python" },
+    { 'savq/melange-nvim' },
 }, {
   -- Performance optimizations
   performance = {
