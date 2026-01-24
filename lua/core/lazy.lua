@@ -221,6 +221,21 @@ require("lazy").setup({
     },
     { 'benomahony/uv.nvim', ft = "python" },
     { 'savq/melange-nvim' },
+    {
+      'ggandor/leap.nvim',
+      config = function ()
+        local leap = require('leap')
+        leap.add_default_mappings()
+        leap.opts.case_sensitive = true
+      end
+    },
+    {
+      'Wansmer/treesj',
+      dependencies = { 'nvim-treesitter/nvim-treesitter' },
+      config = function()
+        require('treesj').setup({})
+      end,
+    },
 }, {
   -- Performance optimizations
   performance = {

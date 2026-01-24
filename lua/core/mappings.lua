@@ -31,6 +31,9 @@ keymap.set('v', 'd', '"_d', opts)
 keymap.set('n', 's', '"_s', opts)
 keymap.set('v', 's', '"_s', opts)
 
+vim.keymap.set({'n','x','o'}, 'f', '<Plug>(leap-forward)')
+vim.keymap.set({'n','x','o'}, 'F', '<Plug>(leap-backward)')
+
 keymap.set('n', 'daw', '"_daw', opts)
 keymap.set('n', 'dw', '"_daw', opts)
 
@@ -299,3 +302,5 @@ keymap.set('n', '<leader>at', function()
     { title = 'Autosave' }
   )
 end, opts)
+
+keymap.set('n', '<space><space>', '<cmd>TSJToggle<CR>', opts)
