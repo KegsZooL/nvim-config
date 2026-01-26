@@ -198,7 +198,6 @@ require("lazy").setup({
         "folke/snacks.nvim"
       }
     },
-    {"mikavilpas/yazi.nvim", cmd = "Yazi" },
     {"crnvl96/lazydocker.nvim", cmd = "Lazydocker" },
     { "0xfraso/nvim-listchars", opts = true },
     {

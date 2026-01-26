@@ -128,8 +128,11 @@ keymap.set('n', '<A-=>', '<Cmd>resize +2<CR>', opts)
 keymap.set('n', '<A-,>', '<Cmd>vertical resize -2<CR>', opts)
 keymap.set('n', '<A-.>', '<Cmd>vertical resize +2<CR>', opts)
 
--- Yazi
-keymap.set('n', '<leader>ee', ':Yazi toggle<CR>', opts)
+-- Neotree
+keymap.set('n', '<leader>ee', '<Cmd>Neotree toggle<CR>', opts)
+
+-- Neotree
+keymap.set('n', '<leader>ngs', '<Cmd>Neotree git_status<CR>', opts)
 
 -- Lspsaga
 keymap.set('n', '<A-c>', '<cmd>Lspsaga goto_definition<CR>', opts)

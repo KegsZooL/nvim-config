@@ -82,51 +82,6 @@ neo_tree.setup({
             nowait = true,
         },
 
-        mappings = {
-            -- Navigation only
-            ["<space>"] = { "toggle_node", nowait = false },
-            ["<2-LeftMouse>"] = "open",
-            ["<cr>"] = "open",
-            ["o"] = "open",
-            ["<esc>"] = "cancel",
-            ["P"] = { "toggle_preview", config = { use_float = true } },
-            ["l"] = "open",
-            ["h"] = "close_node",
-            ["S"] = "open_split",
-            ["s"] = "open_vsplit",
-            ["t"] = "open_tabnew",
-            ["w"] = "open_with_window_picker",
-            ["C"] = "close_node",
-            ["z"] = "close_all_nodes",
-            ["Z"] = "expand_all_nodes",
-
-            -- Search
-            ["/"] = "fuzzy_finder",
-            ["D"] = "fuzzy_finder_directory",
-            ["#"] = "fuzzy_sorter",
-            ["f"] = "filter_on_submit",
-            ["<c-x>"] = "clear_filter",
-
-            -- Refresh
-            ["R"] = "refresh",
-
-            -- Info
-            ["?"] = "show_help",
-            ["<"] = "prev_source",
-            [">"] = "next_source",
-            ["i"] = "show_file_details",
-
-            -- DISABLED operations (use Yazi)
-            ["a"] = disabled_action(),
-            ["A"] = disabled_action(),
-            ["d"] = disabled_action(),
-            ["r"] = disabled_action(),
-            ["y"] = disabled_action(),
-            ["x"] = disabled_action(),
-            ["p"] = disabled_action(),
-            ["c"] = disabled_action(),
-            ["m"] = disabled_action(),
-        },
     },
 
     filesystem = {
@@ -168,20 +123,6 @@ neo_tree.setup({
         hijack_netrw_behavior = "open_current",
         use_libuv_file_watcher = true,  -- Auto refresh on file changes
         group_empty_dirs = false,
-
-        window = {
-            mappings = {
-                ["<bs>"] = "navigate_up",
-                ["."] = "set_root",
-                ["H"] = "toggle_hidden",
-                ["/"] = "fuzzy_finder",
-                ["f"] = "filter_on_submit",
-                ["<c-x>"] = "clear_filter",
-                ["[g"] = "prev_git_modified",
-                ["]g"] = "next_git_modified",
-                ["gy"] = disabled_action(),
-            },
-        },
     },
 
     buffers = {
@@ -191,28 +132,6 @@ neo_tree.setup({
         },
         group_empty_dirs = true,
         show_unloaded = true,
-        window = {
-            mappings = {
-                ["bd"] = disabled_action(),
-                ["<bs>"] = "navigate_up",
-                ["."] = "set_root",
-            },
-        },
-    },
-
-    git_status = {
-        window = {
-            position = "float",
-            mappings = {
-                ["A"]  = disabled_action(),
-                ["gu"] = disabled_action(),
-                ["ga"] = disabled_action(),
-                ["gr"] = disabled_action(),
-                ["gc"] = disabled_action(),
-                ["gp"] = disabled_action(),
-                ["gg"] = disabled_action(),
-            },
-        },
     },
 })
 
