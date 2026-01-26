@@ -88,6 +88,15 @@ neo_tree.setup({
         bind_to_cwd = true,
         cwd_target = { sidebar = "window" },
 
+        window = {
+            mappings = {
+                ["/"] = "filter_as_you_type",
+                ["<Esc>"] = "clear_filter",
+                ["gn"] = "prev_git_modified",
+                ["gp"] = "next_git_modified",
+            },
+        },
+
         filtered_items = {
             visible = false,          -- Hide filtered items
             hide_dotfiles = true,     -- Hide dotfiles
