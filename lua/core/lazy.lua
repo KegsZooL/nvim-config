@@ -122,7 +122,6 @@ require("lazy").setup({
       end,
       ft = { "markdown" },
     },
-    { "allaman/emoji.nvim" },
     {
         '2kabhishek/nerdy.nvim',
         dependencies = {
@@ -218,7 +217,6 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
       },
     },
-    { 'benomahony/uv.nvim', ft = "python" },
     { 'savq/melange-nvim' },
     {
       'ggandor/leap.nvim',
