@@ -202,6 +202,7 @@ vim.lsp.config('basedpyright', {
         enableReachabilityAnalysis = false,
         useLibraryCodeForTypes = true,
         autoImportCompletions = true,
+        indexing = true,  -- Enable indexing for better performance
         diagnosticSeverityOverrides = {
           reportAttributeAccessIssue = true,
           reportImportCycles = "warning",
@@ -249,6 +250,16 @@ vim.lsp.config('basedpyright', {
         },
         inlayHints = {
           callArgumentNames = true,
+        },
+        exclude = {
+          "**/node_modules",
+          "**/__pycache__",
+          "**/.*",
+          "**/venv",
+          "**/.venv",
+          "**/env",
+          "**/build",
+          "**/dist",
         },
         extraPaths = { "./saltbox_bridge" },
       },

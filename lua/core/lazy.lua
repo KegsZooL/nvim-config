@@ -17,9 +17,9 @@ opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     { "folke/neoconf.nvim", cmd = "Neoconf" },
-    { "folke/neodev.nvim" },
-    { "ellisonleao/gruvbox.nvim" },
-    { "sainnhe/gruvbox-material" },
+    { "folke/neodev.nvim", lazy = true },
+    { "ellisonleao/gruvbox.nvim", lazy = true, priority = 1000 },
+    { "sainnhe/gruvbox-material", lazy = true, priority = 1000 },
     {
       'nvim-treesitter/nvim-treesitter',
       lazy = false,
@@ -43,9 +43,10 @@ require("lazy").setup({
             'rafamadriz/friendly-snippets',
         },
     },
-    { 'hrsh7th/vscode-langservers-extracted' },
+    { 'hrsh7th/vscode-langservers-extracted', lazy = true },
     {
       'nvim-lualine/lualine.nvim',
+      event = "VeryLazy",
       dependencies = {
         'linrongbin16/lsp-progress.nvim'
       }
@@ -65,46 +66,50 @@ require("lazy").setup({
     },
     { "jay-babu/mason-nvim-dap.nvim" },  -- mason nvim dap utilizes mason to automatically ensure debug adapters you want installed are installed,
                                          -- mason-lspconfig will not automatically install debug adapters for us
-    { 'akinsho/bufferline.nvim', version = "*" },
+    { 'akinsho/bufferline.nvim', version = "*", event = "VeryLazy" },
     { "norcalli/nvim-colorizer.lua", event = "BufReadPost" },
     { 'akinsho/toggleterm.nvim', version = "*", config = true, cmd = "ToggleTerm" },
     { 'fedepujol/move.nvim' },
     { 'onsails/lspkind.nvim' },
     { "christoomey/vim-system-copy" },
     { "numToStr/Comment.nvim", event = "BufReadPost" },
-    { "nvimdev/dashboard-nvim" },
-    { "rcarriga/nvim-notify" },
+    { "nvimdev/dashboard-nvim", event = "VimEnter" },
+    { "rcarriga/nvim-notify", event = "VeryLazy" },
     { "folke/trouble.nvim", cmd = "Trouble", event = "LspAttach" },
     { "nvimdev/lspsaga.nvim", event = "LspAttach" },
     { "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
+        event = "BufReadPost",
         opts = {}
     },
-    { 'echasnovski/mini.nvim', version = false },
+    { 'echasnovski/mini.nvim', version = false, event = "VeryLazy" },
     { 'lewis6991/gitsigns.nvim', event = "BufReadPre" },
     {
-      "sphamba/smear-cursor.nvim"
+      "sphamba/smear-cursor.nvim",
+      event = "VeryLazy"
     },
     {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v3.x",
+      cmd = "Neotree",
       dependencies = {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
         "nvim-tree/nvim-web-devicons", -- optional, but recommended
       },
-      lazy = false, -- neo-tree will lazily load itself
     },
     { "folke/which-key.nvim", event = "VeryLazy" },
     {
       "folke/todo-comments.nvim",
+      event = "BufReadPost",
       dependencies = { "nvim-lua/plenary.nvim" },
       opts = {}
     },
-    { "lambdalisue/vim-suda" },
+    { "lambdalisue/vim-suda", cmd = { "SudaWrite", "SudaRead" } },
     {
         "kylechui/nvim-surround",
-        version = "*",                  -- Use for stability; omit to use `main` branch for the latest features
+        version = "*",
+        event = "VeryLazy",
     },
     { "rcarriga/nvim-dap-ui",
       lazy = true,
@@ -124,20 +129,23 @@ require("lazy").setup({
     },
     {
         '2kabhishek/nerdy.nvim',
+        cmd = "Nerdy",
         dependencies = {
             'stevearc/dressing.nvim',
         },
     },
     {
-        "ray-x/web-tools.nvim",         -- Website preview
+        "ray-x/web-tools.nvim",
+        cmd = { "BrowserOpen", "BrowserPreview", "BrowserRestart", "BrowserStop" },
         dependencies = {
-            'Orange-OpenSource/hurl',   -- HTTP requests
+            'Orange-OpenSource/hurl',
             'BrowserSync/browser-sync'
         },
     },
-    { "max397574/colortils.nvim" },     -- Color picker
+    { "max397574/colortils.nvim", cmd = "Colortils" },
     {
         "folke/noice.nvim",
+        event = "VeryLazy",
         dependencies = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
@@ -153,9 +161,10 @@ require("lazy").setup({
             require("inlay-hints").setup()
         end
     },
-    { "sqls-server/sqls" },
+    { "sqls-server/sqls", ft = { 'sql', 'mysql', 'plsql' } },
     {
         'kristijanhusak/vim-dadbod-ui',
+        cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection" },
         dependencies = {
         { 'tpope/vim-dadbod' },
         { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }}
@@ -167,9 +176,9 @@ require("lazy").setup({
         event = "BufReadPre",
     },
     { "bergercookie/asm-lsp" },
-    { "nvimtools/none-ls.nvim" },
+    { "nvimtools/none-ls.nvim", event = "LspAttach" },
     { "mfussenegger/nvim-dap-python", ft = "python", lazy = true },
-    { "typeddjango/django-stubs" },
+    { "typeddjango/django-stubs", ft = "python" },
     { "leoluz/nvim-dap-go", ft = "go", lazy = true },
     {
       "ray-x/go.nvim",
@@ -193,12 +202,13 @@ require("lazy").setup({
     { "rachartier/tiny-inline-diagnostic.nvim", event = "LspAttach" },
     {
       "GeorgesAlkhouri/nvim-aider",
+      cmd = { "Aider", "AiderOpen" },
       dependencies = {
         "folke/snacks.nvim"
       }
     },
     {"crnvl96/lazydocker.nvim", cmd = "Lazydocker" },
-    { "0xfraso/nvim-listchars", opts = true },
+    { "0xfraso/nvim-listchars", event = "VeryLazy", opts = true },
     {
       "alexpasmantier/pymple.nvim",
       ft = "python",
@@ -217,7 +227,7 @@ require("lazy").setup({
         "nvim-lua/plenary.nvim",
       },
     },
-    { 'savq/melange-nvim' },
+    { 'savq/melange-nvim', lazy = true, priority = 1000 },
     {
       'ggandor/leap.nvim',
       config = function ()

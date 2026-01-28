@@ -25,7 +25,7 @@ g.formatoptions = "qn1"
 opt.backspace = "indent,eol,start"
 opt.wrap = false
 opt.showmode = false
-opt.updatetime = 50
+opt.updatetime = 250 -- (default: 4000)
 opt.undofile = true
 opt.title = false
 opt.shortmess:append("c")
@@ -48,6 +48,7 @@ opt.completeopt = { "menuone", "noselect" }
 opt.fileencoding = "utf-8"
 opt.hidden = true               -- option allows you to switch buffers without needing to write changes to the file
 opt.termguicolors = true        -- set term gui colors
+opt.ttyfast = true              -- Faster terminal connection
 
 -- Backups
 opt.swapfile = false
@@ -160,13 +161,20 @@ api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Automatic disabling of text highlight after search
+-- Automatic disabling of text highlight after search (debounced for performance)
+local hlsearch_timer = nil
 api.nvim_create_autocmd('CursorMoved', {
   group = api.nvim_create_augroup('auto-hlsearch', { clear = true }),
   callback = function ()
-    if vim.v.hlsearch == 1 and fn.searchcount().exact_match == 0 then
-      vim.schedule(function () cmd.nohlsearch() end)
+    if hlsearch_timer then
+      vim.fn.timer_stop(hlsearch_timer)
     end
+    hlsearch_timer = vim.fn.timer_start(100, function()
+      if vim.v.hlsearch == 1 and fn.searchcount().exact_match == 0 then
+        vim.schedule(function () cmd.nohlsearch() end)
+      end
+      hlsearch_timer = nil
+    end)
   end
 })
 
