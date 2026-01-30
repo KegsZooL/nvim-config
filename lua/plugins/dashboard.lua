@@ -4,7 +4,7 @@ return {
   config = function()
     local db = require('dashboard')
     local builtin = require('telescope.builtin')
-    local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+    local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
     local version = vim.version()
     local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
     local ascii = require('ascii-art')

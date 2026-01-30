@@ -66,21 +66,21 @@ return {
     })
 
     fn.sign_define("DapBreakpoint", {
-      text = "",
+      text = "",
       texthl = "DiagnosticSignError",
       linehl = "",
       numhl = "",
     })
 
     fn.sign_define("DapBreakpointRejected", {
-      text = "",
+      text = "",
       texthl = "DiagnosticSignError",
       linehl = "",
       numhl = "",
     })
 
     fn.sign_define("DapStopped", {
-      text = "",
+      text = "",
       texthl = "DiagnosticSignWarn",
       linehl = "Visual",
       numhl = "DiagnosticSignWarn",
