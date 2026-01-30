@@ -1,8 +1,11 @@
-local ok, Comment = pcall(require, 'Comment')
-if not ok then return end
-
-Comment.setup({
-    opleader = {
+return {
+  "numToStr/Comment.nvim",
+  event = "BufReadPost",
+  config = function()
+    require('Comment').setup({
+      opleader = {
         block = 'ggb',
-    },
-})
+      },
+    })
+  end
+}

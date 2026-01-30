@@ -1,5 +1,8 @@
-local ok, dap_python = pcall(require, "dap-python")
-if not ok then return end
-
-local python_path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-dap_python.setup(python_path)
+return {
+  "mfussenegger/nvim-dap-python",
+  ft = "python",
+  config = function()
+    local python_path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+    require("dap-python").setup(python_path)
+  end
+}

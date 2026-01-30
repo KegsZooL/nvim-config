@@ -1,28 +1,33 @@
-local ok, telescope = pcall(require, "telescope")
-if not ok then return end
+return {
+  'nvim-telescope/telescope.nvim',
+  branch = 'master',
+  cmd = "Telescope",
+  keys = { "<leader>f", "<leader>g" },
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  config = function()
+    local telescope = require("telescope")
+    local ignore_files = require("ignore_files").pattern
 
-local ignore_files = require("ignore_files").pattern
-
-telescope.setup{
-    pickers = {
+    telescope.setup{
+      pickers = {
         find_files = {
-            no_ignore = true,
-            hidden = true,
+          no_ignore = true,
+          hidden = true,
         },
         oldfiles = {
-            prompt_prefix = "   ",
+          prompt_prefix = "   ",
         },
         git_status = {
-            prompt_prefix = "  ",
-            git_icons = {
-                added = "",
-                changed = "󰜥",
-                copied = "",
-                deleted = "󰆴",
-                renamed = "",
-                unmerged = "‡",
-                untracked = "",
-            },
+          prompt_prefix = "  ",
+          git_icons = {
+              added = "",
+              changed = "󰜥",
+              copied = "",
+              deleted = "󰆴",
+              renamed = "",
+              unmerged = "‡",
+              untracked = "",
+          },
         },
         git_commits = {
           prompt_prefix = "  ",
@@ -40,9 +45,9 @@ telescope.setup{
             sort_lastused = true,
             prompt_prefix = "   ",
         }
-    },
+      },
 
-    defaults = {
+      defaults = {
         file_ignore_patterns = ignore_files,
         prompt_prefix = "   ",
         layout_config = {
@@ -56,5 +61,7 @@ telescope.setup{
           height = 0.9,
           preview_cutoff = 120,
         },
-    },
+      },
+    }
+  end
 }

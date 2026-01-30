@@ -1,15 +1,20 @@
-local ok, noice = pcall(require, "noice")
-if not ok then return end
-
-noice.setup({
-    notify = {
+return {
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+  },
+  config = function()
+    require("noice").setup({
+      notify = {
         enabled = false,
-    },
-    messages = {
-        enabled = true, -- views standard vim/nvim log messages
-        view_search = false, -- view for search count messages. Set to `false` to disable
-    },
-    cmdline = {
+      },
+      messages = {
+        enabled = true,
+        view_search = false,
+      },
+      cmdline = {
         format = {
             cmdline = { pattern = "^:", icon = "  ", lang = "vim", title = " Command " },
             search_down = { kind = "search", pattern = "^/", icon = "  ", lang = "regex", title = " Search" },
@@ -18,117 +23,118 @@ noice.setup({
             help = { pattern = "^:%s*he?l?p?%s+", icon = " 󰋖", title = " Help " },
             input = {}, -- Used by input()
         },
-    },
-    lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+      },
+      lsp = {
         override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
         },
         signature = {
+          enabled = true,
+          auto_open = {
             enabled = true,
-            auto_open = {
-                enabled = true,
-                trigger = true,
-                luasnip = true,
-                throttle = 50,
-            },
+            trigger = true,
+            luasnip = true,
+            throttle = 50,
+          },
         },
         hover = {
-            enabled = true,
+          enabled = true,
         }
-    },
-    presets = {
-        long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = true, -- add a border to hover docs and signature help
-    },
-    views = {
+      },
+      presets = {
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = true,
+      },
+      views = {
         cmdline_popup = {
-            win_options = {
-                winhighlight = { Normal = "TelescopePromptNormal", FloatBorder = "DiagnosticInfo" },
-            },
+          win_options = {
+            winhighlight = { Normal = "TelescopePromptNormal", FloatBorder = "DiagnosticInfo" },
+          },
         },
         split = {
-            enter = true,
+          enter = true,
         },
         notify = {
-            size = {
-                width = "15%"
-            }
+          size = {
+            width = "15%"
+          }
         },
         mini = {
-            win_options = {
-                winblend = 0,
-            }
+          win_options = {
+            winblend = 0,
+          }
         },
         hover = {
-            border = {
-                style = "rounded",
-            },
-            size = {
-                max_width = 120,
-                max_height = 30,
-            },
-            win_options = {
-                wrap = true,
-                linebreak = true,
-            },
-            focusable = true,
+          border = {
+            style = "rounded",
+          },
+          size = {
+            max_width = 120,
+            max_height = 30,
+          },
+          win_options = {
+            wrap = true,
+            linebreak = true,
+          },
+          focusable = true,
         },
-    },
-    routes = {
-      {
-        filter = {
+      },
+      routes = {
+        {
+          filter = {
             event = "msg_show",
             kind = "search_count",
+          },
+          opts = { skip = true },
         },
-        opts = { skip = true },
-      },
-      {
-        filter = {
+        {
+          filter = {
             event = "msg_show",
             kind = "",
             find = "written",
+          },
+          opts = { skip = true },
         },
-        opts = { skip = true },
-      },
-      {
-        filter = {
+        {
+          filter = {
             event = "msg_show",
             find = "DB:",
+          },
+          opts = { skip = true },
         },
-        opts = { skip = true },
-      },
-      {
-        filter = {
+        {
+          filter = {
             event = "msg_show",
             find = "E21:",
+          },
+          opts = { skip = true },
         },
-        opts = { skip = true },
-      },
-      {
-        filter = {
+        {
+          filter = {
             event = "msg_show",
             find = "yanked",
+          },
+          opts = { skip = true },
         },
-        opts = { skip = true },
-      },
-      {
-        filter = {
+        {
+          filter = {
             event = "msg_show",
             find = "more lines",
+          },
+          opts = { skip = true },
         },
-        opts = { skip = true },
-      },
-      {
-        filter = {
+        {
+          filter = {
             event = "lsp",
             kind = "progress",
-        },
-        opts = { skip = true },
-      }
-    },
-    status = { lsp_progress = { event = "lsp", kind = "progress" } }
-})
+          },
+          opts = { skip = true },
+        }
+      },
+      status = { lsp_progress = { event = "lsp", kind = "progress" } }
+    })
+  end
+}

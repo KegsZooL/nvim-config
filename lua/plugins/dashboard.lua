@@ -1,39 +1,41 @@
-local db = require('dashboard')
-local builtin = require('telescope.builtin')
-local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
-local version = vim.version()
-local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
-local ascii = require('ascii-art')
-local date = os.date("*t")
+return {
+  "nvimdev/dashboard-nvim",
+  event = "VimEnter",
+  config = function()
+    local db = require('dashboard')
+    local builtin = require('telescope.builtin')
+    local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+    local version = vim.version()
+    local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
+    local ascii = require('ascii-art')
+    local date = os.date("*t")
 
--- Format example: Monday, January 20
-local get_todays_date = function()
-    local result = {}
-    local weekday = ascii.weekdays[date.wday]
-    local month = ascii.months[date.month]
-    result = weekday
-    result = ascii.combine(result, ascii.comma)
-    result = ascii.combine(result, month)
-    result = ascii.combine(result, ascii.num_to_ascii(date.day), true)
-    
-    -- Adding padding down
-    for i = 1, 10 do
+    local get_todays_date = function()
+      local result = {}
+      local weekday = ascii.weekdays[date.wday]
+      local month = ascii.months[date.month]
+      result = weekday
+      result = ascii.combine(result, ascii.comma)
+      result = ascii.combine(result, month)
+      result = ascii.combine(result, ascii.num_to_ascii(date.day), true)
+
+      for i = 1, 10 do
         table.insert(result, "")
+      end
+
+      return result
     end
-    
-    return result
-end
 
-local get_plugins_stats = function()
-    local stats = require("lazy").stats()
-    return { " ⚡Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins" }
-end
+    local get_plugins_stats = function()
+      local stats = require("lazy").stats()
+      return { " ⚡Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins" }
+    end
 
-local plugins_stats = table.concat(get_plugins_stats(), " ")
+    local plugins_stats = table.concat(get_plugins_stats(), " ")
 
-db.setup {
-    theme = "doom",
-    config = {
+    db.setup {
+      theme = "doom",
+      config = {
         header = get_todays_date(),
         center = {
           {
@@ -101,5 +103,7 @@ db.setup {
           },
         },
         footer = { " ", datetime .. nvim_version_info, " ", plugins_stats  }
+      }
     }
+  end
 }
