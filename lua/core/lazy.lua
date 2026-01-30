@@ -18,8 +18,6 @@ opt.rtp:prepend(lazypath)
 require("lazy").setup({
     { "folke/neoconf.nvim", cmd = "Neoconf" },
     { "folke/neodev.nvim", lazy = true },
-    { "ellisonleao/gruvbox.nvim", lazy = true, priority = 1000 },
-    { "sainnhe/gruvbox-material", lazy = true, priority = 1000 },
     {
       'nvim-treesitter/nvim-treesitter',
       lazy = false,
@@ -69,9 +67,7 @@ require("lazy").setup({
     { 'akinsho/bufferline.nvim', version = "*", event = "VeryLazy" },
     { "norcalli/nvim-colorizer.lua", event = "BufReadPost" },
     { 'akinsho/toggleterm.nvim', version = "*", config = true, cmd = "ToggleTerm" },
-    { 'fedepujol/move.nvim' },
     { 'onsails/lspkind.nvim' },
-    { "christoomey/vim-system-copy" },
     { "numToStr/Comment.nvim", event = "BufReadPost" },
     { "nvimdev/dashboard-nvim", event = "VimEnter" },
     { "rcarriga/nvim-notify", event = "VeryLazy" },
@@ -128,22 +124,6 @@ require("lazy").setup({
       ft = { "markdown" },
     },
     {
-        '2kabhishek/nerdy.nvim',
-        cmd = "Nerdy",
-        dependencies = {
-            'stevearc/dressing.nvim',
-        },
-    },
-    {
-        "ray-x/web-tools.nvim",
-        cmd = { "BrowserOpen", "BrowserPreview", "BrowserRestart", "BrowserStop" },
-        dependencies = {
-            'Orange-OpenSource/hurl',
-            'BrowserSync/browser-sync'
-        },
-    },
-    { "max397574/colortils.nvim", cmd = "Colortils" },
-    {
         "folke/noice.nvim",
         event = "VeryLazy",
         dependencies = {
@@ -178,7 +158,6 @@ require("lazy").setup({
     { "bergercookie/asm-lsp" },
     { "nvimtools/none-ls.nvim", event = "LspAttach" },
     { "mfussenegger/nvim-dap-python", ft = "python", lazy = true },
-    { "typeddjango/django-stubs", ft = "python" },
     { "leoluz/nvim-dap-go", ft = "go", lazy = true },
     {
       "ray-x/go.nvim",
@@ -200,13 +179,6 @@ require("lazy").setup({
     },
     { "pocco81/auto-save.nvim", event = { "InsertLeave", "TextChanged" } },
     { "rachartier/tiny-inline-diagnostic.nvim", event = "LspAttach" },
-    {
-      "GeorgesAlkhouri/nvim-aider",
-      cmd = { "Aider", "AiderOpen" },
-      dependencies = {
-        "folke/snacks.nvim"
-      }
-    },
     {"crnvl96/lazydocker.nvim", cmd = "Lazydocker" },
     { "0xfraso/nvim-listchars", event = "VeryLazy", opts = true },
     {
