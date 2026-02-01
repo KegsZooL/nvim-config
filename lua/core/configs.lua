@@ -94,7 +94,7 @@ api.nvim_create_autocmd("FileType", {
 opt.pumheight = 10
 opt.cmdheight = 2
 opt.laststatus = 3
-opt.showtabline = 0
+opt.showtabline = 2
 
 -- Mouse & cursor
 opt.mouse = "a"                 -- enable mouse support
