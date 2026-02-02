@@ -306,3 +306,18 @@ keymap.set('n', '<leader>at', function()
 end, opts)
 
 keymap.set('n', '<space><space>', '<cmd>TSJToggle<CR>', opts)
+
+-- Neovide scale (zoom) controls
+if vim.g.neovide then
+  keymap.set('n', '<C-=>', function()
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * 1.1
+  end, { noremap = true, silent = true, desc = "Increase Neovide zoom" })
+
+  keymap.set('n', '<C-->', function()
+    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor / 1.1
+  end, { noremap = true, silent = true, desc = "Decrease Neovide zoom" })
+
+  keymap.set('n', '<C-0>', function()
+    vim.g.neovide_scale_factor = 1.0
+  end, { noremap = true, silent = true, desc = "Reset Neovide zoom" })
+end

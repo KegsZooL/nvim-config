@@ -10,12 +10,12 @@ return {
             {
               name = "usages",
               enabled = true,       -- enable usages provider by default (replaces references)
-              include = { "refs", 'impls' }, -- refs-only setup to match references provider behavior
+              include = { "refs" }, -- refs-only setup to match references provider behavior
               breakdown = true,     -- false = aggregate count, true = breakdown by type
-              show_zero = true,     -- show zero counts when LSP supports the capability
+              show_zero = false,     -- show zero counts when LSP supports the capability
               labels = {
                 refs = "󰌹 ",
-                impls = "󰡱 ",
+                -- impls = "󰡱 ",
               },
               icon_for_single = "󰌹 ",  -- icon when only one attribute or aggregate display
               inner_separator = ", ",   -- separator between breakdown items

@@ -6,8 +6,30 @@ local fn = vim.fn
 local api = vim.api
 local diagnostic = vim.diagnostic
 
+-- Fix PATH for GUI applications (Neovide) to include cargo bin
+local home = os.getenv("HOME")
+local cargo_bin = home .. "/.cargo/bin"
+local local_bin = home .. "/.local/bin"
+local go_bin = home .. "/go/bin"
+
+-- Add paths if they're not already in PATH
+if not string.find(vim.env.PATH, cargo_bin, 1, true) then
+    vim.env.PATH = cargo_bin .. ":" .. vim.env.PATH
+end
+if not string.find(vim.env.PATH, local_bin, 1, true) then
+    vim.env.PATH = local_bin .. ":" .. vim.env.PATH
+end
+if not string.find(vim.env.PATH, go_bin, 1, true) then
+    vim.env.PATH = go_bin .. ":" .. vim.env.PATH
+end
+
 -- Suppress deprecated warnings (Lspsaga uses old API)
 vim.g.deprecation_warnings = false
+
+-- Neovide scale factor (zoom)
+if vim.g.neovide then
+    vim.g.neovide_scale_factor = 1.2
+end
 
 local orig_deprecate = vim.deprecate
 vim.deprecate = function(name, alternative, version, plugin, backtrace)
