@@ -46,6 +46,8 @@ vim.o.list = true
 wo.relativenumber = true
 wo.number = true
 g.formatoptions = "qn1"
+g.neovide_opacity = 0.8
+g.neovide_normal_opacity = 0.8
 opt.backspace = "indent,eol,start"
 opt.wrap = false
 opt.showmode = false
@@ -64,7 +66,6 @@ opt.signcolumn = "yes"
 opt.conceallevel = 0            -- disables hiding. All characters are displayed as is
 opt.colorcolumn = "99999"       -- fixes visual bugs
 opt.clipboard = "unnamedplus"   -- allows neovim to access the system clipboard
-
 opt.completeopt = { "menuone", "noselect" }
                                 -- menuone - shows the auto-completion menu even if there is only one option
                                 -- noselect- does't automatically select the first item in the autocomplete menu
