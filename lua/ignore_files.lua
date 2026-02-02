@@ -9,6 +9,8 @@ ignore.pattern = {
     ".venv",
     ".jpeg",
     ".jpg",
+    ".git",
+    ".idea",
     ".ttf",
     ".jar",
     ".gpg",
