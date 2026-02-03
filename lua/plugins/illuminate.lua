@@ -7,7 +7,7 @@ return {
         "lsp",
         "treesitter",
       },
-      delay = 200,
+      delay = 1000,
       filetype_overrides = {},
       filetypes_denylist = {
         "lube",

@@ -7,12 +7,17 @@ return {
     "ray-x/go.nvim",
   },
   config = function()
+
+    vim.diagnostic.config({
+      update_in_insert = false,
+    })
+
     local util = require("lspconfig.util")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     capabilities.workspace = capabilities.workspace or {}
     capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
-    capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true
+    capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true --NOTE: Disable if you want improve performance
     capabilities.workspace.workspaceFolders = true
 
     local mason_registry = require('mason-registry')
@@ -183,7 +188,7 @@ return {
             enableReachabilityAnalysis = false,
             useLibraryCodeForTypes = true,
             autoImportCompletions = true,
-            indexing = true,
+            indexing = false,
             diagnosticSeverityOverrides = {
               reportAttributeAccessIssue = true,
               reportImportCycles = "warning",
