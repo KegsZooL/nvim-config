@@ -15,11 +15,6 @@ return {
     local util = require("lspconfig.util")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    capabilities.workspace = capabilities.workspace or {}
-    capabilities.workspace.didChangeWatchedFiles = capabilities.workspace.didChangeWatchedFiles or {}
-    capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = true --NOTE: Disable if you want improve performance
-    capabilities.workspace.workspaceFolders = true
-
     local mason_registry = require('mason-registry')
     local mason_settings = require('mason.settings')
 
@@ -183,7 +178,7 @@ return {
       settings = {
         basedpyright = {
           analysis = {
-            diagnosticMode = "openFilesOnly",
+            -- diagnosticMode = "openFilesOnly",
             autoSearchPaths = true,
             enableReachabilityAnalysis = false,
             useLibraryCodeForTypes = true,
