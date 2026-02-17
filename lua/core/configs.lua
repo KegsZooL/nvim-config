@@ -31,6 +31,12 @@ if vim.g.neovide then
     vim.g.neovide_scale_factor = 1.2
     -- Make Option key work as Alt/Meta on macOS
     vim.g.neovide_input_macos_option_key_is_meta = 'both'
+
+    -- Cmd+V paste from system clipboard in all modes
+    local function paste()
+        vim.api.nvim_paste(vim.fn.getreg('+'), true, -1)
+    end
+    vim.keymap.set({ 'n', 'i', 'v', 'c', 't' }, '<D-v>', paste)
 end
 
 local orig_deprecate = vim.deprecate

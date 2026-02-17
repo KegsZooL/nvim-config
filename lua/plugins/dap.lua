@@ -95,13 +95,26 @@ return {
       return params
     end
 
+    -- Resolve python from project venv, fallback to global python3
+    local get_python = function()
+      local cwd = vim.fn.getcwd()
+      local venv_names = { ".venv", "venv", ".env" }
+      for _, name in ipairs(venv_names) do
+        local python = cwd .. "/" .. name .. "/bin/python"
+        if vim.fn.executable(python) == 1 then
+          return python
+        end
+      end
+      return vim.fn.exepath("python3")
+    end
+
     dap.configurations.python = {
       {
         name = "File | justMyCode = false",
         type = "python",
         request = "launch",
         program = '${file}',
-        pythonPath = "python",
+        pythonPath = get_python,
         justMyCode = false,
       },
       {
@@ -109,8 +122,8 @@ return {
         type = "python",
         request = "launch",
         program = '${file}',
-        pythonPath = "python",
-        args=get_args,
+        pythonPath = get_python,
+        args = get_args,
         justMyCode = false,
       },
       {
@@ -118,7 +131,7 @@ return {
         type = "debugpy",
         request = "launch",
         module = "uvicorn",
-        pythonPath = "python",
+        pythonPath = get_python,
         args = function ()
           return {
             vim.fn.input("Enter app path (e.g., src.main:app)", "src.backend.app.main:app"),
