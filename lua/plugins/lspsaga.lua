@@ -21,10 +21,6 @@ return {
       symbol_in_winbar = {
         enable = false,
       },
-      hover = {
-        max_width = 0.9,
-        silent = true
-      },
       rename = {
         auto_save = true,
         keys = {
@@ -37,6 +33,10 @@ return {
         keys = {
           exec = '<CR>'
         }
+      },
+      finder = {
+        max_height = 0.9,
+        max_width = 0.9,
       },
       callhierarchy = {
         keys = {
