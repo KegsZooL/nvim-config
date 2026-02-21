@@ -83,13 +83,13 @@ return {
         },
       },
       routes = {
-        -- {
-        --   filter = {
-        --     event = "lsp",
-        --     kind = "progress",
-        --   },
-        --   opts = { skip = true },
-        -- }
+        {
+          filter = {
+            event = "lsp",
+            kind = "progress",
+          },
+          opts = { skip = true },
+        }
       },
       status = { lsp_progress = { event = "lsp", kind = "progress" } }
     })
