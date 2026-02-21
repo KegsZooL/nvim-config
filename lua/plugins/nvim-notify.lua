@@ -21,6 +21,9 @@ return {
       if level == log.levels.INFO then
         return
       end
+      if type(msg) == "string" and msg:find("gopls") then
+        return
+      end
       nvim_notify(msg, level, opts)
     end
   end

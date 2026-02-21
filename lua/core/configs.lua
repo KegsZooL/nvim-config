@@ -28,7 +28,7 @@ vim.g.deprecation_warnings = false
 
 -- Neovide configuration
 if vim.g.neovide then
-    vim.g.neovide_scale_factor = 1.2
+    vim.g.neovide_scale_factor = 1.4
     -- Make Option key work as Alt/Meta on macOS
     vim.g.neovide_input_macos_option_key_is_meta = 'both'
 

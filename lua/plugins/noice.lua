@@ -83,56 +83,13 @@ return {
         },
       },
       routes = {
-        {
-          filter = {
-            event = "msg_show",
-            kind = "search_count",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
-            find = "written",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "msg_show",
-            find = "DB:",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "msg_show",
-            find = "E21:",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "msg_show",
-            find = "yanked",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "msg_show",
-            find = "more lines",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "lsp",
-            kind = "progress",
-          },
-          opts = { skip = true },
-        }
+        -- {
+        --   filter = {
+        --     event = "lsp",
+        --     kind = "progress",
+        --   },
+        --   opts = { skip = true },
+        -- }
       },
       status = { lsp_progress = { event = "lsp", kind = "progress" } }
     })
