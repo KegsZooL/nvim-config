@@ -321,3 +321,9 @@ if vim.g.neovide then
     vim.g.neovide_scale_factor = 1.0
   end, { noremap = true, silent = true, desc = "Reset Neovide zoom" })
 end
+
+-- Surround
+keymap.set("n", "q", "<Plug>(nvim-surround-normal)", {})
+keymap.set("n", "ds", "<Plug>(nvim-surround-delete)", {})
+keymap.set("n", "cs", "<Plug>(nvim-surround-change)", {})
+keymap.set("v", "S", "<Plug>(nvim-surround-visual)", {})
