@@ -293,6 +293,10 @@ return {
       filetypes = { "yaml" }
     })
 
+    vim.lsp.config('gitlab-ci-ls', {
+      capabilities = capabilities,
+    })
+
     -- NGINX
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
       pattern = { "*.template", "*.tmpl" },
@@ -310,7 +314,7 @@ return {
     vim.lsp.enable({
       'vtsls', 'vue_ls', 'html', 'cssls', 'lua_ls', 'ruff', 'basedpyright',
       'graphql', 'gopls', 'jsonls', 'jinja_lsp', 'bashls', 'dockerls',
-      'yamlls', 'nginx_language_server',
+      'yamlls', 'nginx_language_server', 'gitlab-ci-ls',
     })
   end
 }
