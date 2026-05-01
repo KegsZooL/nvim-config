@@ -5,6 +5,7 @@ return {
     { "folke/neodev.nvim", opts = {} },
     "hrsh7th/cmp-nvim-lsp",
     "ray-x/go.nvim",
+    "b0o/SchemaStore.nvim",
   },
   config = function()
 
@@ -290,7 +291,15 @@ return {
 
     vim.lsp.config('yamlls', {
       capabilities = capabilities,
-      filetypes = { "yaml" }
+      settings = {
+        yaml = {
+          schemaStore = {
+            enable = false,
+            url = "",
+          },
+          schemas = require('schemastore').yaml.schemas(),
+        },
+      },
     })
 
     vim.lsp.config('gitlab-ci-ls', {
