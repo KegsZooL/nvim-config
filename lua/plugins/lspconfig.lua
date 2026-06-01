@@ -302,7 +302,15 @@ return {
       },
     })
 
-    vim.lsp.config('gitlab-ci-ls', {
+    vim.filetype.add {
+      pattern = {
+        ['.*%.gitlab%-ci.*%.ya?ml'] = 'yaml.gitlab',
+        ['.*%.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
+        ['.gitlab%-ci%.ya?ml'] = 'yaml.gitlab',
+      }
+    }
+
+    vim.lsp.config('gitlab_ci_ls', {
       capabilities = capabilities,
     })
 
@@ -323,7 +331,7 @@ return {
     vim.lsp.enable({
       'vtsls', 'vue_ls', 'html', 'cssls', 'lua_ls', 'ruff', 'basedpyright',
       'graphql', 'gopls', 'jsonls', 'jinja_lsp', 'bashls', 'dockerls',
-      'yamlls', 'nginx_language_server', 'gitlab-ci-ls',
+      'yamlls', 'nginx_language_server', 'gitlab_ci_ls',
     })
   end
 }
