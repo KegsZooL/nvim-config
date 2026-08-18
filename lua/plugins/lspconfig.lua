@@ -314,6 +314,18 @@ return {
       capabilities = capabilities,
     })
 
+
+    vim.lsp.config('terraformls', {
+      capabilities = capabilities,
+      on_attach = function(_, bufnr)
+        if vim.lsp.codelens.enable then
+          vim.lsp.codelens.enable(true, { bufnr = bufnr })
+        else
+          vim.lsp.codelens.refresh({ bufnr = bufnr })
+        end
+      end,
+    })
+
     -- NGINX
     vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
       pattern = { "*.template", "*.tmpl" },
@@ -331,7 +343,7 @@ return {
     vim.lsp.enable({
       'vtsls', 'vue_ls', 'html', 'cssls', 'lua_ls', 'ruff', 'basedpyright',
       'graphql', 'gopls', 'jsonls', 'jinja_lsp', 'bashls', 'dockerls',
-      'yamlls', 'nginx_language_server', 'gitlab_ci_ls',
+      'yamlls', 'nginx_language_server', 'gitlab_ci_ls', 'terraformls'
     })
   end
 }
