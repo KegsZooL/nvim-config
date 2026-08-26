@@ -96,6 +96,7 @@ opt.smartindent = true          -- make indenting smarter
 
 local indent_by_ft = {
   lua = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
+  markdown = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   javascript = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   json = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   typescript = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
