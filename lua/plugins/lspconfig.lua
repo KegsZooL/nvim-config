@@ -314,6 +314,9 @@ return {
       capabilities = capabilities,
     })
 
+    vim.lsp.config('gh_actions_ls', {
+      capabilities = capabilities,
+    })
 
     vim.lsp.config('terraformls', {
       capabilities = capabilities,
@@ -343,7 +346,8 @@ return {
     vim.lsp.enable({
       'vtsls', 'vue_ls', 'html', 'cssls', 'lua_ls', 'ruff', 'basedpyright',
       'graphql', 'gopls', 'jsonls', 'jinja_lsp', 'bashls', 'dockerls',
-      'yamlls', 'nginx_language_server', 'gitlab_ci_ls', 'terraformls'
+      'yamlls', 'nginx_language_server', 'gitlab_ci_ls', 'terraformls',
+      'gh_actions_ls'
     })
   end
 }
