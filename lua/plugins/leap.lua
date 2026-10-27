@@ -4,6 +4,5 @@ return {
   config = function()
     local leap = require('leap')
     leap.opts.vim_opts['go.ignorecase'] = false
-    leap.opts.case_sensitive = true
   end
 }

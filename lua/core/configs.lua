@@ -94,6 +94,10 @@ opt.breakindent = true
 opt.expandtab = true            -- convert tabs to spaces
 opt.smartindent = true          -- make indenting smarter
 
+-- avoid python indentexpr's default double-shiftwidth hanging indent after an
+-- open paren left at end of line (e.g. "foo(\n        arg")
+g.python_indent = { open_paren = "shiftwidth()" }
+
 local indent_by_ft = {
   lua = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
   markdown = { shiftwidth = 2, tabstop = 2, softtabstop = 2 },
